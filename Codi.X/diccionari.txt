@@ -1,0 +1,114 @@
+//IF 1 - Menú a Teclat
+char llegirLletra(void)
+//Pre: res
+//Post: retrona la lletra llegida
+char llegirNombre(void)
+//Pre: res
+//Post: retorna un nombre
+//-----------------------------------------------------------------------
+
+
+//IF 0 - Menú a Speaker
+void reproduir(void)
+//Pre: no estar reproduint
+//Post: començar a reproduir les notes
+void pararReproduccio(void)
+//Pre:  estar reproduint
+//Post: parar de reproduir les notes
+//-----------------------------------------------------------------------
+
+
+//IF 9, 5 i 8 - De Speaker, menu i hora a timer
+char TiGetTimer (void);
+//Pre: Hi ha algun timer lliure.
+//Post: Retorna un handle per usar les funcions TiGetTics i TiResetTics.
+//Retorna -1 si no hi ha cap timer disponible.
+unsigned int TiGetTics (unsigned char Handle);
+//Pre: Handle ha estat retornat per TiGetTimer.
+//Post: Retorna els milisegons transcorreguts des de la crida a TiResetTics del Handle.
+void TiResetTics (unsigned char Handle);
+//Pre: Handle ha estat retornat per TiGetTimer.
+//Post: Engega la temporització associada a 'Handle' i agafa la referencia temporal del sistema.
+//-----------------------------------------------------------------------
+
+
+//IF 2 - Menú a hora
+void actualitzarHora(char hora, char min);
+//Pre: res
+//Post: actualitzar l'hora actual
+char[] obtenirhora(void);
+//Pre: res
+//Post: retorna l'hora actual
+//-----------------------------------------------------------------------
+
+
+//IF 3 - Menú a LCD
+void LcEnd(void);
+// El Destructor
+void LcClear(void);
+// Post: Esborra el display i posa el cursor a la posici? zero en
+// l'estat en el que estava.
+// Post: La propera ordre pot trigar fins a 1.6ms
+void LcCursorOn(void);
+// Post: Enc?n el cursor
+// Post: La propera ordre pot trigar fins a 40us
+void LcCursorOff(void);
+// Post: Apagar el cursor
+// Post: La propera ordre pot trigar fins a 40us
+void LcGotoXY(char Columna, char Fila);
+// Pre : Columna entre 0 i 39, Fila entre 0 i 3
+// Post: Posiciona el cursor en aquestes coordenades
+// Post: La propera ordre pot trigar fins a 40us
+void LcPutChar(char c);
+// Post: Pinta C en l'actual poscici? del cursor i incrementa
+// la seva posici?. Si la columna arriba a 39, salta a 0 tot
+// incrementant la fila si el LCD ?s de dues files.
+// Si es de 4 files, incrementa de fila en arribar a la columna 20
+// Aix? mateix, la fila 4 passa a la zero.
+// En els LCDs d'una fila, quan la columna arriba a 39, torna
+// a zero. No s'incrementa mai la fila
+void LcPutString(char *s);
+// Post: Pinta l'string a apartir de la posici? actual del cursor.
+// El criteri de coordenades ?s el mateix que a LcPutChar
+// Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
+// la rutina
+//-----------------------------------------------------------------------
+
+
+//IF 4 i 10 - Menú i LCD a Usuari
+void crearUsurai(char *nom);
+//Pre: numUsuaris < 20
+//Post: afegir l'usuari amb score 0
+Usuari getUsuari(char index);
+//Pre: index <=19 i existent
+//Post: retornar el struct del usuari
+//-----------------------------------------------------------------------
+
+
+//IF 6 - Menú a JoyStick
+char pos(void);
+//Pre: res
+//Post: retornar dret, esquerra, adalt o abaix codificat
+//-----------------------------------------------------------------------
+
+
+//IF 11 - Menú a Tsio
+void startGame(char *nom);
+//Pre: el joc no està en marxa
+//Post: Enviar codi per l'eusart per tal d'executar startGame
+void sendTime(unsigned int segons);
+//Pre: el joc s'està executant, no s'està utilitzant la eusart
+//Post: enviar el segons
+void sendPos(char pos);
+//Pre: el joc s'està executant, no s'està utilitzant la eusart
+//Post: enviar pos per l'esuart
+
+
+//-----------------------------------------------------------------------
+//IF 12 - Tsio a Menú
+void getScore(unsigned char score);
+//Pre: ha començat el joc i hem rebit score x la eusart
+//Post: rebem el score
+void gameOver(void);
+//Pre: el joc ha començat i hem rebut game over per l'eusart
+//Post: Parar el joc i mirar si és high score del usuari
