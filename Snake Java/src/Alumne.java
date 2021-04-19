@@ -5,7 +5,7 @@ public class Alumne {
     public static final int TIME_WAIT_MS = 100; // Time to wait before calling "getInput()" in milliseconds
 
     public static void sendScore(Snake snake, SerialPort serialPort) {
-        char score = snake.getScore();
+        char score = (char)snake.getScore();
 
         // Write your code here
     }
