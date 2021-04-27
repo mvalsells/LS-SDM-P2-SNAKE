@@ -21,7 +21,7 @@
 #include <xc.h>
 #include "TiTTimer.h"
 #include "LcTLCD.h"
-
+#include <pic18f4321.h>
 
 //
 //--------------------------------CONSTANTS---AREA-----------
