@@ -48,7 +48,10 @@ void main(void) {
     LcInit(2,16);
     
     LcClear();
-    LcPutString("Missatge");
+    LcPutChar('A');
+    LcPutChar('B');
+    LcPutChar('C');
+    
     LcCursorOn();
     PORTBbits.RB3=1;
     
