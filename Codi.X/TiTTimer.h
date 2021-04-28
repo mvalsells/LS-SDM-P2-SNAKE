@@ -1,66 +1,30 @@
-//
-// Mòdul de gestiò de Timers
-// Barsalona, Novembre de 1995, Juan Perez & JM Ribes.
-// Desembre de 2001. FEC. Ajustat per al Fujitsu 90583
-// Març de 2010. FEC. Ajustat per al PIC24 (com passen els anys...)
-// 
+#ifndef TITTIMER_H
+#define	TITTIMER_H
 
 
-#ifndef _TITTIMER_H_
-#define _TITTIMER_H_
+void TiInitTimer(void);
+//Pre: --
+//Post: Initializes the timer0 to interrupt each 1ms.
+
+void TiResetTics(char Handle);
+//Pre: 0<Handle<MAXTIMERS.
+//Post: Writes in the tics of the Handle timer the universal tics of the system.
+
+int TiGetTics(char Handle);
+//Pre: 0<Handle<MAXTIMERS.
+//Post: Less than 32767 tics have passed since the last TiResetTics.
+//Post: Returns the number of tics from the last TiResetTics for the Handle timer.
+
+char TiGetTimer(void);
+//Pre: There are free timers.
+//Post: Returns the Handler of a timer and marks it as busy.
+//Post:	If there are not free timers left, returns a -1.
+
+void TiFreeTimer (char Handle);
+//Pre: 0<Handle<MAXTIMERS.
+//Post: The Handle timer is marked as free.
+
+void  _TiRSITimer (void);
 
 
-// Si anem justos de memoria, aquest define indica el
-// nombre de timers d'aquest TAD i es pot modificar sense
-// problemes.
-#define         TI_NUMTIMERS                    32
-
-
-// El següent define marca la distància temporal màxima
-// entre un gettics i un resettics
-//#define         TI_MAXTICS                      8640000000L //Suficient per aprox. 100 dies
-#define         TI_MAXTICS                      30000 //Suficient per aprox. 30 o 40 segons
-
-void RSI_Timer0(void);
-//La RSI
-void TiInit (void);
-	/*********************************************************************
-	//Postcondicions: Inicialitza el T.A.D. s precondici¢ global haver cridat
-	//                aquesta funci¢ quan es cridi qualsevol altra funci¢.
-	\\*********************************************************************/
-
-char TiGetTimer (void);
-	/*********************************************************************
-	//Precondicions: Hi ha algun timer lliure. Maxim TI_NUMTIMERS
-	//Postcondicions: Retorna un handle per usar les funcions TiGetTics i
-	//TiResetTics. Retorna -1 si no hi ha cap timer disponible.
-	\\*********************************************************************/
-
-void TiResetTics (unsigned char Handle);
-	/*********************************************************************
-	//Precondicions: Handle ha estat retornat per Ti_OpenTimer.
-	//Postcondicions: Engega la temporitzaci¢ associada a 'Handle'.
-	//              i agafa la referencia temporal del sistema
-	\\*********************************************************************/
-
-unsigned int  TiGetTics (unsigned char Handle);
-	/*********************************************************************
-	//Precondicions: Handle ha estat retornat per TiGetTimer.
-	// La distància temmporal entre GetTics i ResetTics ha de ser menor
-	// de TI_MAXTICS ms (actualment, 30 segons)
-	//Postcondicions: Retorna els milisegons transcorreguts des de la crida
-	//                a l'StartTimer del 'Handle'.
-	\\*********************************************************************/
-
-void TiCloseTimer (unsigned char Handle);
-	/*********************************************************************
-	//Precondicions: Handle ha estat retornat per Ti_OpenTimer.
-	//Postcondicions: allibera el timer que porta associat aquest 'Handle'
-	\\*********************************************************************/
-
-void TiEnd (void);
-	/*********************************************************************
-	//Postcondicions: Tanca el T.A.D.
-	\\*********************************************************************/
-
-#endif
+#endif	/* TTIMER_H */

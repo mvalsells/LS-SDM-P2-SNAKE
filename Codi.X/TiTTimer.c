@@ -1,125 +1,88 @@
-//
-// Mòdul de gestiò de Timers
-// Barsalona, Novembre de 1995, Juan Perez & Josep M. Ribes.
-// Desembre de 2001. FEC. Ajustat per al Fujitsu 90583
-// Març de 2010. FEC. Ajustat per al PIC24 (com passen els anys...)
-//
-#ifndef TITTIMER_H_
-#define TITTIMER_H_
+#include <xc.h>
 #include "TiTTimer.h"
-#include <pic18f4321.h>
+#define TI_NUMTIMERS 25
+#define TI_MAXTICS 61000
+#define TI_FALSE 0
+#define TI_TRUE 1
 
-
-//
-//--------------------------------CONSTANTS---AREA-----------
-
-#define         TI_FALS                         0
-#define         TI_CERT                         1
-
-// Tipus imbècils
-typedef unsigned char        BYTE;
-typedef unsigned short       WORD;
-
-//
-//---------------------------End--CONSTANTS---AREA-----------
-//
-
-//
-//--------------------------------VARIABLES---AREA-----------
-//
 struct Timer {
-	unsigned int h_TicsInicials;
+	unsigned int h_initialTics;
 	unsigned char b_busy;
-} s_Timers[TI_NUMTIMERS]; 
+} s_Timers[TI_NUMTIMERS];
 
 static unsigned int  h_Tics=0;
-static int counter;
-
-//
-//---------------------------End--VARIABLES---AREA-----------
-//
-//
-//--------------------------------PRIVADES----AREA-----------
-//
+static char counter;
 
 
-void RSI_Timer0 (void) { 
-	// Cada 1ms, amb un error del 1,74% (segons simulador) i triga 10us
-//	IO_SetValue(GPIO_1, 1); // Per comprovar la temportització
-    	INTCONbits.TMR0IF = 0;    //Resetejo el flag de peticio d'interrupcio
-	TMR0L=6;
-	h_Tics++;
+void TiInitTimer(void) {
+    //Pre: --
+    //Post: Initializes the timer0 to interrupt each 1ms.
+    RCONbits.IPEN = 0; //No priorities
+    INTCONbits.GIE_GIEH = 1;
+    INTCONbits.PEIE_GIEL = 1;
+    INTCONbits.TMR0IE = 1;
+    INTCONbits.TMR0IF = 0;
+    T0CON = 0x08; //16 bits without prescaler
+    //@ 40MHz (Tinst = 100nS), we want 1ms/Tinst=5.000 tics 2*16-5.000=0xEC78=60536
+    TMR0H = 0xEC;
+    TMR0L = 0x78;
+    T0CONbits.TMR0ON = 1; //Start timer
 
-	if (h_Tics>=TI_MAXTICS) {
-		// Abans que dongui la volta, tots avall (cada 30s)
-		for (counter=0;counter<TI_NUMTIMERS;counter++)
-			if (s_Timers[counter].b_busy==TI_CERT)
-				s_Timers[counter].h_TicsInicials -= h_Tics;
-		h_Tics=0;
-	}
-//	IO_SetValue(GPIO_1, 0); // Per comprovar la temportització
-}
-//
-//---------------------------End--PRIVADES----AREA-----------
-//
+    for (counter=0;counter<TI_NUMTIMERS;counter++) {
+	s_Timers[counter].b_busy=TI_FALSE;
+    }
 
-//
-//--------------------------------PUBLIQUES---AREA-----------
-//
-
-void TiInit () {
-	unsigned char counter;
-	for (counter=0;counter<TI_NUMTIMERS;counter++) {
-		s_Timers[counter].b_busy=TI_FALS;
-	}
-	h_Tics=0;
-	// Suposo que anem a 4MHz
-	T0CONbits.T08BIT=1; // 8 bits
-	T0CONbits.T0CS = 0;	// Clock: fosc/4
-	T0CONbits.PSA = 0; // Prescaler
-	T0CONbits.T0PS = 1; // Preescaler a 1/4, pols de 4us
-	// La resta de valors de T1CON per defecte
-	TMR0L=6;	// (256-6) * 4us = 1ms 
-	T0CONbits.TMR0ON = 1;		// Activo el timer
-	// Activo la interrupció del timer 1
-	INTCONbits.TMR0IF = 0;
-	INTCONbits.TMR0IE = 1;
 }
 
-char TiGetTimer() {
-	unsigned char counter=0;
-	while (s_Timers[counter].b_busy==TI_CERT) {
-		counter++;
-		if (counter == TI_NUMTIMERS) return -1;
-	}
-	s_Timers[counter].b_busy=TI_CERT;
-	return (counter);
+void _TiRSITimer (void) {
+//Timer Interrupt Service Routine
+    //@ 40MHz (Tinst = 100nS), we want 1ms/Tinst=10.000 tics 2*16-10.000=0xD8F0
+    TMR0H = 0xEC;
+    TMR0L = 0x78;
+
+    INTCONbits.TMR0IF = 0;
+    h_Tics++;
+
+    if (h_Tics>=TI_MAXTICS) {
+        //We reset them before they overflow (every 30s aprox)
+        for (counter=0;counter<TI_NUMTIMERS;counter++){
+            if (s_Timers[counter].b_busy==TI_TRUE){
+                s_Timers[counter].h_initialTics -= h_Tics;
+            }
+        }
+        h_Tics=0;
+    }
 }
 
-void TiResetTics (unsigned char Handle) {
-	//__DI(); h_Tics integer, per tant, indivisible
-	s_Timers[Handle].h_TicsInicials=h_Tics;
-	//__EI();
+void TiResetTics(char Handle) {
+//Pre: 0<Handle<MAXTIMERS.
+//Post: Writes in the tics of the Handle timer the universal tics of the system.
+
+    s_Timers[Handle].h_initialTics=h_Tics;
 }
+int TiGetTics(char Handle) {
+//Pre: 0<Handle<MAXTIMERS.
+//Post: Less than 32767 tics have passed since the last TiResetTics.
+//Post: Returns the number of tics from the last TiResetTics for the Handle timer.
+    volatile unsigned int actual;
+    actual=h_Tics; 
+    return (actual-(s_Timers[Handle].h_initialTics));
 
-
-unsigned int TiGetTics (unsigned char Handle) {
-volatile unsigned int actual;
-	actual=h_Tics; // indivisible si és un int, clar.
-	return (actual-(s_Timers[Handle].h_TicsInicials));
 }
-
-void TiCloseTimer (unsigned char Handle) {
-	s_Timers[Handle].b_busy=TI_FALS;
+char TiGetTimer(void) {
+//Pre: There are free timers.
+//Post: Returns the Handler of a timer and marks it as busy.
+//Post:	If there are not free timers left, returns a -1.
+    counter=0;
+    while (s_Timers[counter].b_busy==TI_TRUE) {
+        counter++;
+	if (counter == TI_NUMTIMERS) return -1;
+    }
+    s_Timers[counter].b_busy=TI_TRUE;
+    return (counter);
 }
-
-
-void TiEnd () {
+void TiFreeTimer (char Handle) {
+//Pre: 0<Handle<MAXTIMERS.
+//Post: The Handle timer is marked as free.
+    s_Timers[Handle].b_busy=TI_FALSE;
 }
-
-//#include <pic18f4321.h>
-//---------------------------End--PUBLIQUES---AREA-----------
-//
-
-#endif
-
