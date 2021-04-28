@@ -58,14 +58,6 @@ void CantaData(char Data);
 void WaitForBusy(void);
 void EscriuPrimeraOrdre(char);
 
-//
-//---------------------------End--PROTOTIPUS--AREA-----------
-//
-
-
-//
-//--------------------------------PUBLIQUES---AREA-----------
-//
 void LcInit(char files, char columnes) {
 // Pre: Files = {1, 2, 4}  Columnes = {8, 16, 20, 24, 32, 40 }
 // Pre: L'Hitachi merd€s necessita 40ms de tranquilitat desde
@@ -79,7 +71,7 @@ void LcInit(char files, char columnes) {
 	Files = files; Columnes = columnes;
 	FilaAct = ColumnaAct = 0;
 	SetControlsSortida();
-	for (i = 0; i < 2; i++) {
+	for (i = 0; i < 3; i++) {
 		Espera(Timer, 100);
 		// El manual de l'hitachi diu que s'ha de fer aquesta
 		// seq∏Ància...
@@ -112,7 +104,7 @@ void LcInit(char files, char columnes) {
 
 void LcEnd(void) {
 // El Destructor
-	TiCloseTimer (Timer); // Ja no ens far? cap falta
+	TiFreeTimer (Timer); // Ja no ens far? cap falta
 }
 
 void LcClear(void) {
@@ -292,10 +284,3 @@ void EscriuPrimeraOrdre(char ordre) {
 	 SetD4(ordre & 0x01 ? 1 : 0);
 	EnableDown();
 }
-
-//
-//---------------------------End--PRIVADES----AREA-----------
-//
-
-
-

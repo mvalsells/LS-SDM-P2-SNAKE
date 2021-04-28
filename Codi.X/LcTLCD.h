@@ -1,5 +1,5 @@
-#ifndef LCTLCD_H
-#define	LCTLCD_H
+#ifndef LCTLCD_H_
+#define	LCTLCD_H_
 //
 // TAD per a manipular un display alfanum?ric basat en el
 // controlador HD44780 usant nom?s 4 bits de dades.
@@ -50,18 +50,18 @@
 
 #define SetD4_D7Sortida()		(TRISCbits.TRISC0 = TRISCbits.TRISC1 = TRISCbits.TRISC2 = TRISCbits.TRISC3 = 0)
 #define SetD4_D7Entrada()		(TRISCbits.TRISC0 = TRISCbits.TRISC1 = TRISCbits.TRISC2 = TRISCbits.TRISC3 = 1)
-#define SetControlsSortida()            (TRISCbits.TRISC4 = TRISCbits.TRISC5 = TRISDbits.TRISD7 = 0)
+#define SetControlsSortida()    (TRISCbits.TRISC5 = TRISDbits.TRISD7 = TRISCbits.TRISC4 = 0)
 #define SetD4(On)				(LATCbits.LATC0 = (On))
 #define SetD5(On)				(LATCbits.LATC1 = (On))
 #define SetD6(On)				(LATCbits.LATC2 = (On))
 #define SetD7(On)				(LATCbits.LATC3 = (On))
-#define GetBusyFlag()                           (PORTCbits.RC3)
+#define GetBusyFlag()           (PORTCbits.RC3)
 #define RSUp()					(LATCbits.LATC5 = 1)
 #define RSDown()				(LATCbits.LATC5 = 0)
 #define RWUp()					(LATDbits.LATD7 = 1)
-#define RWDown()				(LATCbits.LATC4 = 0)
+#define RWDown()				(LATDbits.LATD7 = 0)
 #define EnableUp()				(LATCbits.LATC4 = 1)
-#define EnableDown()                            (LATBbits.LATB5 = 0)
+#define EnableDown()            (LATCbits.LATC4 = 0)
 // -------------------------------END--HARDWARE---AREA--------------------
 
 

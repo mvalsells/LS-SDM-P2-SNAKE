@@ -1,5 +1,5 @@
-#ifndef TITTIMER_H
-#define	TITTIMER_H
+#ifndef TITTIMER_H_
+#define	TITTIMER_H_
 
 
 void TiInitTimer(void);
