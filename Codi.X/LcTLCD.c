@@ -76,7 +76,7 @@ void LcInit(char rows, char columns) {
 
 void LcEnd(void) {
 // The destructor
-	TiCloseTimer (Timer); // It is not needed anymore
+	TiFreeTimer(Timer); // It is not needed anymore
 }
 
 void LcClear(void) {

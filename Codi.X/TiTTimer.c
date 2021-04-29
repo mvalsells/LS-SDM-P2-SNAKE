@@ -23,7 +23,7 @@ void TiInitTimer(void) {
     INTCONbits.TMR0IE = 1;
     INTCONbits.TMR0IF = 0;
     T0CON = 0x08; //16 bits without prescaler
-    //@ 40MHz (Tinst = 100nS), we want 1ms/Tinst=5.000 tics 2*16-5.000=0xEC78=60536
+    //@ 40MHz (Tinst = 10nS), we want 0.5ms/Tinst=5.000 tics 2*16-5.000=0xEC78=60536
     TMR0H = 0xEC;
     TMR0L = 0x78;
     T0CONbits.TMR0ON = 1; //Start timer
