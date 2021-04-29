@@ -54,10 +54,8 @@ void init_adcon(void){
 
 void main(void) {
     init_ports();
-    init_eusart();
     init_adcon();
-    
-    
+    init_eusart();    
     
     TiInitTimer();
     LcInit(2,16);
