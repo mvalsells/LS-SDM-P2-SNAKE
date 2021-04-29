@@ -1,31 +1,7 @@
-//
-// TAD per a manipular un display alfanumÀric basat en el
-// controlador HD44780. Aquest »s el controlador que porten la
-// immensa majoria de displays. Tamany m?xim, 4 files per 40 columnes
-//
-// Durant el proc»s d'inicialitzaci€, es demanar? un timer al tad timer
-// que no s'usar? per a res m»s. El constructor alliberar? aquest timer.
-
-// Vcli V1.1, Sisco, a 26 de novembre de 2004. He vist que en alguns LCDs cal esperar
-// despr»s de fer un Clear, amb independÀncia del que digui el Busy.
-// Sembla extrany, quan tingui temps haig de mirar el bit de Busy amb l'oscil.loscop
-// De moment, rertardo amb timer.
-
-// VCli V1.3, jnavarro, a 2013. He ampliat els temps d'inicialitzaci€ (ara trigo uns
-// 150 ms. per⁄ inicialitzo a la primera (sobretot en cold starts). M»s info aquÃ:
-// http://web.alfredstate.edu/weimandn/lcd/lcd_initialization/lcd_initialization_index.html
-// Segueixo observant
-// la mateixa anomalia del Busy, menys mal del timeout perquÀ sempre que li ho pregunto
-// el fastig€s busy est? a 1...
-
 #include <xc.h>
 #include "TiTTimer.h"
 #include "LcTLCD.h"
-#include <pic18f4321.h>
 
-//
-//--------------------------------CONSTANTS---AREA-----------
-//
 #define FUNCTION_SET	0x20
 #define BITS_8			0x10
 #define DISPLAY_CONTROL	0x08
@@ -42,15 +18,15 @@
 //
 //--------------------------------VARIABLES---AREA-----------
 //
-static unsigned char Files, Columnes;
-static unsigned char FilaAct, ColumnaAct;
+static unsigned char Rows, Columns;
+static unsigned char RowAct, ColumnAct;
 static int Timer;
 //
 //---------------------------End--VARIABLES---AREA-----------
 //
 
 //
-//--------------------------------PROTOTIPUS--AREA-----------
+//--------------------------------PROTOTIPE--AREA-----------
 //
 void Espera(int Timer, int ms);
 void CantaIR(char IR);
@@ -58,23 +34,20 @@ void CantaData(char Data);
 void WaitForBusy(void);
 void EscriuPrimeraOrdre(char);
 
-void LcInit(char files, char columnes) {
-// Pre: Files = {1, 2, 4}  Columnes = {8, 16, 20, 24, 32, 40 }
-// Pre: L'Hitachi merd€s necessita 40ms de tranquilitat desde
-// la pujada de Vcc fins cridar aquest constructor
-// Pre: Hi ha un timer lliure
-// Post: Aquesta rutina pot trigar fins a 100ms
-// Post: El display queda esborrat, el cursor apagat i a la
-// posici€ 0, 0.
+void LcInit(char rows, char columns) {
+// Pre: Rows = {1, 2, 4}  Columns = {8, 16, 20, 24, 32, 40 }
+// Pre: It needs 40ms of tranquility between VCC raising until this constructor is called.
+// Pre: There is a free timer
+// Post: This routine can last until 100ms
+// Post: The display remains cleared, the cursor is turned OFF and at the position (0, 0).
 	int i;
-	Timer = TiGetTimer(); // Val m»s que n'hi hagi
-	Files = files; Columnes = columnes;
-	FilaAct = ColumnaAct = 0;
+	Timer = TiGetTimer(); 
+	Rows = rows; Columns = columns;
+	RowAct = ColumnAct = 0;
 	SetControlsSortida();
-	for (i = 0; i < 3; i++) {
+	for (i = 0; i < 2; i++) {
 		Espera(Timer, 100);
-		// El manual de l'hitachi diu que s'ha de fer aquesta
-		// seq∏Ància...
+		// This sequence is set by the manual.
 
 		EscriuPrimeraOrdre(CURSOR_ON | DISPLAY_CLEAR);
 		Espera(Timer, 5);
@@ -82,128 +55,116 @@ void LcInit(char files, char columnes) {
 		Espera(Timer, 1);
 		EscriuPrimeraOrdre(CURSOR_ON | DISPLAY_CLEAR);
 		Espera(Timer, 1);
-		// .. tres vegades. Potser »s una penitÀncia?
-		// Ara una a 4 bits
+		// .. three times. 
+		// Now one at 4 bits
 		EscriuPrimeraOrdre(CURSOR_ON);
 		Espera(Timer, 1);
-		CantaIR(FUNCTION_SET | DISPLAY_CONTROL); 	// 4bits, 1 files, font 5x7
-		// Observo que just aquÃ s'esborra la primera linia
-		// Ara ja podem mirar el busy
+		CantaIR(FUNCTION_SET | DISPLAY_CONTROL); 	// 4bits, 1 row, font 5x7
+		// The first line is erased here 
+		// Now we can wait for busy
 		WaitForBusy(); 	CantaIR(DISPLAY_CONTROL);  	// Display Off
-		WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   	// Tot espais
+		WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   	// All spaces
 		Espera(Timer,3); // 1.64ms V1.1
-		WaitForBusy(); 	CantaIR(DISPLAY_ON | CURSOR_ON); // Auto Increment i shift
+		WaitForBusy(); 	CantaIR(DISPLAY_ON | CURSOR_ON); // Auto Increment and shift
 		WaitForBusy(); 	CantaIR(DISPLAY_CONTROL | DISPLAY_ON | CURSOR_ON | DISPLAY_CLEAR); 		// Display On
 	}
-	// El manual dir? el que vulgui per⁄ jo he vist que despr»s
-	// d'una arrencada freda, no sempre s'inicialitza correctament
-	// tot i esperar els 40ms. Per aix⁄, he posat un bucle de dues
-	// inicialitzacions i a partir d'aquÃ, la inicialitzaci€ m'ha funcionat
-	// correctament tant si faig un reset com si apago i engego l'alimentaci€.
+	//The manual says that it should work but it doesn't initialize 
+    //correctly after 40ms. Therefore, there is a loop with two initializations 
+    //from here the initialization works correctly if a reset is made or if
+    //the supply is turned ON and OFF. 
 }
 
 void LcEnd(void) {
-// El Destructor
-	TiFreeTimer (Timer); // Ja no ens far? cap falta
+// The destructor
+	TiCloseTimer (Timer); // It is not needed anymore
 }
 
 void LcClear(void) {
-// Post: Esborra el display i posa el cursor a la posici€ zero en
-// l'estat en el que estava.
-// Post: La propera ordre pot trigar fins a 1.6ms
-	WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   // Tot espais
+// Post: Erases the display and sets the cursor to its previous state. 
+// Post: The next order can last up to 1.6ms. 
+	WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   //Spaces
 	Espera(Timer, 3); // V1.1
 }
 
 void LcCursorOn(void) {
-// Post: Enc»n el cursor
-// Post: La propera ordre pot trigar fins a 40us
+// Post: Turn on the cursor
+// Post: The next order can last up to 40us. 
 	WaitForBusy();
 	CantaIR(DISPLAY_CONTROL | DISPLAY_ON | CURSOR_ON);
 }
 
 void LcCursorOff(void) {
-// Post: Apaga 0el cursor
-// Post: La propera ordre pot trigar fins a 40us
+// Post: Turns off the cursor
+// Post: The next order can last up to 40us. 
 	WaitForBusy();
 	CantaIR(DISPLAY_CONTROL | DISPLAY_ON);
 }
 
-void LcGotoXY(char Columna, char Fila) {
-// Pre : Columna entre 0 i 39, Fila entre 0 i 3
-// Post: Posiciona el cursor en aquestes coordenades
-// Post: La propera ordre pot trigar fins a 40us
-	int Fisica;
-	// d'entrada calculo la direcci€ efectiva de la ram del LCD
-	switch (Files) {
+void LcGotoXY(char Column, char Row) {
+// Pre : Column between 0 and 39, row between 0 and 3. 
+// Post: Sets the cursor to those coordinates. 
+// Post: The next order can last until 40us.
+	int Fisics;
+	// calculating the effective address of the LCD ram. 
+	switch (Rows) {
 		case 2:
-			Fisica = Columna + (!Fila ? 0 : 0x40); break;
+			Fisics = Column + (!Row ? 0 : 0x40); break;
 		case 4:
-			Fisica = Columna;
-			if (Fila == 1) Fisica += 0x40; else
-			if (Fila == 2) Fisica += Columnes;      /* 0x14; */ else
-			if (Fila == 3) Fisica += 0x40+Columnes; /* 0x54; */
+			Fisics = Column;
+			if (Row == 1) Fisics += 0x40; else
+			if (Row == 2) Fisics += Columns;      /* 0x14; */ else
+			if (Row == 3) Fisics += 0x40+Columns; /* 0x54; */
 			break;
 		case 1:
 		default:
-			Fisica = Columna; break;
+			Fisics = Column; break;
 	}
-	// i l'aplico amb la comanda
+	// applying the command
 	WaitForBusy();
-	CantaIR(SET_DDRAM | Fisica);
-	// Finalment, actualitzo les imatges locals
-	FilaAct    = Fila;
-	ColumnaAct = Columna;
+	CantaIR(SET_DDRAM | Fisics);
+	// Finally, I refresh the local images.
+	RowAct    = Row;
+	ColumnAct = Column;
 }
 
 void LcPutChar(char c) {
-// Post: Pinta C en l'actual poscici€ del cursor i incrementa
-// la seva posici€. Si la columna arriba a 39, salta a 0 tot
-// incrementant la fila si el LCD »s de dues files.
-// Si es de 4 files, incrementa de fila en arribar a la columna 20
-// AixÃ mateix, la fila 4 passa a la zero.
-// En els LCDs d'una fila, quan la columna arriba a 39, torna
-// a zero. No s'incrementa mai la fila
-	// D'entrada escric el char
+// Post: Paints the char in the actual cursor position and increments 
+// its position. If the column gets to 39 it returns to 0.
+// The row of the LCD is increased when this happens until the second
+// row and then it is reset back to row 0 if it has 2 rows total. 
+// If the LCD has 4 rows it will reset back to row 0 when it
+// reaches row 4 and the columns will go till 39 before reseting to 0.
+// The one row LCDs returns to 0 when a column gets to 39. 
+// The row is never increased. 
+	// The char is written
 	WaitForBusy(); CantaData(c);
-	// i ara recalculo la posici€ del cursor
-	++ColumnaAct;
-	if (Files == 3) {
-		if (ColumnaAct >= 20) {
-			ColumnaAct = 0;
-			if (++FilaAct >= 4) FilaAct = 0;
-			LcGotoXY(ColumnaAct, FilaAct);
+	// The cursor position is recalculated.
+	++ColumnAct;
+	if (Rows == 3) {
+		if (ColumnAct >= 20) {
+			ColumnAct = 0;
+			if (++RowAct >= 4) RowAct = 0;
+			LcGotoXY(ColumnAct, RowAct);
 		}
 	} else
-	if (Files == 2) {
-		if (ColumnaAct >= 40) {
-			ColumnaAct = 0;
-			if (++FilaAct >= 2) FilaAct = 0;
-			LcGotoXY(ColumnaAct, FilaAct);
+	if (Rows == 2) {
+		if (ColumnAct >= 40) {
+			ColumnAct = 0;
+			if (++RowAct >= 2) RowAct = 0;
+			LcGotoXY(ColumnAct, RowAct);
 		}
 	} else
-	if (FilaAct == 1) {
-		if (ColumnaAct >= 40) ColumnaAct = 0;
-		LcGotoXY(ColumnaAct, FilaAct);
+	if (RowAct == 1) {
+		if (ColumnAct >= 40) ColumnAct = 0;
+		LcGotoXY(ColumnAct, RowAct);
 	}
 }
-
-
 void LcPutString(char *s) {
-// Post: Pinta l'string a apartir de la posici€ actual del cursor.
-// El criteri de coordenades »s el mateix que a LcPutChar
-// Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
-// la rutina
+// Post: Paints the string from the actual cursor position. 
+// The coordinate criteria is the same as the LcPutChar. 
+// Post: Can last up to 40us for each char of a routine output.
 	while(*s) LcPutChar(*s++);
 }
-
-//
-//---------------------------End--PUBLIQUES---AREA-----------
-//
-
-//
-//--------------------------------PRIVADES----AREA-----------
-//
 
 void Espera(int Timer, int ms) {
 	TiResetTics(Timer);
@@ -229,14 +190,14 @@ void CantaIR(char IR) {
 	RSDown();
 	RWDown();
 	EnableUp();
-	CantaPartAlta(IR); 		// Segons hitachi Data Setup = 80ns (cap problema)
-	EnableUp();				// Asseguro els 500ns de durada de pols
-	EnableDown();   		// i l'amplada del pols "enable" major que 230n
+	CantaPartAlta(IR); 		// Data Setup = 80ns
+	EnableUp();				// Making sure the pulse lasts 500ns
+	EnableDown();   		// The pulse width "enable" is higher than 230ns
 	EnableDown();
 	EnableUp();
-	CantaPartBaixa(IR); 	// Segons hitachi Data Setup = 80ns (cap problema)
-	EnableUp();				// Asseguro els 500ns de durada de pols
-	EnableDown();   		// i l'amplada del pols "enable" major que 230n
+	CantaPartBaixa(IR); 	// Data Setup = 80ns
+	EnableUp();				// Making sure the pulse lasts 500ns
+	EnableDown();   		// The pulse width "enable" is higher than 230ns
 	SetD4_D7Entrada();
 }
 
@@ -245,14 +206,14 @@ void CantaData(char Data) {
 	RSUp();
 	RWDown();
 	EnableUp();
-	CantaPartAlta(Data); 	// Segons hitachi Data Setup = 80ns (cap problema)
-	EnableUp();				// Asseguro els 500ns de durada de pols
-	EnableDown();   		// i l'amplada del pols "enable" major que 230n
+	CantaPartAlta(Data); 	// Data Setup = 80ns
+	EnableUp();				// Making sure the pulse lasts 500ns
+	EnableDown();   		// The pulse width "enable" is higher than 230ns
 	EnableDown();
 	EnableUp();
-	CantaPartBaixa(Data); 	// Segons hitachi Data Setup = 80ns (cap problema)
-	EnableUp();				// Asseguro els 500ns de durada de pols
-	EnableDown();   		// i l'amplada del pols "enable" major que 230n
+	CantaPartBaixa(Data); 	// Data Setup = 80ns
+	EnableUp();				// Making sure the pulse lasts 500ns
+	EnableDown();   		// The pulse width "enable" is higher than 230ns
 	SetD4_D7Entrada();
 }
 
@@ -262,20 +223,20 @@ void WaitForBusy(void) { char Busy;
 	RWUp();
 	TiResetTics(Timer);
 	do {
-		EnableUp();EnableUp(); // Asseguro els 500ns de durada de pols
+		EnableUp();EnableUp(); //Making sure the 500ns of the pulse time
 		Busy = GetBusyFlag();
 		EnableDown();
 		EnableDown();
 		EnableUp();EnableUp();
-		// AquÃ ve la part baixa del comptador d'adreces, que no ens interessa
+		// The lower part of the address counter, it is not interesting for us. 
 		EnableDown();
 		EnableDown();
-		if (TiGetTics(Timer)) break; // M»s d'un ms vol dir quel LCD est? boig
+		if (TiGetTics(Timer)) break; // More than one ms means that the LCD has gone mad.
 	} while(Busy);
 }
 
 void EscriuPrimeraOrdre(char ordre) {
-	// Escric el primer com si fossin 8 bits
+	// Write the first as if there are 8 bits.
 	SetD4_D7Sortida();  RSDown(); RWDown();
 	EnableUp(); EnableUp();
 	 SetD7(ordre & 0x08 ? 1 : 0);

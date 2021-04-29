@@ -1,114 +1,68 @@
-#ifndef LCTLCD_H_
-#define	LCTLCD_H_
-//
-// TAD per a manipular un display alfanum?ric basat en el
-// controlador HD44780 usant nom?s 4 bits de dades.
-// Aquest ?s el controlador que porten la  immensa majoria de displays.
-// Tamany m?xim, 4 files per 40 columnes
-//
-// F. Escudero vCli v1.0 Piera, gener de 2004
-//
-// He provat aquest TAD amb un LCD de 2x16. Qualsevol error que observeu,
-// us agra?ria que m'ho f?ssiu saber a sisco@salleurl.edu.
-//
-// Vcli V1.1, Sisco, a 26 de novembre de 2004. He vist que en alguns LCDs cal esperar 2ms
-// despr?s de fer un Clear, amb independ?ncia del que digui el Busy.
-// Sembla extrany, quan tingui temps haig de mirar el bit de Busy amb l'oscil.loscop
-// De moment, retardo amb timer.
-//
-// VCli V1.3, jnavarro, a 2013. He ampliat els temps d'inicialitzaci? (ara trigo uns
-// 150 ms. per? inicialitzo a la primera (sobretot en cold starts). MÚs info aqu?:
-// http://web.alfredstate.edu/weimandn/lcd/lcd_initialization/lcd_initialization_index.html
-// Segueixo observant
-// la mateixa anomalia del Busy, menys mal del timeout perqu? sempre que li ho pregunto
-// el fastig?s busy estÓ 1...
-
-//
-// Durant el proc?s d'inicialitzaci?, es demanar? un timer al tad timer
-//
-// ------------------------------------HARDWARE---AREA--------------------
-// La connexi? serÓ de 4 bits de dades (D4 a D7), i els senyals
-// RS, R/W i E.
-// En aquest exemple, tenim connectat
-//
-// 	RS				a RB3
-//	R/!W                            a RB15
-//      E				a RB5
-//	D4				a RB6
-//	D5				a RB7
-//	D6				a RB8
-//	D7				a RB9
-//  ?s important que els senyals D0..D3 del LCD no es deixin a l'aire i
-//  es connectin a GND mitjan?ant resist?ncies de, per exemple, 4K7
-//
-// 	Es pot usar qualsevol altre configuraci?. Nom?s
-//  cal ajustar els defines que venen a continuaci?.
-//
-
+#ifndef LCTLCD_H
+#define	LCTLCD_H
+//BY La Salle.
 #include <xc.h>
 
 
 #define SetD4_D7Sortida()		(TRISCbits.TRISC0 = TRISCbits.TRISC1 = TRISCbits.TRISC2 = TRISCbits.TRISC3 = 0)
 #define SetD4_D7Entrada()		(TRISCbits.TRISC0 = TRISCbits.TRISC1 = TRISCbits.TRISC2 = TRISCbits.TRISC3 = 1)
-#define SetControlsSortida()    (TRISCbits.TRISC5 = TRISDbits.TRISD7 = TRISCbits.TRISC4 = 0)
+#define SetControlsSortida()            (TRISCbits.TRISC5 = TRISDbits.TRISD7 = TRISCbits.TRISC4 = 0)
 #define SetD4(On)				(LATCbits.LATC0 = (On))
 #define SetD5(On)				(LATCbits.LATC1 = (On))
 #define SetD6(On)				(LATCbits.LATC2 = (On))
 #define SetD7(On)				(LATCbits.LATC3 = (On))
-#define GetBusyFlag()           (PORTCbits.RC3)
+#define GetBusyFlag()                           (PORTCbits.RC3)
 #define RSUp()					(LATCbits.LATC5 = 1)
 #define RSDown()				(LATCbits.LATC5 = 0)
-#define RWUp()					(LATDbits.LATD7 = 1)
-#define RWDown()				(LATDbits.LATD7 = 0)
+#define RWUp()					(LATCbits.LATC7 = 1)
+#define RWDown()				(LATCbits.LATC7 = 0)
 #define EnableUp()				(LATCbits.LATC4 = 1)
-#define EnableDown()            (LATCbits.LATC4 = 0)
+#define EnableDown()                            (LATCbits.LATC4 = 0)
 // -------------------------------END--HARDWARE---AREA--------------------
 
 
-void LcInit(char Files, char Columnes);
-// Pre: Files = {1, 2, 4}  Columnes = {8, 16, 20, 24, 32, 40 }
-// Pre: Hi ha un timer lliure
-// Post: L'Hitachi merd?s necessita 40ms de tranquilitat desde
-// la pujada de Vcc fins cridar aquest constructor
-// Post: Aquesta rutina pot trigar fins a 100ms
-// Post: El display queda esborrat, el cursor apagat i a la
-// posici? 0, 0.
+void LcInit(char rows, char columns);
+// Pre: Rows = {1, 2, 4}  Columns = {8, 16, 20, 24, 32, 40 }
+// Pre: There is a free timer
+// Pre: It needs 40ms of tranquility between the VCC raising and this constructor being called.
+// Post: This routine can last up to 100ms
+// Post: The display remains cleared, the cursor turned off and at the position 0, 0.
 
 void LcEnd(void);
-// El Destructor
+// The destructor
 
 void LcClear(void);
-// Post: Esborra el display i posa el cursor a la posici? zero en
-// l'estat en el que estava.
-// Post: La propera ordre pot trigar fins a 1.6ms
+// Post: Clears the display and sets the cursor to its previous state. 
+// Post: The next order can last up to 1.6ms. 
 
 void LcCursorOn(void);
-// Post: Enc?n el cursor
-// Post: La propera ordre pot trigar fins a 40us
+// Post: Turn on the cursor
+// Post: The next order can last up to 40us. 
 
 void LcCursorOff(void);
-// Post: Apaga 0el cursor
-// Post: La propera ordre pot trigar fins a 40us
+// Post: Turns off the cursor
+// Post: The next order can last up to 40us. 
 
-void LcGotoXY(char Columna, char Fila);
-// Pre : Columna entre 0 i 39, Fila entre 0 i 3
-// Post: Posiciona el cursor en aquestes coordenades
-// Post: La propera ordre pot trigar fins a 40us
+void LcGotoXY(char Column, char Row);
+// Pre : Column between 0 and 39, row between 0 and 3. 
+// Post: Sets the cursor to those coordinates. 
+// Post: The next order can last up to 40us. 
 
 void LcPutChar(char c);
-// Post: Pinta C en l'actual poscici? del cursor i incrementa
-// la seva posici?. Si la columna arriba a 39, salta a 0 tot
-// incrementant la fila si el LCD ?s de dues files.
-// Si es de 4 files, incrementa de fila en arribar a la columna 20
-// Aix? mateix, la fila 4 passa a la zero.
-// En els LCDs d'una fila, quan la columna arriba a 39, torna
-// a zero. No s'incrementa mai la fila
+// Post: Paints the char in the actual cursor position and increments 
+// its position. If the column gets to 39 it returns to 0.
+// The row of the LCD is increased when this happens until the second
+// row and then it is reset back to row 0 if it has 2 rows total. 
+// If the LCD has 4 rows it will reset back to row 0 when it
+// reaches row 4 and the columns will go till 39 before reseting to 0.
+// The one row LCDs returns to 0 when a column gets to 39. 
+// The row is never increased. 
+	// The char is written
 
 void LcPutString(char *s);
-// Post: Pinta l'string a apartir de la posici? actual del cursor.
-// El criteri de coordenades ?s el mateix que a LcPutChar
-// Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
-// la rutina
+// Post: Paints the string from the actual cursor position. 
+// The coordinate criteria is the same as the LcPutChar. 
+// Post: Can last up to 40us per char of a routine output.
 
 
 
