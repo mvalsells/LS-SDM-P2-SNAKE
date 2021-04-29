@@ -16,30 +16,27 @@ static char counter;
 
 void TiInitTimer(void) {
     //Pre: --
-    //Post: Initializes the timer0 to interrupt each 1ms.
     RCONbits.IPEN = 0; //No priorities
     INTCONbits.GIE_GIEH = 1;
     INTCONbits.PEIE_GIEL = 1;
     INTCONbits.TMR0IE = 1;
     INTCONbits.TMR0IF = 0;
-    T0CON = 0x08; //16 bits without prescaler
-    //@ 40MHz (Tinst = 10nS), we want 0.5ms/Tinst=5.000 tics 2*16-5.000=0xEC78=60536
-    TMR0H = 0xEC;
-    TMR0L = 0x78;
+    T0CON = 0xC7; //11000111
+    
+    TMR0H = 0x00;//0, fem 8 bits de timer amb prescaller 256.   0.5m=(2^8 - x)x256x4 / 40M ;   x = 236
+    TMR0L = 0xEC;//236 0xEC
     T0CONbits.TMR0ON = 1; //Start timer
 
     for (counter=0;counter<TI_NUMTIMERS;counter++) {
 	s_Timers[counter].b_busy=TI_FALSE;
     }
-
 }
+
 
 void _TiRSITimer (void) {
 //Timer Interrupt Service Routine
-    //@ 40MHz (Tinst = 100nS), we want 1ms/Tinst=10.000 tics 2*16-10.000=0xD8F0
-    TMR0H = 0xEC;
-    TMR0L = 0x78;
-
+    TMR0H = 0x00;
+    TMR0L = 0xEC;
     INTCONbits.TMR0IF = 0;
     h_Tics++;
 

@@ -1,5 +1,3 @@
-#ifndef LCTLCD_H
-#define	LCTLCD_H
 //BY La Salle.
 #include <xc.h>
 
@@ -63,8 +61,3 @@ void LcPutString(char *s);
 // Post: Paints the string from the actual cursor position. 
 // The coordinate criteria is the same as the LcPutChar. 
 // Post: Can last up to 40us per char of a routine output.
-
-
-
-
-#endif	/* LCTLCD_H */

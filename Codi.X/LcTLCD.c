@@ -46,25 +46,25 @@ void LcInit(char rows, char columns) {
 	RowAct = ColumnAct = 0;
 	SetControlsSortida();
 	for (i = 0; i < 2; i++) {
-		Espera(Timer, 100);
+		Espera(Timer, 200);
 		// This sequence is set by the manual.
 
 		EscriuPrimeraOrdre(CURSOR_ON | DISPLAY_CLEAR);
-		Espera(Timer, 5);
+		Espera(Timer, 10);
 		EscriuPrimeraOrdre(CURSOR_ON | DISPLAY_CLEAR);
-		Espera(Timer, 1);
+		Espera(Timer, 2);
 		EscriuPrimeraOrdre(CURSOR_ON | DISPLAY_CLEAR);
-		Espera(Timer, 1);
+		Espera(Timer, 2);
 		// .. three times. 
 		// Now one at 4 bits
 		EscriuPrimeraOrdre(CURSOR_ON);
-		Espera(Timer, 1);
+		Espera(Timer, 2);
 		CantaIR(FUNCTION_SET | DISPLAY_CONTROL); 	// 4bits, 1 row, font 5x7
 		// The first line is erased here 
 		// Now we can wait for busy
 		WaitForBusy(); 	CantaIR(DISPLAY_CONTROL);  	// Display Off
 		WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   	// All spaces
-		Espera(Timer,3); // 1.64ms V1.1
+		Espera(Timer,6); // 1.64ms V1.1
 		WaitForBusy(); 	CantaIR(DISPLAY_ON | CURSOR_ON); // Auto Increment and shift
 		WaitForBusy(); 	CantaIR(DISPLAY_CONTROL | DISPLAY_ON | CURSOR_ON | DISPLAY_CLEAR); 		// Display On
 	}
@@ -83,7 +83,7 @@ void LcClear(void) {
 // Post: Erases the display and sets the cursor to its previous state. 
 // Post: The next order can last up to 1.6ms. 
 	WaitForBusy(); 	CantaIR(DISPLAY_CLEAR);	   //Spaces
-	Espera(Timer, 3); // V1.1
+	Espera(Timer, 6); // V1.1
 }
 
 void LcCursorOn(void) {

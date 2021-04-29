@@ -58,27 +58,14 @@ void main(void) {
     init_eusart();    
     
     TiInitTimer();
-//    LcInit(2,16);
-//    
-//    LcClear();
-//    LcPutChar('A');
-//    LcPutChar('B');
-//    LcPutChar('C');
-//    
-//    LcCursorOn();
+    LcInit(2,16);
     
-    char timer_pwm = TiGetTimer();
-    PORTBbits.RB3 = 0;
-    TiResetTics(timer_pwm);
-    while(1){
-       
-        if (TiGetTics(timer_pwm) > 2000) {
-            PORTBbits.RB3 = 1;
-            TiResetTics(timer_pwm);
-        } else {
-            PORTBbits.RB3 = 0;
-        }
-    }
- 
+    LcClear();
+    LcPutChar('A');
+    LcPutChar('B');
+    LcPutChar('C');
+    
+    LcCursorOn();
     return;
+    
 }
