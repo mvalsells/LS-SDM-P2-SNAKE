@@ -162,12 +162,6 @@ void LcPutChar(char c) {
 		LcGotoXY(ColumnAct, RowAct);
 	}
 }
-void LcPutString(char *s) {
-// Post: Paints the string from the actual cursor position. 
-// The coordinate criteria is the same as the LcPutChar. 
-// Post: Can last up to 40us for each char of a routine output.
-	while(*s) LcPutChar(*s++);
-}
 
 void Espera(int Timer, int ms) {
 	TiResetTics(Timer);

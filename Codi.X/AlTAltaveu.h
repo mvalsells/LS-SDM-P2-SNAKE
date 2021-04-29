@@ -3,6 +3,7 @@
 
 void AlTAltaveu();
 void AlInit();
-void AlPlayPause();
+void AlStop();
+void AlPlay();
 
 #endif

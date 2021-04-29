@@ -56,8 +56,3 @@ void LcPutChar(char c);
 // The one row LCDs returns to 0 when a column gets to 39. 
 // The row is never increased. 
 	// The char is written
-
-void LcPutString(char *s);
-// Post: Paints the string from the actual cursor position. 
-// The coordinate criteria is the same as the LcPutChar. 
-// Post: Can last up to 40us per char of a routine output.

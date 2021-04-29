@@ -10,6 +10,7 @@
 #pragma config LVP = OFF	    //;Evitar resets eusart
 
 void __interrupt() high_rsi(){
+    LATBbits.LATB3 = ~LATBbits.LATB3;
     _TiRSITimer();
 }
 
@@ -23,6 +24,8 @@ void init_ports(void){
     //TRISBbits.TRISB5 = 1;   //pgm
     //B0 SPK
     TRISB = 0xE0;//11100000
+    LATBbits.LATB3 = 0;
+    LATBbits.LATB0 = 0;
     
     //TRISCbits.TRISC7 = 1;
     //TRISCbits.TRISC6 = 1;
@@ -65,18 +68,15 @@ void main(void) {
     TiInitTimer();
     AlInit();
     LcInit(2,16);
-    LcClear();
-    char tmr = TiGetTimer();
-    TiResetTics(tmr);
+    AlPlay();
     LcPutChar('A');
-    LcPutChar('B');
-    LcPutChar('C');
+    LcCursorOn();
+    
+    
     while(1){
-//       LcPutChar('A');
-//       LcPutChar('B');
-//      LcPutChar('C');
-
-       LcCursorOn();
+        AlTAltaveu();
+        
+        
     }
     
     
