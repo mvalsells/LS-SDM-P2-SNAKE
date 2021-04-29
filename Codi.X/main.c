@@ -2,11 +2,16 @@
 #include <xc.h>
 #include "LcTLCD.h"
 #include "TiTTimer.h"
+#include "AlTAltaveu.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
 #pragma config WDT = OFF	    //;Desactivem el Watch Dog Timer
 #pragma config LVP = OFF	    //;Evitar resets eusart
+
+void __interrupt() high_rsi(){
+    _TiRSITimer();
+}
 
 void init_ports(void){
     //TRISAbits.TRISA0 = 1;   //axisX
@@ -58,14 +63,22 @@ void main(void) {
     init_eusart();    
     
     TiInitTimer();
+    AlInit();
     LcInit(2,16);
-    
     LcClear();
+    char tmr = TiGetTimer();
+    TiResetTics(tmr);
     LcPutChar('A');
     LcPutChar('B');
     LcPutChar('C');
+    while(1){
+//       LcPutChar('A');
+//       LcPutChar('B');
+//      LcPutChar('C');
+
+       LcCursorOn();
+    }
     
-    LcCursorOn();
+    
     return;
-    
 }

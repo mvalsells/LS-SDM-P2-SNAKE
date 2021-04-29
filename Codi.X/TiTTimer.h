@@ -1,3 +1,6 @@
+#ifndef TITTIMER_H_
+#define TITTIMER_H_
+
 void TiInitTimer(void);
 //Pre: --
 //Post: Initializes the timer0 to interrupt each 1ms.
@@ -21,3 +24,6 @@ void TiFreeTimer (char Handle);
 //Post: The Handle timer is marked as free.
 
 void  _TiRSITimer (void);
+
+
+#endif

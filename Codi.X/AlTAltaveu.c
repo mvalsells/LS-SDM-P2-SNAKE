@@ -1,6 +1,26 @@
-void AlTAltaveu.c(void) {
-	static char state = 0;
+#include "AlTAltaveu.h"
+#include "TiTTimer.h"
+#include <xc.h>
+#include<pic18f4321.h>
 
+char timer_notes;
+static __bit reproduir;
+static char dobleTicsSemiperiode;
+
+
+
+void AlInit(void){
+    char timer_notes = TiGetTimer();
+    reproduir=0;
+    dobleTicsSemiperiode=0;
+}
+
+void AlPlayPause(void) {
+    reproduir = !reproduir;
+}
+
+void AlTAltaveu(void) {
+	static char state = 0;
 	switch(state) {
 		case 0:
 			if (reproduir == 1) {
@@ -9,9 +29,9 @@ void AlTAltaveu.c(void) {
 			}
 		break;
 		case 1:
-			if (TiGetTics(timer_notes) <= notes[i] && reproduir == 1) {
+			if (TiGetTics(timer_notes) <= dobleTicsSemiperiode && reproduir == 1) {
 				TiResetTics(timer_notes);
-				TRISAbits.A3;
+				TRISAbits.RA3;
 				state = 2;
 			}
 			else if (reproduir == 0) {
@@ -21,7 +41,7 @@ void AlTAltaveu.c(void) {
 		case 2:
 			if (TiGetTics(timer_notes) <= dobleTicsSemiperiode) {
 				dobleTicsSemiperiode++;
-				 if(i > 10) dobleTicsSemiperiode = 0;
+				 if(dobleTicsSemiperiode > 10) dobleTicsSemiperiode = 0;
 				TiResetTics(timer_notes);
 				state = 1;
 			}

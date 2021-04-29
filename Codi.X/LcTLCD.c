@@ -1,3 +1,6 @@
+#ifndef LCTLCD_C_
+#define LCTLCD_C_
+
 #include <xc.h>
 #include "TiTTimer.h"
 #include "LcTLCD.h"
@@ -245,3 +248,5 @@ void EscriuPrimeraOrdre(char ordre) {
 	 SetD4(ordre & 0x01 ? 1 : 0);
 	EnableDown();
 }
+
+#endif
