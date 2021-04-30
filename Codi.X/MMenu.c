@@ -3,6 +3,9 @@
 #include "MMenu.h"
 #include "LcTLCD.h"
 
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!POTSER SERIA MILLOR HARDCOREJAR-HO per estalviar espai??!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SOLS AIXO ES MENJA 40% DE MEMORIA HAHA EATING RAM NO PAPA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 char menu0[] = "1. New game\0";
 char menu1[] = "2. Show top 5 scores\0";
 char menu2[] = "3. Show users\0";
