@@ -6,5 +6,12 @@
 #define BAIX 1
 #define AMUNT 2
 
+void mostraMenuNewUser(void);
 void MTMenu(void);
+void mostraMenuTopScores(void);
+void mostraMenusShowUsers(void);
+void mostraMenuModifyUsers(void);
+void mostraMenuShowTime(void);
+void mostraMenuModifyTime(void);
+void mostraMenu(char mostra);
 #endif

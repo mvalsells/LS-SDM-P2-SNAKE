@@ -1,13 +1,16 @@
 #include <pic18f4321.h>
 #include <xc.h>
-
+#include "MMenu.h"
 void MTMenu(void) {
 	static char state = 0;
-
+    static char NovaTecla = 0;
+    static char mostra = 0;
+    
+    
 	switch(state) {
 		case 0:
 			if (NovaTecla == BAIX) {
-				if(mostra != 0) mosra--;
+				if(mostra != 0) mostra--;
 				NovaTecla = 0;
 				state = 1;
 			}
