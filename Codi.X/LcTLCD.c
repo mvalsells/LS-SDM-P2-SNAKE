@@ -16,8 +16,6 @@
 //
 //---------------------------End--CONSTANTS---AREA-----------
 //
-
-
 //
 //--------------------------------VARIABLES---AREA-----------
 //
@@ -29,7 +27,6 @@ static __bit nou_s = 0;
 //
 //---------------------------End--VARIABLES---AREA-----------
 //
-
 //
 //--------------------------------PROTOTIPE--AREA-----------
 //
@@ -271,6 +268,14 @@ void PutStringCooperatiu(){
 
             break;
     }
+}
+
+void LcPutFletxa(){ //no borra tot, compatible amb marquesina
+    LcGotoXY(0,0);
+    //canviar aixo de sota per un LcPutStingCoop que SI FUNCIONI
+    LcPutChar('-');
+    LcPutChar('>');
+    LcPutChar(' ');
 }
 
 #endif

@@ -59,3 +59,4 @@ void LcPutChar(char c);
 
 void LcNewString(char new_s[]);
 void PutStringCooperatiu();
+void LcPutFletxa();
