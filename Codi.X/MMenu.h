@@ -14,4 +14,5 @@ void mostraMenuModifyUsers(void);
 void mostraMenuShowTime(void);
 void mostraMenuModifyTime(void);
 void mostraMenu(char mostra);
+void MTInit();
 #endif

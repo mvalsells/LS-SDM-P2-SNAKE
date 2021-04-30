@@ -1,7 +1,7 @@
 #include "AlTAltaveu.h"
 #include "TiTTimer.h"
 #include <xc.h>
-#include<pic18f4321.h>
+#include <pic18f4321.h>
 
 static char timer_nota;
 static __bit reproduir;

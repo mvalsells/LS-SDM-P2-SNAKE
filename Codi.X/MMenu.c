@@ -1,6 +1,16 @@
 #include <pic18f4321.h>
 #include <xc.h>
 #include "MMenu.h"
+#include "LcTLCD.h"
+
+void printaMenuX(char mostra){
+}
+
+void MTInit(){
+    //cridar funció per printar el primer menú amb "mostra=0"
+}
+
+
 void MTMenu(void) {
 	static char state = 0;
     static char NovaTecla = 0;

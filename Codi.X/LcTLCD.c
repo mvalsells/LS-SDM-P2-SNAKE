@@ -24,6 +24,8 @@
 static unsigned char Rows, Columns;
 static unsigned char RowAct, ColumnAct;
 static int Timer;
+static char s[];
+static __byte nou_s = 0;
 //
 //---------------------------End--VARIABLES---AREA-----------
 //
@@ -37,6 +39,9 @@ void CantaData(char Data);
 void WaitForBusy(void);
 void EscriuPrimeraOrdre(char);
 
+void LcNewString(void){
+    nou_s = 1;
+}
 void LcInit(char rows, char columns) {
 // Pre: Rows = {1, 2, 4}  Columns = {8, 16, 20, 24, 32, 40 }
 // Pre: It needs 40ms of tranquility between VCC raising until this constructor is called.
@@ -241,6 +246,23 @@ void EscriuPrimeraOrdre(char ordre) {
 	 SetD5(ordre & 0x02 ? 1 : 0);
 	 SetD4(ordre & 0x01 ? 1 : 0);
 	EnableDown();
+}
+
+void PutStringCooperatiu(*s){
+    static char state;
+    switch (state){
+        case 0:
+            if(nou_s == 1){
+                state = 1;
+      
+                LcPutChar(*s++);
+                if(*s == '\0') nou_s == 0;
+            }
+            break;
+        case 1:
+            state = 0;
+            break;
+    }
 }
 
 #endif
