@@ -24,8 +24,8 @@
 static unsigned char Rows, Columns;
 static unsigned char RowAct, ColumnAct;
 static int Timer;
-static char s[];
-static __byte nou_s = 0;
+static char s[] = "null\0";
+static __bit nou_s = 0;
 //
 //---------------------------End--VARIABLES---AREA-----------
 //
@@ -39,9 +39,6 @@ void CantaData(char Data);
 void WaitForBusy(void);
 void EscriuPrimeraOrdre(char);
 
-void LcNewString(void){
-    nou_s = 1;
-}
 void LcInit(char rows, char columns) {
 // Pre: Rows = {1, 2, 4}  Columns = {8, 16, 20, 24, 32, 40 }
 // Pre: It needs 40ms of tranquility between VCC raising until this constructor is called.
@@ -82,10 +79,10 @@ void LcInit(char rows, char columns) {
     //the supply is turned ON and OFF. 
 }
 
-void LcEnd(void) {
-// The destructor
-	TiFreeTimer(Timer); // It is not needed anymore
-}
+//void LcEnd(void) {
+//// The destructor
+//	TiFreeTimer(Timer); // It is not needed anymore
+//}
 
 void LcClear(void) {
 // Post: Erases the display and sets the cursor to its previous state. 
@@ -248,19 +245,30 @@ void EscriuPrimeraOrdre(char ordre) {
 	EnableDown();
 }
 
-void PutStringCooperatiu(*s){
+void LcNewString(char new_s[]){
+    *s = *new_s;
+    nou_s = 1;
+}
+
+void PutStringCooperatiu(){
     static char state;
+    static char i;
     switch (state){
         case 0:
             if(nou_s == 1){
                 state = 1;
       
-                LcPutChar(*s++);
-                if(*s == '\0') nou_s == 0;
+                LcPutChar(s[i]);
+                i++;
+                if(s[i] == '\0'){
+                    nou_s = 0;
+                    i = 0;
+                }
             }
             break;
         case 1:
             state = 0;
+
             break;
     }
 }

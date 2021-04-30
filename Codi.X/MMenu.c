@@ -3,11 +3,23 @@
 #include "MMenu.h"
 #include "LcTLCD.h"
 
+char menu0[] = "New game\0";
+char menu1[] = "Show top 5 scores\0";
+char menu2[] = "Show users\0";
+char menu3[] = "Modify users\0";
+char menu4[] = "Show time\0";
+char menu5[] = "Modify time\0";
+
 void printaMenuX(char mostra){
 }
 
 void MTInit(){
     //cridar funció per printar el primer menú amb "mostra=0"
+    LcNewString(menu0);
+    PutStringCooperatiu();
+    LcNewString(menu1);
+    PutStringCooperatiu();
+    
 }
 
 

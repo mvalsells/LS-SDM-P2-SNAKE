@@ -56,3 +56,6 @@ void LcPutChar(char c);
 // The one row LCDs returns to 0 when a column gets to 39. 
 // The row is never increased. 
 	// The char is written
+
+void LcNewString(char new_s[]);
+void PutStringCooperatiu();
