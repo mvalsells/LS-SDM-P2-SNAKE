@@ -3,6 +3,7 @@
 #include "LcTLCD.h"
 #include "TiTTimer.h"
 #include "AlTAltaveu.h"
+#include "MMenu.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -10,7 +11,7 @@
 #pragma config LVP = OFF	    //;Evitar resets eusart
 
 void __interrupt() high_rsi(){
-    LATBbits.LATB3 = ~LATBbits.LATB3;
+    //LATBbits.LATB3 = ~LATBbits.LATB3;
     _TiRSITimer();
 }
 
@@ -71,7 +72,7 @@ void main(void) {
     AlPlay();
     LcPutChar('A');
     LcCursorOn();
-    
+    MTInit();
     
     while(1){
         AlTAltaveu();

@@ -12,7 +12,6 @@ void AlInit(void){
     char timer_nota = TiGetTimer();
     char timer_durada = TiGetTimer();
     reproduir=0;
-    reproduir = 0;
 }
 
 void AlPlay(void) {
@@ -28,22 +27,23 @@ void AlTAltaveu(void) {
 	switch(state) {
 		case 0:
 			if (reproduir == 1) {
+				nota = 1;
+				TiResetTics(timer_nota);
+				TiResetTics(timer_durada);
 				state = 1;
-                nota = 1;
 			}
 		break;
 		case 1:
-            if (TiGetTics(timer_durada) >= 100) {
-				state = 3;
-			}
 			if (reproduir == 0) {
 				state = 0;
 			}
 			else if (TiGetTics(timer_nota) >= nota) {
-				
-                LATBbits.LB0 = 1;
+				LATBbits.LB0 = 1;
 				TiResetTics(timer_nota);
 				state = 2;
+			}
+			else if (TiGetTics(timer_durada) >= DURADA) {
+				state = 3;
 			}
 		break;
 		case 2:
@@ -56,7 +56,7 @@ void AlTAltaveu(void) {
 		case 3:
 			TiResetTics(timer_durada);
 			nota++;
-			if(nota>10)nota=1;
+			 if(nota>10)nota=1;
 			state = 1;
 		break;
 	}

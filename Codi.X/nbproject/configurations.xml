@@ -7,6 +7,7 @@
       <itemPath>LcTLCD.h</itemPath>
       <itemPath>TiTTimer.h</itemPath>
       <itemPath>AlTAltaveu.h</itemPath>
+      <itemPath>MMenu.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -19,6 +20,7 @@
       <itemPath>LcTLCD.c</itemPath>
       <itemPath>TiTTimer.c</itemPath>
       <itemPath>AlTAltaveu.c</itemPath>
+      <itemPath>MMenu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
