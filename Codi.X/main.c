@@ -72,7 +72,7 @@ void main(void) {
     AlPlay();
     LcPutChar('A');
     LcCursorOn();
-    MTInit();
+    //MTInit();
     
     while(1){
         AlTAltaveu();
