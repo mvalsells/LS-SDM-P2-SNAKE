@@ -69,15 +69,10 @@ void main(void) {
     TiInitTimer();
     AlInit();
     LcInit(2,16);
-    AlPlay();
-    LcPutChar('A');
-    LcCursorOn();
-    //MTInit();
-    
+    MTInit();
+    //AlPlay();
     while(1){
         AlTAltaveu();
-        
-        
     }
     
     
