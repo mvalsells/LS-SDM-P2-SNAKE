@@ -4,14 +4,15 @@
 #include <pic18f4321.h>
 #include "LcTLCD.h"
 
-static char timer_nota;
-static __bit reproduir;
-static char nota;
-static char timer_durada;
+static char timer_nota=0;
+static __bit reproduir=0;
+static char nota=0;
+static char timer_durada=0;
+static char patata=10;
 
 void AlInit(void){
-    char timer_nota = TiGetTimer();
-    char timer_durada = TiGetTimer();
+    timer_nota = TiGetTimer();
+    timer_durada = TiGetTimer();
     //TiResetTics(timer_durada);
     reproduir=0;
 }
@@ -63,8 +64,7 @@ void AlTAltaveu(void) {
 			if (TiGetTics(timer_durada) >= DURADA) {
                 state = 4;
                 LcPutChar('X');  //Debug
-			}
-			else if (TiGetTics(timer_durada) < DURADA ) {
+			} else {
 				state = 1;
                // LcPutChar('Y');
 			}

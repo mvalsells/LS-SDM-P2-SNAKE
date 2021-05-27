@@ -1,6 +1,6 @@
 #ifndef ALTALTAVEU_H_
 #define ALTALTAVEU_H_
-#define DURADA 1
+#define DURADA 1000
 
 void AlTAltaveu();
 void AlInit();

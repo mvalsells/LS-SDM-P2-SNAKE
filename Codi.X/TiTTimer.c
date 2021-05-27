@@ -4,6 +4,7 @@
 #define TI_MAXTICS 61000
 #define TI_FALSE 0
 #define TI_TRUE 1
+#include <pic18f4321.h>
 
 struct Timer {
 	unsigned int h_initialTics;
