@@ -57,7 +57,7 @@ void LcPutChar(char c);
 // The row is never increased. 
 	// The char is written
 
-void LcPutString(char *s);
+void LcPutStringDebug(char *s);
 void LcNewString(char new_s[]);
 void PutStringCooperatiu();
 void LcPutFletxa();

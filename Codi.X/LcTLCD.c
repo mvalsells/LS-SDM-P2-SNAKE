@@ -22,8 +22,9 @@
 static unsigned char Rows, Columns;
 static unsigned char RowAct, ColumnAct;
 static int Timer;
-static char s[] = "null\0";
-static __bit nou_s = 0;
+char s[] = "null";
+char *s_ptr = 0;
+__bit nou_s = 0;
 //
 //---------------------------End--VARIABLES---AREA-----------
 //
@@ -244,10 +245,10 @@ void EscriuPrimeraOrdre(char ordre) {
 }
 
 void LcNewString(char new_s[]){
-    *s = *new_s;
+    s_ptr = *new_s;
     nou_s = 1;
 }
-
+/*
 void PutStringCooperatiu(){
     static char state;
     static char i;
@@ -269,7 +270,7 @@ void PutStringCooperatiu(){
 
             break;
     }
-}
+}*/
 
 void LcPutFletxa(){ //no borra tot, compatible amb marquesina
     LcGotoXY(0,0);
@@ -280,7 +281,7 @@ void LcPutFletxa(){ //no borra tot, compatible amb marquesina
 }
 
 //A eliminar quan no hi hagi espai, només debug
-void LcPutString(char *s) {
+void LcPutStringDebug(char *s) {
 // Post: Pinta l'string a apartir de la posici? actual del cursor.
 // El criteri de coordenades ?s el mateix que a LcPutChar
 // Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
@@ -292,11 +293,15 @@ void LcPutString(char *s) {
 void LcLCD(void){
     static char i;
     if(nou_s == 1){
-        LcPutChar(s[i]);
+        LcPutChar(*s_ptr);
+        //LcPutChar(s[i]);
         i++;
-        if(s[i] == '\0'){
+        s_ptr++;
+        //if(s[i] == '\0'){
+        if(*s_ptr== '\0'){
             nou_s = 0;
             i = 0;
+            s_ptr=0;
         }
     }
 }

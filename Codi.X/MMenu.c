@@ -34,12 +34,37 @@ void MTInit(){
     
 }
 
-void MTMenu(void){
+void MTMenu(void){   
     static __bit printed=0;
     if (LcEscrivint()==0 && printed==0){
-        LcPutString(menu0);
-        printed =1;
+        LcNewString(menu0);
+        //printed =1;
     }
+}
+
+void yMTMenu(void){
+	static char state = 0;
+	switch(state) {
+		case 0:
+			if (LcEscrivint()==0) {
+				LcClear();
+                LcCursorOff();
+                LcGotoXY(1,0);
+				LcNewString(menu0);
+				state = 1;
+			}
+		break;
+		/*case 1:
+			if (LcEscrivint()==0) {
+				LcGotoXY(1,1);
+				LcNewString(menu1);
+				state = 2;
+			}
+		break;
+		case 2:
+
+		break;*/
+	}
 }
 /*/
 void xMTMenu(void) {
