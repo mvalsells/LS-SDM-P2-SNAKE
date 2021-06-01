@@ -8,6 +8,7 @@
       <itemPath>TiTTimer.h</itemPath>
       <itemPath>AlTAltaveu.h</itemPath>
       <itemPath>MMenu.h</itemPath>
+      <itemPath>TeTeclat.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -21,6 +22,7 @@
       <itemPath>TiTTimer.c</itemPath>
       <itemPath>AlTAltaveu.c</itemPath>
       <itemPath>MMenu.c</itemPath>
+      <itemPath>TeTeclat.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -159,6 +161,7 @@
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

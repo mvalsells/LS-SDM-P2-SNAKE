@@ -4,6 +4,7 @@
 #include "TiTTimer.h"
 #include "AlTAltaveu.h"
 #include "MMenu.h"
+#include "TeTeclat.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -11,7 +12,6 @@
 #pragma config LVP = OFF	    //;Evitar resets eusart
 
 void __interrupt() high_rsi(){
-    //LATBbits.LATB3 = ~LATBbits.LATB3;
     _TiRSITimer();
 }
 
@@ -67,16 +67,15 @@ void main(void) {
     init_eusart();    
     
     TiInitTimer();
-    //AlInit();
+    AlInit();
     LcInit(2,16);
-    //MTInit();
+    TeInit();
     //AlPlay();
     while(1){
-        //AlTAltaveu();
+        AlTAltaveu();
         MTMenu();
+        TeTeclat();
         LcLCD();
     }
-    
-    
     return;
 }

@@ -21,7 +21,7 @@
 //
 static unsigned char Rows, Columns;
 static unsigned char RowAct, ColumnAct;
-static int Timer;
+static char Timer; //Originalment int, canviat a char
 char s[] = "null";
 char *s_ptr = 0;
 __bit nou_s = 0;
@@ -31,7 +31,7 @@ __bit nou_s = 0;
 //
 //--------------------------------PROTOTIPE--AREA-----------
 //
-void Espera(int Timer, int ms);
+void Espera(char Timer, int ms);
 void CantaIR(char IR);
 void CantaData(char Data);
 void WaitForBusy(void);
@@ -164,7 +164,7 @@ void LcPutChar(char c) {
 	}
 }
 
-void Espera(int Timer, int ms) {
+void Espera(char Timer, int ms) {
 	TiResetTics(Timer);
 	while(TiGetTics(Timer) < ms);
 }
@@ -301,7 +301,7 @@ void LcLCD(void){
     }
 }
 
-char LcEscrivint(void){
-    return nou_s;
+__bit LcLliure(void){
+    return !nou_s;
 }
 #endif

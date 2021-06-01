@@ -62,4 +62,4 @@ void LcNewString(char new_s[]);
 void PutStringCooperatiu();
 void LcPutFletxa();
 void LcLCD();
-char LcEscrivint(void);
+__bit LcLliure(void);

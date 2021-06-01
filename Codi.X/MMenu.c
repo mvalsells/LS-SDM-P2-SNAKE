@@ -24,29 +24,21 @@ char Score[] = "Score: ";
 void printaMenuX(char mostra){
 }
 
-void MTInit(){
+/*void MTInit(){
     //cridar funció per printar el primer menú amb "mostra=0"
-    LcClear();
+    //LcClear();
     //LcPutString(*menu0);
     //LcNewString(menu0);
     //LcNewString(menu1);
     //PutStringCooperatiu();
     
 }
-
-void yMTMenu(void){   
-    static __bit printed=0;
-    if (LcEscrivint()==0 && printed==0){
-        LcNewString(menu0);
-        //printed =1;
-    }
-}
-
+*/
 void MTMenu(void){
 	static char state = 0;
 	switch(state) {
 		case 0:
-			if (LcEscrivint()==0) {
+			if (LcLliure()) {
 				LcClear();
                 LcCursorOff();
                 LcGotoXY(1,0);
@@ -55,7 +47,7 @@ void MTMenu(void){
 			}
 		break;
 		case 1:
-			if (LcEscrivint()==0) {
+			if (LcLliure()) {
 				LcGotoXY(1,1);
 				LcNewString(menu1);
 				state = 2;
