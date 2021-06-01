@@ -6,20 +6,20 @@
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!POTSER SERIA MILLOR HARDCOREJAR-HO per estalviar espai??!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SOLS AIXO ES MENJA 40% DE MEMORIA HAHA EATING RAM NO PAPA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-char menu0[] = "1. New game\0";
-char menu1[] = "2. Show top 5 scores\0";
-char menu2[] = "3. Show users\0";
-char menu3[] = "4. Modify users\0";
-char menu4[] = "5. Show time\0";
-char menu5[] = "6. Modify time\0";
-char selectUser[] = "1. Select User\0";
-char newUser[] = "New User\0";
-char enterName[] = "Enter Name:\0";
-char highScore[] = "High score: \0";
-char enterNewName[] = "Enter New Name\0";
-char currentTime[] = "Current Time\0";
-char timeFormat[] = "(HH:mm):\0";
-char Score[] = "Score: \0";
+char menu0[] = "1. New game";
+char menu1[] = "2. Show top 5 scores";
+char menu2[] = "3. Show users";
+char menu3[] = "4. Modify users";
+char menu4[] = "5. Show time";
+char menu5[] = "6. Modify time";
+char selectUser[] = "1. Select User";
+char newUser[] = "New User";
+char enterName[] = "Enter Name:";
+char highScore[] = "High score:";
+char enterNewName[] = "Enter New Name";
+char currentTime[] = "Current Time";
+char timeFormat[] = "(HH:mm):";
+char Score[] = "Score: ";
 
 void printaMenuX(char mostra){
 }
@@ -34,7 +34,7 @@ void MTInit(){
     
 }
 
-void MTMenu(void){   
+void yMTMenu(void){   
     static __bit printed=0;
     if (LcEscrivint()==0 && printed==0){
         LcNewString(menu0);
@@ -42,7 +42,7 @@ void MTMenu(void){
     }
 }
 
-void yMTMenu(void){
+void MTMenu(void){
 	static char state = 0;
 	switch(state) {
 		case 0:
@@ -54,7 +54,7 @@ void yMTMenu(void){
 				state = 1;
 			}
 		break;
-		/*case 1:
+		case 1:
 			if (LcEscrivint()==0) {
 				LcGotoXY(1,1);
 				LcNewString(menu1);
@@ -63,7 +63,7 @@ void yMTMenu(void){
 		break;
 		case 2:
 
-		break;*/
+		break;
 	}
 }
 /*/

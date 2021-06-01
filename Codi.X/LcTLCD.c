@@ -245,7 +245,7 @@ void EscriuPrimeraOrdre(char ordre) {
 }
 
 void LcNewString(char new_s[]){
-    s_ptr = *new_s;
+    s_ptr = new_s;
     nou_s = 1;
 }
 /*
@@ -291,16 +291,11 @@ void LcPutStringDebug(char *s) {
 
 
 void LcLCD(void){
-    static char i;
     if(nou_s == 1){
         LcPutChar(*s_ptr);
-        //LcPutChar(s[i]);
-        i++;
         s_ptr++;
-        //if(s[i] == '\0'){
         if(*s_ptr== '\0'){
             nou_s = 0;
-            i = 0;
             s_ptr=0;
         }
     }
