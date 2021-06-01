@@ -73,7 +73,8 @@ void LcInit(char rows, char columns) {
 	//The manual says that it should work but it doesn't initialize 
     //correctly after 40ms. Therefore, there is a loop with two initializations 
     //from here the initialization works correctly if a reset is made or if
-    //the supply is turned ON and OFF. 
+    //the supply is turned ON and OFF.
+    
 }
 
 //void LcEnd(void) {
@@ -278,4 +279,29 @@ void LcPutFletxa(){ //no borra tot, compatible amb marquesina
     LcPutChar(' ');
 }
 
+//A eliminar quan no hi hagi espai, només debug
+void LcPutString(char *s) {
+// Post: Pinta l'string a apartir de la posici? actual del cursor.
+// El criteri de coordenades ?s el mateix que a LcPutChar
+// Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
+// la rutina
+	while(*s) LcPutChar(*s++);
+}
+
+
+void LcLCD(void){
+    static char i;
+    if(nou_s == 1){
+        LcPutChar(s[i]);
+        i++;
+        if(s[i] == '\0'){
+            nou_s = 0;
+            i = 0;
+        }
+    }
+}
+
+char LcEscrivint(void){
+    return nou_s;
+}
 #endif

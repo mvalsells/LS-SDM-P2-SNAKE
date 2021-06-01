@@ -27,15 +27,22 @@ void printaMenuX(char mostra){
 void MTInit(){
     //cridar funció per printar el primer menú amb "mostra=0"
     LcClear();
-    LcNewString(menu0);
-    PutStringCooperatiu();
-    LcNewString(menu1);
-    PutStringCooperatiu();
+    //LcPutString(*menu0);
+    //LcNewString(menu0);
+    //LcNewString(menu1);
+    //PutStringCooperatiu();
     
 }
 
-
-void MTMenu(void) {
+void MTMenu(void){
+    static __bit printed=0;
+    if (LcEscrivint()==0 && printed==0){
+        LcPutString(menu0);
+        printed =1;
+    }
+}
+/*/
+void xMTMenu(void) {
 	static char state = 0;
     static char NovaTecla = 0;
     static char mostra = 0;
@@ -104,4 +111,4 @@ void MTMenu(void) {
 
 		break;
 	}
-}
+}*/

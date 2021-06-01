@@ -67,12 +67,14 @@ void main(void) {
     init_eusart();    
     
     TiInitTimer();
-    AlInit();
+    //AlInit();
     LcInit(2,16);
-    MTInit();
+    //MTInit();
     //AlPlay();
     while(1){
-        AlTAltaveu();
+        //AlTAltaveu();
+        MTMenu();
+        LcLCD();
     }
     
     
