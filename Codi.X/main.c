@@ -71,12 +71,10 @@ void main(void) {
     AlInit();
     LcInit(2,16);
     TeInit();
-    AlPlay();
-    //TRISDbits.RD4 = 0;
-    //PORTDbits.RD4 = 1;
+    //AlPlay();
     while(1){
-        //AlTAltaveu();
-        //MTMenu();
+        AlTAltaveu();
+        MTMenu();
         TeTeclat();
         LcLCD();
     }

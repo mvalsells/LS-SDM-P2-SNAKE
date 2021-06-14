@@ -23,9 +23,6 @@ void TeTeclat(void) {
 	static char state = 0;
     static char cols=0;
     static char files = 0;
-    //!!!!!!!!
-    //No esta controlat si apreten més de una fila
-    //!!!!!!!!
     files = PORTDbits.RD0 + PORTDbits.RD1*2 + PORTDbits.RD2*3 + PORTDbits.RD3*4;
 	switch(state) {
 		case 0:
@@ -33,12 +30,6 @@ void TeTeclat(void) {
 				Col1=1;
 				Col2=0;
 				Col3=0;
-                /*LATDbits.LD4 = 1;
-                LATDbits.LD5 = 0;
-                LATDbits.LD6 = 0;*/
-                /*PORTDbits.RD4 = 1;
-                PORTDbits.RD5 = 0;
-                PORTDbits.RD6 = 0;*/
 				cols=0;
 				state = 1;
 			}
@@ -84,8 +75,8 @@ void TeTeclat(void) {
 			}
 			else if (files!=0) {
 				ultimaTecla=teclaPremuda[files-1][cols];
-                ultimaTecla=ultimaTecla+48;
-                LcPutChar(ultimaTecla);
+                //ultimaTecla=ultimaTecla+48;
+                //LcPutChar(ultimaTecla);
 				state = 5;
 			}
 		break;
