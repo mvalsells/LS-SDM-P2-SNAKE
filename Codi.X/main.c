@@ -46,7 +46,8 @@ void init_ports(void){
     //D1 teclat F2
     //D2 teclat F3
     //D3 teclat F4
-    TRISD = 0x70;//01110000
+    TRISD = 0x8F; //10001111
+    LATD = 0x00;
 }
 void init_eusart(void){
     TXSTA = 0x24; //00100100
@@ -70,10 +71,12 @@ void main(void) {
     AlInit();
     LcInit(2,16);
     TeInit();
-    //AlPlay();
+    AlPlay();
+    //TRISDbits.RD4 = 0;
+    //PORTDbits.RD4 = 1;
     while(1){
-        AlTAltaveu();
-        MTMenu();
+        //AlTAltaveu();
+        //MTMenu();
         TeTeclat();
         LcLCD();
     }

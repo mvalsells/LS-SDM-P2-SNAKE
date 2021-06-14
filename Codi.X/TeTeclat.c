@@ -3,6 +3,7 @@
 #include "TiTTimer.h"
 #include <xc.h>
 #include <pic18f4321.h>
+#include "LcTLCD.h"
 
 static char tiTeclat=0;
 static char ultimaTecla = 0;
@@ -25,13 +26,19 @@ void TeTeclat(void) {
     //!!!!!!!!
     //No esta controlat si apreten més de una fila
     //!!!!!!!!
-    files = LATDbits.LATD0 + LATDbits.LATD1*2 + LATDbits.LATD2*3 + LATDbits.LATD0*4;
+    files = PORTDbits.RD0 + PORTDbits.RD1*2 + PORTDbits.RD2*3 + PORTDbits.RD3*4;
 	switch(state) {
 		case 0:
 			if (files==0) {
 				Col1=1;
 				Col2=0;
 				Col3=0;
+                /*LATDbits.LD4 = 1;
+                LATDbits.LD5 = 0;
+                LATDbits.LD6 = 0;*/
+                /*PORTDbits.RD4 = 1;
+                PORTDbits.RD5 = 0;
+                PORTDbits.RD6 = 0;*/
 				cols=0;
 				state = 1;
 			}
@@ -45,7 +52,7 @@ void TeTeclat(void) {
 				Col1=0;
 				Col2=1;
 				Col3=0;
-				cols=2;
+				cols=1;
 				state = 2;
 			}
 			else if (files!=0) {
@@ -58,7 +65,7 @@ void TeTeclat(void) {
 				Col1=0;
 				Col2=0;
 				Col3=1;
-				cols=3;
+				cols=2;
 				state = 0;
 			}
 			else if (files!=0) {
@@ -76,7 +83,9 @@ void TeTeclat(void) {
 				state = 1;
 			}
 			else if (files!=0) {
-				ultimaTecla=teclaPremuda[files][cols];
+				ultimaTecla=teclaPremuda[files-1][cols];
+                ultimaTecla=ultimaTecla+48;
+                LcPutChar(ultimaTecla);
 				state = 5;
 			}
 		break;
