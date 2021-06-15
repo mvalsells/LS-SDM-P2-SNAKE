@@ -1,9 +1,8 @@
 #include "TeTeclat.h"
-#include "LcTLCD.h"
 #include "TiTTimer.h"
+#include "MMenu.h"
 #include <xc.h>
 #include <pic18f4321.h>
-#include "LcTLCD.h"
 
 static char tiTeclat=0;
 static char ultimaTecla = 0;
@@ -74,9 +73,8 @@ void TeTeclat(void) {
 				state = 1;
 			}
 			else if (files!=0) {
-				ultimaTecla=teclaPremuda[files-1][cols];
-                //ultimaTecla=ultimaTecla+48;
-                //LcPutChar(ultimaTecla);
+				//ultimaTecla=teclaPremuda[files-1][cols];
+                MsetNovaTecla(teclaPremuda[files-1][cols]);
 				state = 5;
 			}
 		break;

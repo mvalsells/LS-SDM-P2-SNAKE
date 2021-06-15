@@ -277,7 +277,6 @@ void LcPutFletxa(){ //no borra tot, compatible amb marquesina
     //canviar aixo de sota per un LcPutStingCoop que SI FUNCIONI
     LcPutChar('-');
     LcPutChar('>');
-    LcPutChar(' ');
 }
 
 //A eliminar quan no hi hagi espai, només debug
