@@ -37,20 +37,15 @@ void GLCDMotor(void) {
     static char k2 = 0;
     static char length1=0;
     static char length2=0;
-
-
-		switch(state) {
+    switch(state) {
 		case 2:
-			if ((menu[menuDalt+1][length2] == '\0' && length1 < 17) || menuDalt >= 5) {
+			if (length1 < 17) {
 				LcGotoXY(0,0);
-                LcNewString(menu[menuDalt]);
+				LcNewString(menu[menuDalt]);
 				state = 5;
 			}
-			else if (menu[menuDalt][length1] == '\0' && length1 >= 17) {
+			else if (length1 >= 17) {
 				state = 3;
-			}
-			else if (menu[menuDalt+1][length2] != '\0' && menuDalt < 5) {
-				length2++;
 			}
 		break;
 		case 3:
@@ -64,6 +59,7 @@ void GLCDMotor(void) {
 				state = 6;
 			}
 			else if (j<16) {
+				LcGotoXY(j,0);
 				LcPutChar(menu[menuDalt][k1]);
 				j++;
 				k1++;
@@ -77,6 +73,7 @@ void GLCDMotor(void) {
 				state = 7;
 			}
 			else if (menuDalt >= 5) {
+				LcPutFletxa();
 				state = 11;
 			}
 		break;
@@ -85,8 +82,9 @@ void GLCDMotor(void) {
 				LcPutFletxa();
 				state = 7;
 			}
-			else if (menuDalt >= 5) {
-				state = 11;
+			else if (LcLliure() && menuDalt >= 5) {
+				LcPutFletxa();
+				state = 0;
 			}
 		break;
 		case 0:
@@ -106,16 +104,19 @@ void GLCDMotor(void) {
 			}
 		break;
 		case 1:
-			if (menu[menuDalt][length1] == '\0') {
+			if (menu[menuDalt][length1] == '\0' && menuDalt>=5) {
 				state = 2;
 			}
 			else if (menu[menuDalt][length1] != '\0') {
 				length1++;
 			}
+			else if (menuDalt<5 && menu[menuDalt][length1] == '\0') {
+				state = 13;
+			}
 		break;
 		case 7:
 			if (length2 < 17) {
-                LcGotoXY(0,1);
+				LcGotoXY(0,1);
 				LcNewString(menu[menuDalt+1]);
 				state = 8;
 			}
@@ -145,10 +146,10 @@ void GLCDMotor(void) {
 		case 11:
 			if (TiGetTics(timerGLCD)>= 2000 && newString == 0) {
 				LcClear();
-                state = 2;
+				state = 2;
 			}
 			else if (newString != 0) {
-                LcClear();
+				LcClear();
 				state = 0;
 			}
 		break;
@@ -160,6 +161,14 @@ void GLCDMotor(void) {
 			if (LcLliure()) {
 				TiResetTics(timerGLCD);
 				state = 11;
+			}
+		break;
+		case 13:
+			if (menu[menuDalt+1][length2] != '\0') {
+				length2++;
+			}
+			else if (menu[menuDalt+1][length2] == '\0' ) {
+				state = 2;
 			}
 		break;
 	}

@@ -73,7 +73,7 @@ void main(void) {
     LcInit(2,16);
     TeInit();
     GLCDInit();
-    AlPlay();
+    //AlPlay();
     while(1){
         AlTAltaveu();
         MTMenu();
