@@ -5,6 +5,7 @@
 #include "AlTAltaveu.h"
 #include "MMenu.h"
 #include "TeTeclat.h"
+#include "GLCDGestioLCD.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -71,11 +72,13 @@ void main(void) {
     AlInit();
     LcInit(2,16);
     TeInit();
-    //AlPlay();
+    GLCDInit();
+    AlPlay();
     while(1){
         AlTAltaveu();
         MTMenu();
         TeTeclat();
+        GLCDMotor();
         LcLCD();
     }
     return;
