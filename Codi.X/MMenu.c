@@ -55,16 +55,18 @@ void MTMenu(void){
 				LcNewString(HGetTime());
 				state = 3;
 			}
-            else if(LcLliure() && NovaTecla == 8){
+            else if(LcLliure() && NovaTecla == 11){
                 state = 0;
             }
 		break;
 		case 3:
-  			if (HNouMinut() && NovaTecla != 8) {
+  			if (HNouMinut() && NovaTecla != 11) {
 				HClearNouMinut();
+                LcGotoXY(0,0);
+                LcNewString("Current Time");
 				state = 2;
 			}
-			else if (NovaTecla == 8) {
+			else if (NovaTecla == 11) {
 				state = 0;
 			}
 		break;
