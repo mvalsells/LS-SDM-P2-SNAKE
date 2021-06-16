@@ -22,7 +22,7 @@ void MTMenu(void){
 		case 0:
 			if (LcLliure()) {
 				LcClear();
-				LcCursorOff();
+				//LcCursorOff();
 				GLCDMostraMenu(menuDalt);
 				state = 1;
 			}

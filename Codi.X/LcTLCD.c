@@ -75,7 +75,7 @@ void LcInit(char rows, char columns) {
     //correctly after 40ms. Therefore, there is a loop with two initializations 
     //from here the initialization works correctly if a reset is made or if
     //the supply is turned ON and OFF.
-    
+    LcCursorOff();
 }
 
 //void LcEnd(void) {

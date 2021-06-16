@@ -6,6 +6,7 @@
 #include "MMenu.h"
 #include "TeTeclat.h"
 #include "GLCDGestioLCD.h"
+#include "HHora.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -66,20 +67,35 @@ void init_adcon(void){
 void main(void) {
     init_ports();
     init_adcon();
-    init_eusart();    
+    init_eusart(); 
     
     TiInitTimer();
     AlInit();
     LcInit(2,16);
     TeInit();
     GLCDInit();
+    HInit();
     //AlPlay();
+    LcGotoXY(0,0);
+    LcNewString(HgetTime());
     while(1){
         AlTAltaveu();
-        MTMenu();
+        //MTMenu();
         TeTeclat();
         GLCDMotor();
+        HHoraMotor();
+
+        
+        if(LcLliure() && getTmp() == 1){
+            clearTmp();
+            
+            LcGotoXY(0,0);
+            LcNewString(HgetTime());
+        }
+        //
         LcLCD();
+        
+        
     }
     return;
 }
