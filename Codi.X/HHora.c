@@ -29,7 +29,7 @@ void HHoraMotor(void) {
     static char state = 0;
 	switch(state) {
 		case 0:
-			if (TiGetTics(timerHora) >= 20) {//2000
+			if (TiGetTics(timerHora) >= 200) {//2000
 				TiResetTics(timerHora);
 				segons++;
 				if(segons >= 60){

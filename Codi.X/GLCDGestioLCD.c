@@ -3,7 +3,7 @@
 #include <xc.h>
 #include "TiTTimer.h"
 #include "LcTLCD.h"
-const char menu[7][22] = {
+char menu[7][22] = {
     "1. New game",
     "2. Show top 5 scores ",
     "3. Show users",
@@ -14,7 +14,15 @@ const char menu[7][22] = {
 
 char timerGLCD=0;
 char menuDalt=0;
+__bit ferMenu = 0;
 __bit newString = 0;
+
+void SiFerMenu(void){
+    ferMenu = 1;
+}
+void NoFerMenu(void){
+    ferMenu = 0;
+}
 
 void GLCDInit(void){
     timerGLCD=TiGetTimer();
@@ -23,6 +31,7 @@ void GLCDInit(void){
 void GLCDMostraMenu(unsigned char num){
     newString = 1;
     menuDalt = num;
+    ferMenu = 1;
 }
 
 void GLCDMotor(void) {
@@ -38,14 +47,17 @@ void GLCDMotor(void) {
     static char length2=0;
     switch(state) {
 		case 2:
-			if (length1 < 17) {
+			if (length1 < 17 && ferMenu == 1) {
 				LcGotoXY(0,0);
 				LcNewString(menu[menuDalt]);
 				state = 5;
 			}
-			else if (length1 >= 17) {
+			else if (length1 >= 17 && ferMenu == 1) {
 				state = 3;
 			}
+            else if(ferMenu == 0){
+                state = 2;//comentar aquesta linia?
+            }
 		break;
 		case 3:
 			if (j>=16) {

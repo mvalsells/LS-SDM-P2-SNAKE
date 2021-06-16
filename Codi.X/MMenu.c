@@ -17,12 +17,15 @@ const char Score[] = "Score: ";
 unsigned char menuDalt = 0;
 signed char NovaTecla = -1;
 
+
+
 void MTMenu(void){
 	static char state = 0;
 
 	switch(state) {
 		case 0:
 			if (LcLliure()) {
+                SiFerMenu();
 				LcClear();
 				GLCDMostraMenu(menuDalt);
 				NovaTecla = -1;
@@ -39,6 +42,7 @@ void MTMenu(void){
 				state = 0;
 			}
 			else if (NovaTecla == 10 && menuDalt == 4) {
+                NoFerMenu();
 				LcClear();
                 NovaTecla = -1;
 				LcNewString("Current Time");
@@ -51,13 +55,16 @@ void MTMenu(void){
 				LcNewString(HGetTime());
 				state = 3;
 			}
+            else if(LcLliure() && NovaTecla == 8){
+                state = 0;
+            }
 		break;
 		case 3:
-  			if (HNouMinut()) {
+  			if (HNouMinut() && NovaTecla != 8) {
 				HClearNouMinut();
 				state = 2;
 			}
-			else if (NovaTecla == 11) {
+			else if (NovaTecla == 8) {
 				state = 0;
 			}
 		break;

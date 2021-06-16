@@ -248,29 +248,6 @@ void LcNewString(char new_s[]){
     s_ptr = new_s;
     nou_s = 1;
 }
-/*
-void PutStringCooperatiu(){
-    static char state;
-    static char i;
-    switch (state){
-        case 0:
-            if(nou_s == 1){
-                state = 1;
-      
-                LcPutChar(s[i]);
-                i++;
-                if(s[i] == '\0'){
-                    nou_s = 0;
-                    i = 0;
-                }
-            }
-            break;
-        case 1:
-            state = 0;
-
-            break;
-    }
-}*/
 
 void LcPutFletxa(){ //no borra tot, compatible amb marquesina
     LcGotoXY(0,0);

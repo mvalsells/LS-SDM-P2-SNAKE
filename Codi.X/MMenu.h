@@ -11,4 +11,5 @@ void mostraMenuModifyTime(void);
 void mostraMenu(char mostra);
 void MTInit();
 void MsetNovaTecla(char tecla);
+
 #endif
