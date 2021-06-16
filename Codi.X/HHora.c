@@ -10,14 +10,14 @@ static unsigned char minutsAscii2 = '0';
 static unsigned char segons = 0;
 static char timerHora = 0;
 
-__bit tmp = 0;
+__bit nouMinut = 0;
 
-__bit getTmp(void){
-    return tmp;
+__bit HNouMinut(void){
+    return nouMinut;
 }
 
-void clearTmp(void){
-    tmp = 0;
+void HClearNouMinut(void){
+    nouMinut = 0;
 }
 
 void HInit(void){
@@ -29,11 +29,11 @@ void HHoraMotor(void) {
     static char state = 0;
 	switch(state) {
 		case 0:
-			if (TiGetTics(timerHora) >= 2000) {//2000
+			if (TiGetTics(timerHora) >= 20) {//2000
 				TiResetTics(timerHora);
 				segons++;
 				if(segons >= 60){
-                    tmp = 1;
+                    nouMinut = 1;
 					segons = 0;
 					
 					minutsAscii1++;
@@ -64,7 +64,7 @@ void HHoraMotor(void) {
 	}
 }
 
-char* HgetTime(void){
+char* HGetTime(void){
     string[0] = horesAscii2;
     string[1] = horesAscii1;
     

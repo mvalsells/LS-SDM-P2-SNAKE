@@ -76,26 +76,17 @@ void main(void) {
     GLCDInit();
     HInit();
     //AlPlay();
-    LcGotoXY(0,0);
-    LcNewString(HgetTime());
+   
     while(1){
         AlTAltaveu();
-        //MTMenu();
-        TeTeclat();
+        MTMenu();
+        
         GLCDMotor();
         HHoraMotor();
 
         
-        if(LcLliure() && getTmp() == 1){
-            clearTmp();
-            
-            LcGotoXY(0,0);
-            LcNewString(HgetTime());
-        }
-        //
-        LcLCD();
-        
-        
+        TeTeclat();//penultim
+        LcLCD();//ultim
     }
     return;
 }
