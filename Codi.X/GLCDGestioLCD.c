@@ -9,8 +9,7 @@ const char menu[7][22] = {
     "3. Show users",
     "4. Modify users",
     "5. Show time",
-    "6. Modify time",
-    ""
+    "6. Modify time"
 };
 
 char timerGLCD=0;
