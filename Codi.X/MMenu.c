@@ -17,12 +17,13 @@ const char Score[] = "Score: ";
 
 unsigned char menuDalt = 0;
 signed char NovaTecla = -1;
+signed char novaLletra = -1;
 char horaTmp[5];
 
 
 void MTMenu(void){
 	static char state = 0;
-    switch(state) {
+  /*  switch(state) {
 		case 0:
 			if (LcLliure()) {
 				LcClear();
@@ -126,9 +127,15 @@ void MTMenu(void){
 				state = 3;
 			}
 		break;
-	}
+	}*/
 }
 
 void MsetNovaTecla(char tecla){
     NovaTecla = tecla;
+}
+
+void MNovaLletra(char lletra){
+    novaLletra = lletra;
+    //LcClear();
+    LcPutChar(lletra);
 }

@@ -7,6 +7,7 @@
 #include "TeTeclat.h"
 #include "GLCDGestioLCD.h"
 #include "HHora.h"
+#include "Ssms.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -75,17 +76,22 @@ void main(void) {
     TeInit();
     GLCDInit();
     HInit();
+    Sinit();
+    
+    
+    SMSon();
     //AlPlay();
    
     while(1){
-        AlTAltaveu();
+      //  AlTAltaveu();
+       // GLCDMotor();
         MTMenu();
         
-        GLCDMotor();
-        HHoraMotor();
+        //HHoraMotor();
 
         
-        TeTeclat();//penultim
+        TeTeclat();//antapenultim
+        SMotor(); //penultim
         LcLCD();//ultim
     }
     return;
