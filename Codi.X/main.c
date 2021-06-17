@@ -77,17 +77,14 @@ void main(void) {
     GLCDInit();
     HInit();
     Sinit();
-    
-    
-    SMSon();
     //AlPlay();
    
     while(1){
-      //  AlTAltaveu();
-       // GLCDMotor();
+        AlTAltaveu();
+        GLCDMotor();
         MTMenu();
         
-        //HHoraMotor();
+        HHoraMotor();
 
         
         TeTeclat();//antapenultim

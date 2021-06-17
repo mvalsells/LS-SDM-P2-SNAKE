@@ -4,7 +4,6 @@
 void Sinit(void);
 void SMotor(void);
 void SsetNovaTecla(char tecla);
-void SMSon (void);
-
-
+void SMSon(void);
+void SMSoff (void);
 #endif SSMS_H_

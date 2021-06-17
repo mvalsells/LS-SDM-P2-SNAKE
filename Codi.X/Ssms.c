@@ -11,8 +11,7 @@ char sumaPulsacions = 0;
 signed char novaTecla = -1;
 signed char timerSMS = -1;
 signed char ultimaTecla = -1;
-char borram = 1;
-__bit smsOn = 0;
+__bit setSMSon = 0;
 
 void Sinit(void){
     timerSMS = TiGetTimer();
@@ -22,7 +21,7 @@ void SMotor(void) {
 	static char state = 0;
 	switch(state) {
 		case 0:
-			if (novaTecla != -1 && smsOn == 1) {
+			if (novaTecla != -1 && setSMSon == 1) {
 				TiResetTics(timerSMS);
 				state = 3;
 			}
@@ -113,9 +112,9 @@ void SsetNovaTecla(char tecla){
 }
 
 void SMSon(void){
-    smsOn = 1;
+    setSMSon = 1;
 }
 
 void SMSoff (void){
-    smsOn = 0;
+    setSMSon = 0;
 }

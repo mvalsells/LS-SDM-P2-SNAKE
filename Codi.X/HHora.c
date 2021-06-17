@@ -6,7 +6,7 @@ static char string[6] = "00:00";
 static unsigned char segons = 0;
 static char timerHora = 0;
 
-__bit nouMinut = 0;
+__bit nouMinut;
 
 __bit HNouMinut(void){
     return nouMinut;
@@ -19,6 +19,7 @@ void HClearNouMinut(void){
 void HInit(void){
     timerHora = TiGetTimer();
     TiResetTics(timerHora);
+    nouMinut = 0;
 }
 
 void HHoraMotor(void) { //comentat (minutsAscii) -> en variables tmp

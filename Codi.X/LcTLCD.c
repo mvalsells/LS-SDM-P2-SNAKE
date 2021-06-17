@@ -251,19 +251,18 @@ void LcNewString(char new_s[]){
 
 void LcPutFletxa(){ //no borra tot, compatible amb marquesina
     LcGotoXY(0,0);
-    //canviar aixo de sota per un LcPutStingCoop que SI FUNCIONI
     LcPutChar('-');
     LcPutChar('>');
 }
 
-//A eliminar quan no hi hagi espai, només debug
-void LcPutStringDebug(char *s) {
-// Post: Pinta l'string a apartir de la posici? actual del cursor.
-// El criteri de coordenades ?s el mateix que a LcPutChar
-// Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
-// la rutina
-	while(*s) LcPutChar(*s++);
-}
+////A eliminar quan no hi hagi espai, només debug
+//void LcPutStringDebug(char *s) {
+//// Post: Pinta l'string a apartir de la posici? actual del cursor.
+//// El criteri de coordenades ?s el mateix que a LcPutChar
+//// Post: Pot trigar fins a 40us pel nombre de chars de s a sortir de
+//// la rutina
+//	while(*s) LcPutChar(*s++);
+//}
 
 
 void LcLCD(void){
