@@ -1,8 +1,7 @@
-#ifndef GLCD_C_
-#define GLCD_C_
 #include <xc.h>
 #include "TiTTimer.h"
 #include "LcTLCD.h"
+#include "GLCDGestioLCD.h"
 char menu[7][22] = {
     "1. New game",
     "2. Show top 5 scores ",
@@ -45,6 +44,7 @@ void GLCDMotor(void) {
     static char k2 = 0;
     static char length1=0;
     static char length2=0;
+    
     switch(state) {
 		case 2:
 			if (length1 < 17 && ferMenu == 1) {
@@ -55,9 +55,10 @@ void GLCDMotor(void) {
 			else if (length1 >= 17 && ferMenu == 1) {
 				state = 3;
 			}
-            else if(ferMenu == 0){
-                state = 2;//comentar aquesta linia?
-            }
+			else if (ferMenu == 0) {
+				newString = 0;
+				state = 0;
+			}
 		break;
 		case 3:
 			if (j>=16) {
@@ -85,7 +86,7 @@ void GLCDMotor(void) {
 			}
 			else if (menuDalt >= 5) {
 				LcPutFletxa();
-				state = 11;
+				state = 0;
 			}
 		break;
 		case 5:
@@ -99,7 +100,7 @@ void GLCDMotor(void) {
 			}
 		break;
 		case 0:
-			if (newString != 0) {
+			if (newString != 0 && ferMenu == 1) {
 				length1 = 0;
 				length2 = 0;
 				LcGotoXY(0,0);
@@ -126,13 +127,17 @@ void GLCDMotor(void) {
 			}
 		break;
 		case 7:
-			if (length2 < 17) {
+			if (length2 < 17 && ferMenu == 1) {
 				LcGotoXY(0,1);
 				LcNewString(menu[menuDalt+1]);
 				state = 8;
 			}
-			else if (length2 >= 17) {
+			else if (length2 >= 17 && ferMenu == 1) {
 				state = 9;
+			}
+			else if (ferMenu == 0) {
+				newString = 0;
+				state = 0;
 			}
 		break;
 		case 9:
@@ -184,4 +189,3 @@ void GLCDMotor(void) {
 		break;
 	}
 }
-#endif

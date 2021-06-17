@@ -43,11 +43,6 @@ void MTMenu(void){
 				if(menuDalt < 5) menuDalt++;
 				state = 0;
 			}
-			else if (NovaTecla == 10 && menuDalt == 4) {
-				LcClear();
-				NoFerMenu();
-				state = 2;
-			}
 			else if (NovaTecla == 10 && menuDalt == 5) {
 				LcClear();
 				NoFerMenu();
@@ -58,6 +53,11 @@ void MTMenu(void){
 				NoFerMenu();
 				LcClear();
 				state = 12;
+			}
+			else if (NovaTecla == 10 && menuDalt == 4) {
+				LcClear();
+				NoFerMenu();
+				state = 2;
 			}
 		break;
 		case 2:
@@ -90,9 +90,6 @@ void MTMenu(void){
 				LcPutChar(horaTmp[0]);
 				NovaTecla = -1;
 				state = 6;
-			}
-			else if (NovaTecla == 11) {
-				state = 0;
 			}
 		break;
 		case 6:
@@ -141,63 +138,61 @@ void MTMenu(void){
 		case 12:
 			if (LcLliure()) {
 				LcNewString("1. Select User");
-				state = 19;
+				state = 13;
 			}
 		break;
-		case 13:
+		case 14:
 			if (NovaTecla == 1) {
+				LcClear();
 				state = 14;
 			}
 			else if (NovaTecla == 2) {
 				LcClear();
-				state = 20;
+				state = 15;
 			}
 		break;
-		case 15:
+		case 17:
 			if (LcLliure() && NovaTecla >= 0 && NovaTecla <= 9) {
 				LcPutChar(novaLletra);
 				NovaTecla = -1;
-				state = 16;
+				state = 19;
 			}
 			else if (NovaTecla == 10) {
 				LcCursorOff();
-				state = 17;
+				state = 18;
 			}
 			else if (NovaTecla == 11) {
 				state = 0;
 			}
 		break;
-		case 14:
-
-		break;
-		case 16:
+		case 19:
 			if (LcLliure()) {
-				state = 15;
+				state = 17;
 			}
 		break;
-		case 17:
+		case 18:
 
 		break;
-		case 19:
+		case 13:
 			if (LcLliure()) {
 				LcGotoXY(0,1);
 				LcNewString("2. New User");
 				NovaTecla = -1;
-				state = 13;
+				state = 14;
 			}
 		break;
-		case 20:
+		case 15:
 			if (LcLliure()) {
 				LcNewString("Enter name:");
 				LcCursorOn();
 				SMSon();
-				state = 21;
+				state = 16;
 			}
 		break;
-		case 21:
+		case 16:
 			if (LcLliure()) {
 				LcGotoXY(0,1);
-				state = 15;
+				state = 17;
 			}
 		break;
 	}
