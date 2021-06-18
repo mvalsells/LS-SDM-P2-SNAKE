@@ -8,7 +8,7 @@
 #include "GLCDGestioLCD.h"
 #include "HHora.h"
 #include "Ssms.h"
-#include "UUsuaris.h"
+#include "AdAdcon.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -60,36 +60,36 @@ void init_eusart(void){
     SPBRGH = 0x04;  //high(1040) -> high(0000 0100 0001 0000) -> 0000 0100 -> 0x04
     SPBRG = 0x10;   //low(1040) -> low(0000 0100 0001 0000) -> 0001 0000 -> 0x10
 }
+/* PASSAT AL MOTOR ADC
 void init_adcon(void){
     ADCON0 = 0x01;//000000_1 chA //000001_1 chB
     ADCON1 = 0x0D;//00001101
-    ADCON2 = 0x0D;//00001101
+    ADCON2 = 0x0E;//00001110
 }
+ */
 
 void main(void) {
     init_ports();
-    init_adcon();
+    //init_adcon(); //PASSAT AL MOTOR ADC
     init_eusart(); 
     
     TiInitTimer();
     AlInit();
+    AdInit();
     LcInit(2,16);
     TeInit();
     GLCDInit();
     HInit();
     Sinit();
-    UsersInit();
     //AlPlay();
-
+   
     while(1){
-
         AlTAltaveu();
         GLCDMotor();
         MTMenu();
-        UUsuarisNouUsuari();
         
         HHoraMotor();
-
+        AdMotor();
         
         TeTeclat();//antapenultim
         SMotor(); //penultim
