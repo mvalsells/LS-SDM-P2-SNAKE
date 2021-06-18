@@ -149,9 +149,12 @@ void MTMenu(void){
 				state = 14;
 			}
 			else if (NovaTecla == 2) {
-				LcClear();
 				NovaTecla = -1;
-				state = 15;
+				SMSon();
+				LcCursorOn();
+				LcClear();
+				LcNewString("Enter name:");
+				state = 16;
 			}
 		break;
 		case 17:
@@ -187,14 +190,6 @@ void MTMenu(void){
 				LcNewString("2. New User");
 				NovaTecla = -1;
 				state = 14;
-			}
-		break;
-		case 15:
-			if (LcLliure()) {
-				LcNewString("Enter name:");
-				LcCursorOn();
-				SMSon();
-				state = 16;
 			}
 		break;
 		case 16:
