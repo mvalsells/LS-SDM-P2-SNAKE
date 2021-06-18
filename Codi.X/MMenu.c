@@ -24,7 +24,6 @@ char username[11];
 
 
 void MTMenu(void){
-    /*
     static char state = 0;
 	switch(state) {
 		case 0:
@@ -205,13 +204,10 @@ void MTMenu(void){
 			}
 		break;
 	}
-    */
 }
 
 void MsetNovaTecla(char tecla){
     NovaTecla = tecla;
-    LcClear();
-    LcPutChar(NovaTecla+48);
 }
 
 void MNovaLletra(char lletra){

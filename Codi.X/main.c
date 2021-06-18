@@ -84,15 +84,15 @@ void main(void) {
     //AlPlay();
    
     while(1){
-        //AlTAltaveu();
-        //GLCDMotor();
+        AlTAltaveu();
+        GLCDMotor();
         MTMenu();
         
-        //HHoraMotor();
+        HHoraMotor();
         AdMotor();
         
-        //TeTeclat();//antapenultim
-        //SMotor(); //penultim
+        TeTeclat();//antapenultim
+        SMotor(); //penultim
         LcLCD();//ultim
     }
     return;

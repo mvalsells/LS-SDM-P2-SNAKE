@@ -1,4 +1,3 @@
-#include "MMenu.h"
 #include <xc.h>
 #include <pic18f4321.h>
 
@@ -19,13 +18,11 @@ void AdMotor(void) {
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH >= 200) {
 				//JnovaTecla(2);
-                MsetNovaTecla(2); //DEBUG
 				ADCON0 = 0x07;
 				state = 1;
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH <= 50) {
 				//JnovaTecla(8);
-                MsetNovaTecla(8); //DEBUG
 				ADCON0 = 0x07;
 				state = 1;
 			}
@@ -37,13 +34,11 @@ void AdMotor(void) {
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH >= 200) {
 				//JnovaTecla(6);
-                MsetNovaTecla(6); //DEBUG
 				ADCON0 = 0x03;
 				state = 0;
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH <= 50) {
                 //JnovaTecla(4);
-				MsetNovaTecla(4); //DEBUG
 				ADCON0 = 0x03;
 				state = 0;
 			}
