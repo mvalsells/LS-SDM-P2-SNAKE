@@ -9,6 +9,7 @@
 #include "HHora.h"
 #include "Ssms.h"
 #include "AdAdcon.h"
+#include "UUsuaris.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -81,12 +82,14 @@ void main(void) {
     GLCDInit();
     HInit();
     Sinit();
+    UsersInit();
     //AlPlay();
    
     while(1){
         AlTAltaveu();
         GLCDMotor();
         MTMenu();
+        UUsuarisNouUsuari();
         
         HHoraMotor();
         AdMotor();
