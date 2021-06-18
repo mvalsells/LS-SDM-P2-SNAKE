@@ -18,6 +18,10 @@ void UsersInit(void){
         usuaris[i].username[0] = '\0';
     }
 }
+void UCancelaNouUser(){
+    createUser = 0;
+    usuaris[quin].username[0] = '\0';
+}
 
 char* UgetUserName(char quin){
     return usuaris[quin].username;
@@ -53,12 +57,10 @@ void UUsuarisNouUsuari(){
 			}
 		break;
 		case 2:
-			if (usuaris[quin].username[pos] == '\0') {
-				createUser = 0;
-                numUsuaris++;
+			if (createUser == 0) {
 				state = 0;
 			}
-			else if (usuaris[quin].username[pos] != '\0') {
+			else if (createUser == 1) {
 			}
 		break;
 	}
@@ -68,8 +70,15 @@ void UcreateUser(void ){
     createUser = 1;
 }
 void UAfegirLletraUsername(char lletra){
-	usuaris[quin].username[pos]=lletra;
-	if (lletra != '\0') pos++;
+	if(createUser) usuaris[quin].username[pos]=lletra;
+	if (lletra != '\0'){
+        pos++;
+    }else{
+        usuaris[quin].username[pos] = '\0';
+        createUser = 0;
+        numUsuaris++;
+    }
+    
 }
 
 char UgetNumUsuaris(void){

@@ -88,8 +88,9 @@ void main(void) {
     while(1){
         AlTAltaveu();
         GLCDMotor();
-        MTMenu();
         UUsuarisNouUsuari();
+        MTMenu();
+        
         
         HHoraMotor();
         AdMotor();

@@ -23,6 +23,8 @@ char horaTmp[5];
 unsigned char pos;
 char username[11];
 
+__bit borram = 0;
+
 
 void MTMenu(void){
     static char state = 0;
@@ -148,6 +150,7 @@ void MTMenu(void){
 			if (NovaTecla == 1 && UgetNumUsuaris() >= 1) {
 				LcClear();
 				menuDalt=0;
+				NovaTecla = -1;
 				state = 20;
 			}
 			else if (NovaTecla == 2) {
@@ -170,21 +173,24 @@ void MTMenu(void){
 			else if (NovaTecla == 10 && UgetNumUsuaris() < 20) {
 				LcCursorOff();
 				UAfegirLletraUsername('\0');
+				SMSoff();
 				state = 0;
 			}
 			else if (NovaTecla == 11 || UgetNumUsuaris() >= 20) {
 				LcCursorOff();
+				UCancelaNouUser();
 				state = 0;
 			}
 		break;
 		case 20:
+            borram = 1;
 			if (LcLliure()) {
 				LcClear();
 				LcPutFletxa();
 				LcGotoXY(3,0);
 				LcNewString(UgetUserName(menuDalt));
 				NovaTecla = -1;
-				state = 19;
+				state = 23;
 			}
 			else if (NovaTecla == 11 && LcLliure()) {
 				NovaTecla = -1;
@@ -217,13 +223,21 @@ void MTMenu(void){
 			}
 		break;
 		case 21:
-			if (NovaTecla == 8) {
+			if (NovaTecla == 8 && LcLliure()) {
 				if (menuDalt<UgetNumUsuaris()-1) menuDalt++;
 				state = 20;
 			}
-			else if (NovaTecla == 2) {
+			else if (NovaTecla == 2 && LcLliure()) {
 				if (menuDalt>UgetNumUsuaris()-1) menuDalt--;
 				state = 20;
+			}
+		break;
+		case 23:
+            borram = 1;
+			if (LcLliure()) {
+				LcGotoXY(3,1);
+				if(menuDalt+2 <= UgetNumUsuaris()) LcNewString(UgetUserName(menuDalt+1));
+				state = 21;
 			}
 		break;
 	}

@@ -9,5 +9,5 @@ void UsersInit(void);
 void UcreateUser(void );
 void UAfegirLletraUsername(char lletra);
 char UgetNumUsuaris(void);
-
+void UCancelaNouUser(void);
 #endif
