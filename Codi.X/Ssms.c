@@ -20,12 +20,12 @@ void Sinit(void){
 void SMotor(void) {
 	static char state = 0;
 	switch(state) {
-		case 0:
+		case 7:
 			if (novaTecla != -1 && setSMSon == 1) {
 				TiResetTics(timerSMS);
 				state = 3;
 			}
-			else if (novaTecla == -1 && TiGetTics(timerSMS)>= TSMS && lletraASCII != -1) {
+			else if (novaTecla == -1 && TiGetTics(timerSMS)>= TSMS && lletraASCII != -1 && setSMSon) {
 				MNovaLletra(lletraASCII);
 				lletraASCII = -1;
 				ultimaTecla = -1;
@@ -44,7 +44,6 @@ void SMotor(void) {
 				lletraASCII = lletraInici[novaTecla-2];
 				ultimaTecla = novaTecla;
 				sumaPulsacions = 0;
-				novaTecla = -1;
 				state = 0;
 			}
 		break;
@@ -55,6 +54,9 @@ void SMotor(void) {
 			else if (ultimaTecla == 7 || ultimaTecla == 9) {
 				state = 6;
 			}
+		break;
+		case 0:
+
 		break;
 		case 3:
 			if (novaTecla > 1 && novaTecla < 10) {
@@ -73,7 +75,6 @@ void SMotor(void) {
 		break;
 		case 4:
 			MNovaLletra(novaTecla+48);
-			novaTecla = -1;
 			state = 0;
 		break;
 		case 5:

@@ -150,6 +150,7 @@ void MTMenu(void){
 			}
 			else if (NovaTecla == 2) {
 				LcClear();
+				NovaTecla = -1;
 				state = 15;
 			}
 		break;

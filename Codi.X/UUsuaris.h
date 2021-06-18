@@ -1,7 +1,7 @@
 #ifndef UUsuaris_
 #define UUsuaris_
 
-void UUsuarisNouUsuari(char username[]);
+void UUsuarisNouUsuari(void);
 char* getUserName(char quin);
 char getScore(char quin);
 void delUser(char quin);
