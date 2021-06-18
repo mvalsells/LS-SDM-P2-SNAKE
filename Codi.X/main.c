@@ -82,7 +82,7 @@ void main(void) {
     GLCDInit();
     HInit();
     Sinit();
-    UsersInit();
+    //UsersInit();
     //AlPlay();
    
     while(1){

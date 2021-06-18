@@ -2,12 +2,12 @@
 #define UUsuaris_
 
 void UUsuarisNouUsuari(void);
-char* getUserName(char quin);
-char getScore(char quin);
-void delUser(char quin);
-
+char* UgetUserName(char quin);
+char UgetScore(char quin);
+void UdelUser(char quin);
 void UsersInit(void);
 void UcreateUser(void );
 void UAfegirLletraUsername(char lletra);
+char UgetNumUsuaris(void);
 
 #endif
