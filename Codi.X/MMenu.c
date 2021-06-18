@@ -5,6 +5,7 @@
 #include "LcTLCD.h"
 #include "HHora.h"
 #include "Ssms.h"
+#include "UUsuaris.h"
 
 char selectUser[] = "1. Select User";
 char newUser[] = "New User";
@@ -21,6 +22,8 @@ signed char novaLletra = -1;
 char horaTmp[5];
 unsigned char pos;
 char username[11];
+
+__bit borram = 0;
 
 
 void MTMenu(void){
@@ -161,14 +164,13 @@ void MTMenu(void){
 			if (LcLliure() && novaLletra != -1 && NovaTecla < 10) {
 				LcPutChar(novaLletra);
 				NovaTecla = -1;
-				username[pos] = novaLletra;
-				pos++;
+				UAfegirLletraUsername(novaLletra);
 				novaLletra = -1;
 				state = 19;
 			}
 			else if (NovaTecla == 10) {
 				LcCursorOff();
-				username[pos] = '\0';
+				UAfegirLletraUsername('\0');
 				state = 18;
 			}
 			else if (NovaTecla == 11) {
@@ -182,7 +184,7 @@ void MTMenu(void){
 			}
 		break;
 		case 18:
-
+            borram = 1;
 		break;
 		case 13:
 			if (LcLliure()) {
@@ -196,6 +198,7 @@ void MTMenu(void){
 			if (LcLliure()) {
 				LcGotoXY(0,1);
 				pos = 0;
+                UcreateUser();
 				state = 17;
 			}
 		break;
