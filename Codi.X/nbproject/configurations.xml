@@ -12,6 +12,7 @@
       <itemPath>GLCDGestioLCD.h</itemPath>
       <itemPath>HHora.h</itemPath>
       <itemPath>Ssms.h</itemPath>
+      <itemPath>AdAdcon.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -29,6 +30,7 @@
       <itemPath>GLCDGestioLCD.c</itemPath>
       <itemPath>HHora.c</itemPath>
       <itemPath>Ssms.c</itemPath>
+      <itemPath>AdAdcon.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
