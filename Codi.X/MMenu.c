@@ -19,6 +19,8 @@ unsigned char menuDalt = 0;
 signed char NovaTecla = -1;
 signed char novaLletra = -1;
 char horaTmp[5];
+unsigned char pos;
+char username[11];
 
 
 void MTMenu(void){
@@ -152,16 +154,21 @@ void MTMenu(void){
 			}
 		break;
 		case 17:
-			if (LcLliure() && NovaTecla >= 0 && NovaTecla <= 9) {
+			if (LcLliure() && novaLletra != -1 && NovaTecla < 10) {
 				LcPutChar(novaLletra);
 				NovaTecla = -1;
+				username[pos] = novaLletra;
+				pos++;
+				novaLletra = -1;
 				state = 19;
 			}
 			else if (NovaTecla == 10) {
 				LcCursorOff();
+				username[pos] = '\0';
 				state = 18;
 			}
 			else if (NovaTecla == 11) {
+				LcCursorOff();
 				state = 0;
 			}
 		break;
@@ -192,6 +199,7 @@ void MTMenu(void){
 		case 16:
 			if (LcLliure()) {
 				LcGotoXY(0,1);
+				pos = 0;
 				state = 17;
 			}
 		break;

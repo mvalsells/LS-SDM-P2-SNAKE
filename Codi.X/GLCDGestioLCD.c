@@ -55,10 +55,6 @@ void GLCDMotor(void) {
 			else if (length1 >= 17 && ferMenu == 1) {
 				state = 3;
 			}
-			else if (ferMenu == 0) {
-				newString = 0;
-				state = 0;
-			}
 		break;
 		case 3:
 			if (j>=16) {
@@ -135,10 +131,6 @@ void GLCDMotor(void) {
 			else if (length2 >= 17 && ferMenu == 1) {
 				state = 9;
 			}
-			else if (ferMenu == 0) {
-				newString = 0;
-				state = 0;
-			}
 		break;
 		case 9:
 			if (j<16) {
@@ -160,11 +152,11 @@ void GLCDMotor(void) {
 			}
 		break;
 		case 11:
-			if (TiGetTics(timerGLCD)>= 2000 && newString == 0) {
+			if (TiGetTics(timerGLCD)>= 2000 && newString == 0 && ferMenu == 1) {
 				LcClear();
 				state = 2;
 			}
-			else if (newString != 0) {
+			else if (newString != 0 && ferMenu == 1) {
 				LcClear();
 				state = 0;
 			}
