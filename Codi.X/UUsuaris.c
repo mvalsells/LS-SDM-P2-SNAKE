@@ -20,7 +20,7 @@ void UsersInit(void){
 }
 void UCancelaNouUser(){
     createUser = 0;
-    usuaris[quin].username[0] = '\0';
+   // usuaris[quin].username[0] = '\0';
 }
 
 char* UgetUserName(char quin){

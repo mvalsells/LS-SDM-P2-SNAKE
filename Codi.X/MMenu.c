@@ -163,7 +163,7 @@ void MTMenu(void){
 			}
 		break;
 		case 17:
-			if (LcLliure() && novaLletra != -1 && NovaTecla < 10 && UgetNumUsuaris() < 20) {
+			if (LcLliure() && novaLletra > 47 && NovaTecla < 10 && UgetNumUsuaris() < 20) {
 				LcPutChar(novaLletra);
 				NovaTecla = -1;
 				UAfegirLletraUsername(novaLletra);
@@ -183,7 +183,6 @@ void MTMenu(void){
 			}
 		break;
 		case 20:
-            borram = 1;
 			if (LcLliure()) {
 				LcClear();
 				LcPutFletxa();
@@ -191,14 +190,6 @@ void MTMenu(void){
 				LcNewString(UgetUserName(menuDalt));
 				NovaTecla = -1;
 				state = 23;
-			}
-			else if (NovaTecla == 11 && LcLliure()) {
-				NovaTecla = -1;
-				state = 0;
-			}
-			else if (NovaTecla == 10 && LcLliure()) {
-				NovaTecla = -1;
-				state = 0;
 			}
 		break;
 		case 19:
@@ -223,17 +214,28 @@ void MTMenu(void){
 			}
 		break;
 		case 21:
-			if (NovaTecla == 8 && LcLliure()) {
+            borram = 1;
+			if (NovaTecla == 8) {
 				if (menuDalt<UgetNumUsuaris()-1) menuDalt++;
 				state = 20;
 			}
-			else if (NovaTecla == 2 && LcLliure()) {
-				if (menuDalt>UgetNumUsuaris()-1) menuDalt--;
+			else if (NovaTecla == 2) {
+				if (menuDalt>0) menuDalt--;
 				state = 20;
+			}
+			else if (NovaTecla == 10) {
+				NovaTecla = -1;
+                menuDalt = 0;
+				state = 0;
+			}
+			else if (NovaTecla == 11) {
+				NovaTecla = -1;
+                menuDalt = 0;
+
+				state = 0;
 			}
 		break;
 		case 23:
-            borram = 1;
 			if (LcLliure()) {
 				LcGotoXY(3,1);
 				if(menuDalt+2 <= UgetNumUsuaris()) LcNewString(UgetUserName(menuDalt+1));
