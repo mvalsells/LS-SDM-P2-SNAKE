@@ -22,6 +22,8 @@ public class Snake extends JPanel {
     private int directionX;
     private int directionY;
     private int score;
+    private String name = "Unknown";
+    private int time = 0;
     private boolean isRunning;
     private final Random random = new Random();
     private OnEventListener eventListener;
@@ -34,13 +36,13 @@ public class Snake extends JPanel {
         setPreferredSize(new Dimension(BOARD_WIDTH, BOARD_HEIGHT + SCORE_BOARD_HEIGHT));
 
         JPanel scorePanel = new JPanel();
-        nameViewer = new JTextArea("Name: <unknown>");
+        nameViewer = new JTextArea("Name: " + name);
         nameViewer.setEnabled(false);
         nameViewer.setBackground(Color.BLACK);
         scoreViewer = new JTextArea("Score: " + score);
         scoreViewer.setEnabled(false);
         scoreViewer.setBackground(Color.BLACK);
-        timeViewer = new JTextArea("Time: <unknown>");
+        timeViewer = new JTextArea("Time: " + time);
         timeViewer.setEnabled(false);
         timeViewer.setBackground(Color.BLACK);
 
@@ -163,6 +165,9 @@ public class Snake extends JPanel {
             moveSnakeForword(newHeadLocX, newHeadLocY);
         }
 
+        nameViewer.setText("Name: " + name);
+        timeViewer.setText("Time: " + time);
+
         board.repaint();
     }
 
@@ -261,11 +266,11 @@ public class Snake extends JPanel {
     }
 
     public void setName(String name) {
-        nameViewer.setText("Name: " + name);
+        this.name = name;
     }
 
     public void setTime(int time) {
-        timeViewer.setText("Time: " + time);
+        this.time = time;
     }
 
     public int getScore() {
