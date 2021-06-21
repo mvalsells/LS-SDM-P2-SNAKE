@@ -1,13 +1,13 @@
 #include "HHora.h"
 #include <xc.h>
 #include "TiTTimer.h"
-static char string[5] = "00:00";
+static char string[6] = "00:00";
 static char tempsJugant[5] = "00:00";
 static unsigned char segons = 0;
 static char timerHora = 0;
 
 __bit nouMinut;
-__bit estemJugant();
+__bit estemJugant;
 __bit nouSegon;
 
 __bit HNouMinut(void){
@@ -32,14 +32,15 @@ void HHoraMotor(void) { //comentat (minutsAscii) -> en variables tmp
 			if (TiGetTics(timerHora) >= 2000) {
 				TiResetTics(timerHora);
 				segons++;
+				nouSegon=1;
+				//Segons partida;
+				tempsJugant[4]++;
+				if(tempsJugant[4] == ('9'+1)){
+					tempsJugant[4] = '0';
+					tempsJugant[3]++;
+				}
 				if(segons >= 60){
 					segons = 0;
-				  //Segons partida;
-				  tempsJugant[4]++;
-				  if(tempsJugant[4] == ('9'+1)){
-				    tempsJugant[4] = '0';
-				    tempsJugant[3]++;
-				  }
 				  //Miunts rellotge;
 					string[4]++;
 					if(string[4] == ('9'+1)){
@@ -72,23 +73,19 @@ void HHoraMotor(void) { //comentat (minutsAscii) -> en variables tmp
 					string[1] = '0';
 					string[0] = '0';
 				}
-				state = 1;
+				state = 0;
 			}
-		break;
-		case 1:
-			if(estemJugant == 0){ 
-                tempsJugant[0] = '0';
-                tempsJugant[1] = '0';
-                tempsJugant[3] = '0';
-                tempsJugant[4] = '0';
-            };
-			state = 0;
 		break;
 	}
 }
 
 char* HGetTime(void){    
     return string;
+}
+
+
+char* HTempsJocs(void){
+    return tempsJugant;
 }
 
 void HActualitzarHora(char nova[]){
@@ -104,4 +101,16 @@ __bit HNouSegon(void){
 
 void HClearNouSegon(void){
     nouSegon = 0;
+}
+
+void HJuguem(void){
+    estemJugant=1;
+    tempsJugant[0] = '0';
+    tempsJugant[1] = '0';
+    tempsJugant[3] = '0';
+    tempsJugant[4] = '0';
+}
+
+void HNoJuguem(void){
+    estemJugant = 0;
 }

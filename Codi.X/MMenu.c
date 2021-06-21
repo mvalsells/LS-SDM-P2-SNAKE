@@ -202,7 +202,8 @@ void MTMenu(void){
 			if (LcLliure()) {
 				NovaTecla = -1;
 				LcNewString(UgetUserName(menuDalt));
-				JJoguem(menuDalt);
+				JJuguem(menuDalt);
+				HJuguem();
 				state = 25;
 			}
 		break;
@@ -249,7 +250,8 @@ void MTMenu(void){
 			}
 		break;
 		case 25:
-			if (JFiJoc()) {
+			if (JUsuari() == -1) {
+				HNoJuguem();
 				state = 0;
 			}
 		break;
