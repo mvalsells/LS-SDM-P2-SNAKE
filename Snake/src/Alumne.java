@@ -7,11 +7,12 @@ public class Alumne {
     private static int playingTime;
 
     public static void sendScore(Snake snake, SerialPort serialPort) {
-        char score = (char) snake.getScore();
-
         // Write your code here
-        byte[] writebuffer = new byte[serialPort.bytesAvailable()];
-        serialPort.writeBytes(writebuffer, serialPort.getDeviceWriteBufferSize(), snake.getScore());
+        String score = String.valueOf(snake.getScore());
+        char[] data = score.toCharArray();
+        byte[] data2 = {(byte)data[0], (byte)data[1], (byte)data[2]};
+
+        serialPort.writeBytes(data2, 3);
     }
 
     public static void getInput(Snake snake, SerialPort serialPort) {
@@ -48,7 +49,7 @@ public class Alumne {
             case 6:
                 snake.right();
                 break;
-            case 10:
+            case 12:
                 snake.setTime(playingTime++);
         }
     }
@@ -58,6 +59,9 @@ public class Alumne {
         //envia caracter final de joc
         byte[] writebuffer = new byte[serialPort.bytesAwaitingWrite()];
         serialPort.writeBytes(writebuffer, serialPort.bytesAvailable(), (long)'X');
+
+        byte[] data = {'X',(byte)snake.getScore()};
+        serialPort.writeBytes(data, 2);
         gameStarted = false;
     }
 }
