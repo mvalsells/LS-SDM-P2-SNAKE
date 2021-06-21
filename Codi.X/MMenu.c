@@ -1,4 +1,3 @@
-#include <pic18f4321.h>
 #include <xc.h>
 #include "MMenu.h"
 #include "GLCDGestioLCD.h"
@@ -6,6 +5,7 @@
 #include "HHora.h"
 #include "Ssms.h"
 #include "UUsuaris.h"
+#include "JJoc.h"
 
 char selectUser[] = "1. Select User";
 char newUser[] = "New User";
@@ -174,7 +174,8 @@ void MTMenu(void){
 				LcCursorOff();
 				UAfegirLletraUsername('\0');
 				SMSoff();
-				state = 0;
+				LcClear();
+				state = 24;
 			}
 			else if (NovaTecla == 11 || UgetNumUsuaris() >= 20) {
 				LcCursorOff();
@@ -197,6 +198,14 @@ void MTMenu(void){
 				state = 17;
 			}
 		break;
+		case 24:
+			if (LcLliure()) {
+				NovaTecla = -1;
+				LcNewString(UgetUserName(menuDalt));
+				JJoguem(menuDalt);
+				state = 25;
+			}
+		break;
 		case 13:
 			if (LcLliure()) {
 				LcGotoXY(0,1);
@@ -214,7 +223,6 @@ void MTMenu(void){
 			}
 		break;
 		case 21:
-            borram = 1;
 			if (NovaTecla == 8) {
 				if (menuDalt<UgetNumUsuaris()-1) menuDalt++;
 				state = 20;
@@ -223,16 +231,14 @@ void MTMenu(void){
 				if (menuDalt>0) menuDalt--;
 				state = 20;
 			}
-			else if (NovaTecla == 10) {
-				NovaTecla = -1;
-                menuDalt = 0;
-				state = 0;
-			}
 			else if (NovaTecla == 11) {
 				NovaTecla = -1;
-                menuDalt = 0;
-
+				menuDalt = 0;
 				state = 0;
+			}
+			else if (NovaTecla == 10) {
+				LcClear();
+				state = 24;
 			}
 		break;
 		case 23:
@@ -240,6 +246,11 @@ void MTMenu(void){
 				LcGotoXY(3,1);
 				if(menuDalt+2 <= UgetNumUsuaris()) LcNewString(UgetUserName(menuDalt+1));
 				state = 21;
+			}
+		break;
+		case 25:
+			if (JFiJoc()) {
+				state = 0;
 			}
 		break;
 	}

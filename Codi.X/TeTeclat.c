@@ -4,6 +4,7 @@
 #include <xc.h>
 #include <pic18f4321.h>
 #include "Ssms.h"
+#include "JJoc.h"
 
 static char tiTeclat=0;
 static char ultimaTecla = 0;
@@ -77,6 +78,7 @@ void TeTeclat(void) {
 				//ultimaTecla=teclaPremuda[files-1][cols];
                 MsetNovaTecla(teclaPremuda[files-1][cols]);
                 SsetNovaTecla(teclaPremuda[files-1][cols]);
+                JnovaTecla(teclaPremuda[files-1][cols]);
 				state = 5;
 			}
 		break;

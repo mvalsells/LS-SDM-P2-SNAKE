@@ -1,5 +1,6 @@
 #include <xc.h>
 #include <pic18f4321.h>
+#include "JJoc.h"
 
 
 
@@ -17,12 +18,12 @@ void AdMotor(void) {
 				state = 1;
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH >= 200) {
-				//JnovaTecla(2);
+				JnovaTecla(2);
 				ADCON0 = 0x07;
 				state = 1;
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH <= 50) {
-				//JnovaTecla(8);
+				JnovaTecla(8);
 				ADCON0 = 0x07;
 				state = 1;
 			}
@@ -33,12 +34,12 @@ void AdMotor(void) {
                 state = 0;
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH >= 200) {
-				//JnovaTecla(6);
+				JnovaTecla(6);
 				ADCON0 = 0x03;
 				state = 0;
 			}
 			else if (ADCON0bits.GODONE == 0 && ADRESH <= 50) {
-                //JnovaTecla(4);
+                JnovaTecla(4);
 				ADCON0 = 0x03;
 				state = 0;
 			}

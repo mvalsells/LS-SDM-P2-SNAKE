@@ -10,6 +10,9 @@ unsigned char numUsuaris = 0;
 __bit createUser = 0;
 unsigned char quin = 0;
 char pos = 0;
+__bit findNextUser = 0;
+signed char usuariTrobat = -1;
+signed char delUser = -1;
 
 void UsersInit(void){
     //NOTA: s'executa un sol cop fora del bucle cooperatiu a la inicialitzacio
@@ -31,36 +34,35 @@ char UgetScore(char quin){
     return usuaris[quin].highScore;
 }
 
-void UdelUser(char quin){
-    usuaris[quin].username[0] = '\0';
-}
-
 void UUsuarisNouUsuari(){
     static char state = 0;
     switch(state) {
 		case 0:
-			if (createUser == 1 && numUsuaris < 20) {
-				quin = 0;
+			if (createUser != 0 && numUsuaris >= 20) {
+				createUser = 0;
+			}
+			else if (createUser == 1 && numUsuaris < 20) {
 				state = 1;
 			}
-			else if (createUser != 0 && numUsuaris >= 20) {
-				createUser = 0;
+			else if (delUser > -1) {
+				usuaris[delUser].username[0] = '\0';
+				usuaris[delUser].highScore = 0;
+				state = 2;
 			}
 		break;
 		case 1:
-			if (usuaris[quin].username[0] == '\0') {
-				pos=0;
-				state = 2;
-			}
-			else if (usuaris[quin].username[0] != '\0') {
-				quin++;
-			}
-		break;
-		case 2:
 			if (createUser == 0) {
 				state = 0;
 			}
-			else if (createUser == 1) {
+		break;
+		case 2:
+			if (usuaris[delUser+1].username[0] != '\0' && delUser < 20) {
+				usuaris[delUser] = usuaris[delUser+1];
+				delUser++;
+			}
+			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
+				delUser = -1;
+				state = 0;
 			}
 		break;
 	}
@@ -70,11 +72,11 @@ void UcreateUser(void ){
     createUser = 1;
 }
 void UAfegirLletraUsername(char lletra){
-	if(createUser) usuaris[quin].username[pos]=lletra;
+	if(createUser) usuaris[numUsuaris].username[pos]=lletra;
 	if (lletra != '\0'){
         pos++;
     }else{
-        usuaris[quin].username[pos] = '\0';
+        usuaris[numUsuaris].username[pos] = '\0';
         createUser = 0;
         numUsuaris++;
     }
@@ -83,4 +85,16 @@ void UAfegirLletraUsername(char lletra){
 
 char UgetNumUsuaris(void){
     return numUsuaris;
+}
+
+signed char UgetUsuariTrobat(void){
+    return usuariTrobat;
+}
+
+void UtrobaUsuari(void){
+    findNextUser = 1;
+}
+
+void UdelUser(char index){
+    delUser = index;
 }

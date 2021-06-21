@@ -7,4 +7,6 @@ char* HGetTime(void);
 __bit HNouMinut(void);
 void HClearNouMinut(void);
 void HActualitzarHora(char nova[]);
+__bit HNouSegon(void);
+void HClearNouSegon(void);
 #endif
