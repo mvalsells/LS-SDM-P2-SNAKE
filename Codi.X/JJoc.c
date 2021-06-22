@@ -4,6 +4,7 @@
 #include "HHora.h"
 #include "LcTLCD.h"
 #include "AlTAltaveu.h"
+#include "SSio.h"
 
 signed char usuariActual = -1;
 char novaDireccio = 0;
@@ -15,13 +16,14 @@ char JUsuari(void){
 
 void JMotor(void){
     static char state = 0;
-    switch(state) {
+
+	switch(state) {
 		case 0:
 			if (usuariActual > -1 && LcLliure()) {
-				//Enviar nom + startgame EUSART;
+				SIOStartGame(usuariActual);
 				//AlPlay();
 				LcGotoXY(0,1);
-				LcNewString("T 00:00 | S");
+				LcNewString("T 00:00 | S 000");
 				state = 1;
 			}
 		break;
@@ -30,21 +32,18 @@ void JMotor(void){
 				HClearNouSegon();
 				LcGotoXY(2,1);
 				LcNewString(HTempsJocs());
+				SIONovaDireccio(12);
 				state = 1;
 			}
 			else if (novaDireccio != -1) {
-				//EuNovaDireccio(novaDireccio);
-				state = 1;
-			}/*
-			else if (EuNovaPuntuacio() && LcLliure() && EuFiJoc()==0) {
-				LcGotoXY(11,1);
-				LcNewString(EuGetPuntiacio);
+				SIONovaDireccio(novaDireccio);
 				state = 1;
 			}
-			else if (EuFiJoc()) {
+			else if (SIOFiJoc()) {
 				AlStop();
+				usuariActual = -1;
 				state = 0;
-			}*/
+			}
 		break;
 	}
 }

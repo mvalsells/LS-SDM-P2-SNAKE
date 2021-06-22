@@ -269,7 +269,7 @@ void LcLCD(void){
     if(nou_s == 1){
         LcPutChar(*s_ptr);
         s_ptr++;
-        if(*s_ptr== '\0'){
+        if(*s_ptr == '\0'){
             nou_s = 0;
             s_ptr=0;
         }

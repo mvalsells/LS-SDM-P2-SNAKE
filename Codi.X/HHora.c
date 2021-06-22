@@ -2,7 +2,7 @@
 #include <xc.h>
 #include "TiTTimer.h"
 static char string[6] = "00:00";
-static char tempsJugant[5] = "00:00";
+static char tempsJugant[6] = "00:00";
 static unsigned char segons = 0;
 static char timerHora = 0;
 

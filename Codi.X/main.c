@@ -11,6 +11,7 @@
 #include "AdAdcon.h"
 #include "UUsuaris.h"
 #include "JJoc.h"
+#include "SSio.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -85,6 +86,7 @@ void main(void) {
         UUsuarisNouUsuari();
         MTMenu();
         JMotor();
+        SIOMotor();
         
         
         HHoraMotor();

@@ -5,6 +5,7 @@ public class Alumne {
     public static final int TIME_WAIT_MS = 100; // Time to wait before calling "getInput()" in milliseconds
     private static boolean  gameStarted = false;
     private static int playingTime;
+    private static StringBuilder sb = new StringBuilder();
 
     public static void sendScore(Snake snake, SerialPort serialPort) {
         // Write your code here
@@ -23,7 +24,6 @@ public class Alumne {
         byte[] data = new byte[1];
         serialPort.readBytes(data,1);
         byte b = data[0];
-        StringBuilder sb = new StringBuilder();
         if (!gameStarted) {
             if ((char) b !='\0'){
                 sb.append((char)b);
