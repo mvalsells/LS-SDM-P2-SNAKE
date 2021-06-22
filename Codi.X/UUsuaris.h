@@ -10,4 +10,5 @@ void UcreateUser(void );
 void UAfegirLletraUsername(char lletra);
 char UgetNumUsuaris(void);
 void UCancelaNouUser(void);
+void UchangeScore(char score);
 #endif

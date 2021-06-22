@@ -23,7 +23,7 @@ void JMotor(void){
 				SIOStartGame(usuariActual);
 				//AlPlay();
 				LcGotoXY(0,1);
-				LcNewString("T 00:00 | S 000");
+				LcNewString("T 00:00 | S");
 				state = 1;
 			}
 		break;
@@ -35,18 +35,16 @@ void JMotor(void){
 				SIONovaDireccio(12);
 				state = 1;
 			}
-            else if (SIOFiJoc() == -1) {
+			else if (novaDireccio > -1) {
+				SIONovaDireccio(novaDireccio);
+				novaDireccio = -1;
+				state = 1;
+			}
+			else if (SIOFiJoc()) {
 				AlStop();
-                borram = 1;
 				usuariActual = -1;
 				state = 0;
 			}
-			else if (novaDireccio > -1) {
-				SIONovaDireccio(novaDireccio);
-                novaDireccio = -1;
-				state = 1;
-			}
-			
 		break;
 	}
 }

@@ -33,6 +33,9 @@ char* UgetUserName(char quin){
 char UgetScore(char quin){
     return usuaris[quin].highScore;
 }
+void UchangeScore(char score){
+    usuaris[quin].highScore = score;
+}
 
 void UUsuarisNouUsuari(){
     static char state = 0;

@@ -36,22 +36,33 @@ void SIOMotor(void) {
 			else if (PIR1bits.RCIF) {
 				LcGotoXY(12,1);
 				rebut = RCREG;
-				if(rebut != 'X') LcPutChar(rebut);
+				LcPutChar(RCREG);
 				state = 3;
 			}
 		break;
 		case 3:
 			if (PIR1bits.RCIF && rebut != 'X') {
+				LcGotoXY(13,1);
 				LcPutChar(RCREG);
 				state = 4;
 			}
-			else if (PIR1bits.RCIF && rebut == 'X') {
+			else if (rebut == 'X' && PIR1bits.RCIF) {
+				LcClear();
+				LcGotoXY(7,0);
+				rebut = RCREG;
+				//aqui tenim la ultima score en char;
+				//LcNewString(rebut);
+				//convertir a ascii;
+				if(rebut > UgetScore(usuariActual)){
+				    UchangeScore(rebut);
+				} 
+				usuariActual = -1;
 				state = 0;
-                usuariActual = -1;
 			}
 		break;
 		case 4:
 			if (PIR1bits.RCIF) {
+				LcGotoXY(14,1);
 				LcPutChar(RCREG);
 				state = 2;
 			}

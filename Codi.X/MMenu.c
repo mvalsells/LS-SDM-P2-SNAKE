@@ -16,7 +16,7 @@ const char highScore[] = "High score:";
 const char enterNewName[] = "Enter New Name";
 const char currentTime[] = "Current Time";
 const char timeFormat[] = "(HH:mm):";
-const char Score[] = "Score: ";
+const char Score[] = "Score:";
 
 unsigned char menuDalt = 0;
 signed char NovaTecla = neg;
@@ -34,7 +34,7 @@ void MTMenu(void){
 				LcClear();
 				SiFerMenu();
 				GLCDMostraMenu(menuDalt);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				SMSoff();
 				state = 1;
 			}
@@ -93,7 +93,7 @@ void MTMenu(void){
 			if (NovaTecla >= 0 && NovaTecla <= 2) {
 				horaTmp[0] = NovaTecla+48;
 				LcPutChar(horaTmp[0]);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 6;
 			}
 		break;
@@ -101,7 +101,7 @@ void MTMenu(void){
 			if (NovaTecla >= 0 && NovaTecla <=9) {
 				horaTmp[1] = NovaTecla+48;
 				LcPutChar(horaTmp[1]);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 7;
 			}
 		break;
@@ -113,7 +113,7 @@ void MTMenu(void){
 			if (NovaTecla >= 0 && NovaTecla <= 5) {
 				horaTmp[2] = NovaTecla+48;
 				LcPutChar(horaTmp[2]);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 9;
 			}
 		break;
@@ -121,14 +121,14 @@ void MTMenu(void){
 			if (NovaTecla >= 0 && NovaTecla <=9) {
 				horaTmp[3] = NovaTecla+48;
 				LcPutChar(horaTmp[3]);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 10;
 			}
 		break;
 		case 10:
 			if (NovaTecla == 10) {
 				HActualitzarHora(horaTmp);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				LcCursorOff();
 				state = 0;
 			}
@@ -150,11 +150,11 @@ void MTMenu(void){
 			if (NovaTecla == 1 && UgetNumUsuaris() >= 1) {
 				LcClear();
 				menuDalt=0;
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 20;
 			}
 			else if (NovaTecla == 2) {
-				NovaTecla = neg;
+				NovaTecla = -1;
 				SMSon();
 				LcCursorOn();
 				LcClear();
@@ -165,9 +165,9 @@ void MTMenu(void){
 		case 17:
 			if (LcLliure() && novaLletra > 47 && NovaTecla < 10 && UgetNumUsuaris() < 20) {
 				LcPutChar(novaLletra);
-				NovaTecla = neg;
+				NovaTecla = -1;
 				UAfegirLletraUsername(novaLletra);
-				novaLletra = neg;
+				novaLletra = -1;
 				state = 19;
 			}
 			else if (NovaTecla == 10 && UgetNumUsuaris() < 20) {
@@ -189,7 +189,7 @@ void MTMenu(void){
 				LcPutFletxa();
 				LcGotoXY(3,0);
 				LcNewString(UgetUserName(menuDalt));
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 23;
 			}
 		break;
@@ -200,7 +200,7 @@ void MTMenu(void){
 		break;
 		case 24:
 			if (LcLliure()) {
-				NovaTecla = neg;
+				NovaTecla = -1;
 				LcNewString(UgetUserName(menuDalt));
 				JJuguem(menuDalt);
 				HJuguem();
@@ -211,7 +211,7 @@ void MTMenu(void){
 			if (LcLliure()) {
 				LcGotoXY(0,1);
 				LcNewString("2. New User");
-				NovaTecla = neg;
+				NovaTecla = -1;
 				state = 14;
 			}
 		break;
@@ -233,7 +233,7 @@ void MTMenu(void){
 				state = 20;
 			}
 			else if (NovaTecla == 11) {
-				NovaTecla = neg;
+				NovaTecla = -1;
 				menuDalt = 0;
 				state = 0;
 			}
@@ -250,8 +250,23 @@ void MTMenu(void){
 			}
 		break;
 		case 25:
-			if (JUsuari() == neg) {
+			if (JUsuari() == -1 && LcLliure()/*no funciona el JUsuari o el que hi ha redera, potser no detecta 'X'*/) {
 				HNoJuguem();
+				LcGotoXY(0,0);
+				LcNewString(Score);
+				state = 26;
+			}
+		break;
+		case 26:
+			if (LcLliure()) {
+				LcGotoXY(0,1);
+				LcNewString(highScore);
+				//on es printa la HighScore?;
+				state = 27;
+			}
+		break;
+		case 27:
+			if (NovaTecla = 10) {
 				state = 0;
 			}
 		break;
