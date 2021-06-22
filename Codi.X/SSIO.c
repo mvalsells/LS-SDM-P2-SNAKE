@@ -45,7 +45,7 @@ void SIOMotor(void) {
 				LcPutChar(RCREG);
 				state = 4;
 			}
-			else if (rebut == 'X') {
+			else if (PIR1bits.RCIF && rebut == 'X') {
 				state = 0;
                 usuariActual = -1;
 			}

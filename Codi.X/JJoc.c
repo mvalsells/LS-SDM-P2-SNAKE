@@ -35,16 +35,17 @@ void JMotor(void){
 				SIONovaDireccio(12);
 				state = 1;
 			}
+            else if (SIOFiJoc() == -1) {
+				AlStop();
+				usuariActual = -1;
+				state = 0;
+			}
 			else if (novaDireccio > -1) {
 				SIONovaDireccio(novaDireccio);
                 novaDireccio = -1;
 				state = 1;
 			}
-			else if (SIOFiJoc() == -1) {
-				AlStop();
-				usuariActual = -1;
-				state = 0;
-			}
+			
 		break;
 	}
 }

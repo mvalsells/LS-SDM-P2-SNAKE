@@ -73,10 +73,8 @@ public class Alumne {
     public static void gameOver(Snake snake, SerialPort serialPort) {
         // Write your code here
         //envia caracter final de joc
-        byte[] writebuffer = new byte[serialPort.bytesAwaitingWrite()];
-        serialPort.writeBytes(writebuffer, serialPort.bytesAvailable(), (long)'X');
-
         byte[] data = {'X',(byte)snake.getScore()};
         serialPort.writeBytes(data, 2);
-        gameStarted = false;    }
+        gameStarted = false;
+    }
 }
