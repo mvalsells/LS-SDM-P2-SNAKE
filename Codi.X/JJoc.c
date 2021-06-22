@@ -28,18 +28,19 @@ void JMotor(void){
 			}
 		break;
 		case 1:
-			if (HNouSegon()) {
+			if (HNouSegon() && LcLliure()) {
 				HClearNouSegon();
 				LcGotoXY(2,1);
 				LcNewString(HTempsJocs());
-				//SIONovaDireccio(12);
+				SIONovaDireccio(12);
 				state = 1;
 			}
-			else if (novaDireccio != -1) {
+			else if (novaDireccio > -1) {
 				SIONovaDireccio(novaDireccio);
+                novaDireccio = -1;
 				state = 1;
 			}
-			else if (SIOFiJoc()) {
+			else if (SIOFiJoc() == -1) {
 				AlStop();
 				usuariActual = -1;
 				state = 0;

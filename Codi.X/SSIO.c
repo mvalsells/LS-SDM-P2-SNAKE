@@ -29,7 +29,7 @@ void SIOMotor(void) {
 			}
 		break;
 		case 2:
-			if (novaDireccio > -1 && TXSTAbits.TRMT) {
+			if (novaDireccio != -1 && TXSTAbits.TRMT) {
 				TXREG = novaDireccio;
 				novaDireccio = -1;
 			}
@@ -47,6 +47,7 @@ void SIOMotor(void) {
 			}
 			else if (rebut == 'X') {
 				state = 0;
+                usuariActual = -1;
 			}
 		break;
 		case 4:

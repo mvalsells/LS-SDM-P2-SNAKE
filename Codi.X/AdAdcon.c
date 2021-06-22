@@ -6,7 +6,7 @@
 void AdInit(void){
     ADCON0 = 0x01;//00000001 chA //000001_1 chB
     ADCON1 = 0x0D;//00001101
-    ADCON2 = 0x0E;//00001110
+    ADCON2 = 0x09;//00001110
 }
 void AdMotor(void) {
 	static char state = 0;
