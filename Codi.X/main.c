@@ -77,9 +77,8 @@ void main(void) {
     GLCDInit();
     HInit();
     Sinit();
-    //UsersInit();
+    //UsersInit();//no fa res
     //AlPlay();
-   
     while(1){
         AlTAltaveu();
         GLCDMotor();
@@ -87,10 +86,12 @@ void main(void) {
         MTMenu();
         JMotor();
         SIOMotor();
+             
         
         
         HHoraMotor();
         AdMotor();
+        
         
         TeTeclat();//antapenultim
         SMotor(); //penultim

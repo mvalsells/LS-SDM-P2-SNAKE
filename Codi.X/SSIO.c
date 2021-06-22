@@ -4,7 +4,7 @@
 
 char *userPtr = 0;
 signed char usuariActual = -1;
-char novaDireccio = -1;
+signed char novaDireccio = -1;
 char rebut;
 
 void SIOMotor(void) {
@@ -20,11 +20,11 @@ void SIOMotor(void) {
 		case 1:
 			if (*userPtr == '\0' && TXSTAbits.TRMT) {
 				usuariActual = -1;
-				TXREG = userPtr;
+				TXREG = 13;
 				state = 2;
 			}
 			else if (*userPtr != '\0' && TXSTAbits.TRMT) {
-				TXREG = userPtr;
+				TXREG = *userPtr;
 				userPtr++;
 			}
 		break;

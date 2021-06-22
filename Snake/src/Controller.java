@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 public class Controller extends JPanel {
-    private static final Integer[] STANDARD_BAUDRATES = {110, 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000, 256000};
+    private static final Integer[] STANDARD_BAUDRATES = {/*110, 300, 600, 1200, 2400, 4800, */9600/*, 14400, 19200, 38400, 57600, 115200, 128000, 256000*/};
 
     private final JComboBox<SerialPort> portsComboBox;
     private final JComboBox<Integer> baudRate;

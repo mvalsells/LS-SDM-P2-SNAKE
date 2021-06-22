@@ -1,7 +1,7 @@
 import com.fazecast.jSerialComm.SerialPort;
 
 public class Alumne {
-    public static final int SNAKE_STEP_DELAY = 200; // Time to wait between snake steps in milliseconds
+    public static final int SNAKE_STEP_DELAY = 1000; // Time to wait between snake steps in milliseconds
     public static final int TIME_WAIT_MS = 100; // Time to wait before calling "getInput()" in milliseconds
     private static boolean  gameStarted = false;
     private static int playingTime;
@@ -10,7 +10,18 @@ public class Alumne {
     public static void sendScore(Snake snake, SerialPort serialPort) {
         // Write your code here
         String score = String.valueOf(snake.getScore());
-        char[] data = score.toCharArray();
+        char[] data = new char[3];
+        char [] chararray = score.toCharArray();
+
+        if ( score.length() >= 1){
+            data[0] = chararray[0];
+        }
+        if (score.length() >= 2){
+            data[1] = chararray[1];
+        }
+        if (score.length()==3){
+            data[2] = chararray[2];
+        }
         byte[] data2 = {(byte)data[0], (byte)data[1], (byte)data[2]};
 
         serialPort.writeBytes(data2, 3);
@@ -24,8 +35,9 @@ public class Alumne {
         byte[] data = new byte[1];
         serialPort.readBytes(data,1);
         byte b = data[0];
+        System.out.println(b);
         if (!gameStarted) {
-            if ((char) b !='\0'){
+            if ((char) b != 13){
                 sb.append((char)b);
                 return;
             } else {
@@ -62,6 +74,5 @@ public class Alumne {
 
         byte[] data = {'X',(byte)snake.getScore()};
         serialPort.writeBytes(data, 2);
-        gameStarted = false;
-    }
+        gameStarted = false;    }
 }

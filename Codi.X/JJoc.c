@@ -7,7 +7,7 @@
 #include "SSio.h"
 
 signed char usuariActual = -1;
-char novaDireccio = 0;
+signed char novaDireccio = 0;
 
 char JUsuari(void){
     return usuariActual;
@@ -32,7 +32,7 @@ void JMotor(void){
 				HClearNouSegon();
 				LcGotoXY(2,1);
 				LcNewString(HTempsJocs());
-				SIONovaDireccio(12);
+				//SIONovaDireccio(12);
 				state = 1;
 			}
 			else if (novaDireccio != -1) {
