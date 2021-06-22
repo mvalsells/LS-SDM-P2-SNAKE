@@ -11,19 +11,23 @@ public class Alumne {
         // Write your code here
         String score = String.valueOf(snake.getScore());
         char[] data = new char[3];
-        char [] chararray = score.toCharArray();
+        char[] chararray = score.toCharArray();
 
-        if ( score.length() >= 1){
+        if(score.length() == 1){
+            data[0] = '0';
+            data[1] = '0';
+            data[2] = chararray[0];
+        }else if(score.length() == 2){
+            data[0] = '0';
+            data[1] = chararray[0];
+            data[2] = chararray[1];
+        }else if(score.length() == 3){
             data[0] = chararray[0];
-        }
-        if (score.length() >= 2){
             data[1] = chararray[1];
-        }
-        if (score.length()==3){
             data[2] = chararray[2];
         }
-        byte[] data2 = {(byte)data[0], (byte)data[1], (byte)data[2]};
 
+        byte[] data2 = {(byte)data[0], (byte)data[1], (byte)data[2]};
         serialPort.writeBytes(data2, 3);
     }
 

@@ -87,11 +87,8 @@ void main(void) {
         JMotor();
         SIOMotor();
              
-        
-        
         HHoraMotor();
         AdMotor();
-        
         
         TeTeclat();//antapenultim
         SMotor(); //penultim

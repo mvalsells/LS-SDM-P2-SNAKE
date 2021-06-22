@@ -28,7 +28,7 @@ void JMotor(void){
 			}
 		break;
 		case 1:
-			if (HNouSegon() && LcLliure()) {
+			if (HNouSegon()) {
 				HClearNouSegon();
 				LcGotoXY(2,1);
 				LcNewString(HTempsJocs());

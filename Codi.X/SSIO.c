@@ -34,7 +34,7 @@ void SIOMotor(void) {
 				novaDireccio = -1;
 			}
 			else if (PIR1bits.RCIF) {
-				LcGotoXY(1,12);
+				LcGotoXY(12,1);
 				rebut = RCREG;
 				if(rebut != 'X') LcPutChar(rebut);
 				state = 3;
