@@ -8,7 +8,7 @@
 
 signed char usuariActual = -1;
 signed char novaDireccio = 0;
-
+__bit borram = 0;
 char JUsuari(void){
     return usuariActual;
 }
@@ -37,6 +37,7 @@ void JMotor(void){
 			}
             else if (SIOFiJoc() == -1) {
 				AlStop();
+                borram = 1;
 				usuariActual = -1;
 				state = 0;
 			}

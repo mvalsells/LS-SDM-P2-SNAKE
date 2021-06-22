@@ -66,14 +66,15 @@ public class Alumne {
                 snake.right();
                 break;
             case 12:
-                snake.setTime(playingTime++);
+                snake.setTime(++playingTime);//++time per no anar un segon atrassat
         }
     }
 
     public static void gameOver(Snake snake, SerialPort serialPort) {
         // Write your code here
         //envia caracter final de joc
-        byte[] data = {'X',(byte)snake.getScore()};
+        byte scoreToSend = (byte)snake.getScore();
+        byte[] data = {'X',scoreToSend};
         serialPort.writeBytes(data, 2);
         gameStarted = false;
     }
