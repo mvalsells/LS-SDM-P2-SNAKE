@@ -6,6 +6,7 @@
 #include "Ssms.h"
 #include "UUsuaris.h"
 #include "JJoc.h"
+#include "CtoA.h"
 
 #define neg -1
 
