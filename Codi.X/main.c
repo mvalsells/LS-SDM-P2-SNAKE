@@ -89,10 +89,10 @@ void main(void) {
         CtoA();
              
         HHoraMotor();
-        AdMotor();
+        //AdMotor();
         
         TeTeclat();//antapenultim
-        //SMotor(); //penultim
+        SMotor(); //penultim
         LcLCD();//ultim
     }
     return;

@@ -19,6 +19,7 @@ void UsersInit(void){
     //abans del programa, no afecta a la cooperativitat.
     for(char i = 0; i < 20; i++){
         usuaris[i].username[0] = '\0';
+        usuaris[i].highScore = 0;
     }
 }
 void UCancelaNouUser(){

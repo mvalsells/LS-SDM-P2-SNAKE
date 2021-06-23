@@ -12,15 +12,14 @@ char JUsuari(void){
     return usuariActual;
 }
 
-
 void JMotor(void){
     static char state = 0;
 
 	switch(state) {
 		case 0:
-			if (usuariActual > -1 && LcLliure()) {
+			if (usuariActual != -1 && LcLliure()) {
 				SIOStartGame(usuariActual);
-				//AlPlay();
+				AlPlay();
 				LcGotoXY(0,1);
 				LcNewString("T 00:00 | S 000");
 				state = 1;
