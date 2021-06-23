@@ -262,14 +262,22 @@ void MTMenu(void){
 			if (LcLliure()) {
 				LcGotoXY(0,1);
 				LcNewString(highScore);
-				//on es printa la HighScore?;
+				CToAConverteix(UgetScore(menuDalt));
 				state = 27;
 			}
 		break;
 		case 27:
-			if (NovaTecla = 10) {
-				state = 0;
+			if (LcLliure() && CToAHaAcabat() == 250) {
+				LcGotoXY(12,1);
+				LcNewString(CToAobtenir());
+				NovaTecla = -1;
+                state = 28;
 			}
+		break;
+		case 28:
+            if(NovaTecla = 10){
+                state = 0;
+            }
 		break;
 	}
 }

@@ -5,7 +5,7 @@
 unsigned char convertir = 250;
 char string[] = "000";
 
-void CToAconvertir(unsigned char numero){
+void CToAConverteix(unsigned char numero){
     convertir = numero;
 }
 char* CToAobtenir(void){
@@ -37,6 +37,9 @@ void CtoA(void) {
 		case 1:
 			if (convertir == 0) {
 				convertir = 250;
+                string[0] = '0';
+                string[1] = '0';
+                string[2] = '0';
 				state = 0;
 			}
 			else if (convertir > 0) {

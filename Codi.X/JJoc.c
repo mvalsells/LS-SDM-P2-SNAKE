@@ -8,7 +8,6 @@
 
 signed char usuariActual = -1;
 signed char novaDireccio = 0;
-__bit borram = 0;
 char JUsuari(void){
     return usuariActual;
 }
@@ -23,7 +22,7 @@ void JMotor(void){
 				SIOStartGame(usuariActual);
 				//AlPlay();
 				LcGotoXY(0,1);
-				LcNewString("T 00:00 | S");
+				LcNewString("T 00:00 | S 000");
 				state = 1;
 			}
 		break;
@@ -40,7 +39,7 @@ void JMotor(void){
 				novaDireccio = -1;
 				state = 1;
 			}
-			else if (SIOFiJoc()) {
+			else if (SIOFiJoc() == -1) {
 				AlStop();
 				usuariActual = -1;
 				state = 0;

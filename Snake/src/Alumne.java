@@ -1,7 +1,7 @@
 import com.fazecast.jSerialComm.SerialPort;
 
 public class Alumne {
-    public static final int SNAKE_STEP_DELAY = 1000; // Time to wait between snake steps in milliseconds
+    public static final int SNAKE_STEP_DELAY = 500; // Time to wait between snake steps in milliseconds
     public static final int TIME_WAIT_MS = 100; // Time to wait before calling "getInput()" in milliseconds
     private static boolean  gameStarted = false;
     private static int playingTime;

@@ -79,7 +79,6 @@ void main(void) {
     HInit();
     Sinit();
     //UsersInit();//no fa res
-    //AlPlay();
     while(1){
         AlTAltaveu();
         GLCDMotor();
@@ -87,6 +86,7 @@ void main(void) {
         MTMenu();
         JMotor();
         SIOMotor();
+        CtoA();
              
         HHoraMotor();
         AdMotor();
