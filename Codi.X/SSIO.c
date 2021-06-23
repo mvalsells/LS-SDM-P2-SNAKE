@@ -4,7 +4,7 @@
 
 char *userPtr = 0;
 signed char usuariActual = -1;
-signed char novaDireccio = -1;
+signed char direccio = -1;
 char rebut;
 
 void SIOMotor(void) {
@@ -29,9 +29,9 @@ void SIOMotor(void) {
 			}
 		break;
 		case 2:
-			if (novaDireccio != -1 && TXSTAbits.TRMT) {
-				TXREG = novaDireccio;
-				novaDireccio = -1;
+			if (direccio != -1 && TXSTAbits.TRMT) {
+				TXREG = direccio;
+				direccio = -1;
 			}
 			else if (PIR1bits.RCIF) {
 				LcGotoXY(12,1);
@@ -50,9 +50,6 @@ void SIOMotor(void) {
 				LcClear();
 				LcGotoXY(7,0);
 				rebut = RCREG;
-				//aqui tenim la ultima score en char;
-				//LcNewString(rebut);
-				//convertir a ascii;
 				if(rebut > UgetScore(usuariActual)){
 				    UchangeScore(rebut);
 				} 
@@ -71,7 +68,7 @@ void SIOMotor(void) {
 }
 
 void SIONovaDireccio(char num){
-    novaDireccio = num;
+    direccio = num;
 }
 
 void SIOStartGame(char usuari){

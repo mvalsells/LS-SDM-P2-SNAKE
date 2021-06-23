@@ -92,7 +92,7 @@ void main(void) {
         AdMotor();
         
         TeTeclat();//antapenultim
-        SMotor(); //penultim
+        //SMotor(); //penultim
         LcLCD();//ultim
     }
     return;
