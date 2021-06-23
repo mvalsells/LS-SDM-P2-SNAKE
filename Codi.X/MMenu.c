@@ -53,6 +53,7 @@ void MTMenu(void){
 				LcClear();
 				NoFerMenu();
 				LcNewString("Enter new time");
+                NovaTecla = -1;
 				state = 11;
 			}
 			else if (NovaTecla == 10 && menuDalt == 0) {
@@ -91,7 +92,7 @@ void MTMenu(void){
 			}
 		break;
 		case 5:
-			if (NovaTecla >= 0 && NovaTecla <= 2) {
+			if (NovaTecla > -1) {
 				horaTmp[0] = NovaTecla+48;
 				LcPutChar(horaTmp[0]);
 				NovaTecla = -1;
@@ -99,7 +100,7 @@ void MTMenu(void){
 			}
 		break;
 		case 6:
-			if (NovaTecla >= 0 && NovaTecla <=9) {
+			if (NovaTecla > -1) {
 				horaTmp[1] = NovaTecla+48;
 				LcPutChar(horaTmp[1]);
 				NovaTecla = -1;
@@ -111,7 +112,7 @@ void MTMenu(void){
 			state = 8;
 		break;
 		case 8:
-			if (NovaTecla >= 0 && NovaTecla <= 5) {
+			if (NovaTecla > -1) {
 				horaTmp[2] = NovaTecla+48;
 				LcPutChar(horaTmp[2]);
 				NovaTecla = -1;
@@ -119,7 +120,7 @@ void MTMenu(void){
 			}
 		break;
 		case 9:
-			if (NovaTecla >= 0 && NovaTecla <=9) {
+			if (NovaTecla > -1) {
 				horaTmp[3] = NovaTecla+48;
 				LcPutChar(horaTmp[3]);
 				NovaTecla = -1;
@@ -251,7 +252,7 @@ void MTMenu(void){
 			}
 		break;
 		case 25:
-			if (JUsuari() == -1 && LcLliure()/*no funciona el JUsuari o el que hi ha redera, potser no detecta 'X'*/) {
+			if (JUsuari() == -1 && LcLliure()) {
 				HNoJuguem();
 				LcGotoXY(0,0);
 				LcNewString(Score);
@@ -262,22 +263,14 @@ void MTMenu(void){
 			if (LcLliure()) {
 				LcGotoXY(0,1);
 				LcNewString(highScore);
-				CToAConverteix(UgetScore(menuDalt));
+				NovaTecla = -1;
 				state = 27;
 			}
 		break;
 		case 27:
-			if (LcLliure() && CToAHaAcabat() == 250) {
-				LcGotoXY(12,1);
-				LcNewString(CToAobtenir());
-				NovaTecla = -1;
-                state = 28;
+			if (LcLliure() && NovaTecla == 10) {
+				state = 0;
 			}
-		break;
-		case 28:
-            if(NovaTecla = 10){
-                state = 0;
-            }
 		break;
 	}
 }
