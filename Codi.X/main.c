@@ -89,7 +89,7 @@ void main(void) {
         CtoA();
              
         HHoraMotor();
-        //AdMotor();
+        AdMotor();
         
         TeTeclat();//antapenultim
         SMotor(); //penultim

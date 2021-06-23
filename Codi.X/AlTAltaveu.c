@@ -1,67 +1,65 @@
 #include "AlTAltaveu.h"
 #include "TiTTimer.h"
 #include <xc.h>
-#include <pic18f4321.h>
 
-static char timer_nota=0;
-static __bit reproduir=0;
-static char nota=0;
-static char timer_durada=0;
-static char patata=10;
+static char timer_nota=PAUSA;
+static __bit reproduir=PAUSA;
+static char nota=PAUSA;
+static char timer_durada=PAUSA;
 
 void AlInit(void){
     timer_nota = TiGetTimer();
     timer_durada = TiGetTimer();
-    reproduir=0;
+    reproduir=PAUSA;
 }
 
 void AlPlay(void) {
-    reproduir = 1;
+    reproduir = PLAY;
 }
 void AlStop(void) {
-    reproduir = 0;
+    reproduir = PAUSA;
 }
 
 void AlTAltaveu(void) {
-	static char state = 0;
+	static char state = PAUSA;
 
 	switch(state) {
 		case 0:
-			if (reproduir == 1) {
-				nota = 1;
+			if (reproduir == PLAY) {
+				nota = PLAY;
 				TiResetTics(timer_nota);
 				TiResetTics(timer_durada);
-				state = 1;
+				state++;
 			}
 		break;
 		case 1:
             
-			if (reproduir == 0) {
-				state = 0;
+			if (reproduir == PAUSA) {
+				state--;
 			}
-			else if (TiGetTics(timer_nota) >= nota) {
-				LATBbits.LB0 = 1;
+			if (TiGetTics(timer_nota) > nota) {
+				LATBbits.LB0 = PLAY;
 				TiResetTics(timer_nota);
-				state = 2;
+				state++;
 			}
-			if (TiGetTics(timer_durada) >= DURADA) {
+			if (TiGetTics(timer_durada) > DURADA) {
 				state = 3;
 			}
 		break;
 		case 2:
-			if (TiGetTics(timer_nota) >= nota) {
-				LATBbits.LB0 = 0;
+			if (TiGetTics(timer_nota) > nota) {
+				LATBbits.LB0 = PAUSA;
 				TiResetTics(timer_nota);
-				state = 1;
+				state--;
 			}
 		break;
 		case 3:
 			TiResetTics(timer_durada);
 			nota++;
 			if(nota>10){
-                nota=1;
+                nota=PLAY;
             }
-            state = 1;
+            state = PLAY;
 		break;
 	}
 }
