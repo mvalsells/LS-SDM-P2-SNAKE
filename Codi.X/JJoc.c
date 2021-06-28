@@ -9,7 +9,7 @@
 signed char usuariActual = -1;
 signed char novaDireccio = 0;
 
-char JUsuari(void){
+signed char JUsuari(void){
     return usuariActual;
 }
 
