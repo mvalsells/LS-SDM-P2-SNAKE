@@ -326,34 +326,61 @@ void MTMenu(void){
 		case 32:
 			if (NovaTecla == 8) {
 				posFletxa = 1;
-				state = 32;
+				state = 34;
 			}
 			else if (NovaTecla == 2) {
 				posFletxa = 0;
-				state = 32;
+				state = 34;
 			}
 			else if (NovaTecla == 10 && posFletxa) {
 				UdelUser(menuDalt);
+				menuDalt = 0;
 				state = 0;
 			}
 			else if (NovaTecla == 10 && posFletxa == 0) {
 				LcClear();
 				LcNewString(enterNewName);
 				NovaTecla = -1;
+				//novaLletra = -1;
 				state = 33;
 			}
 		break;
-		case 33:
-
-		break;
 		case 34:
-            NovaTecla = -1;
-            LcClear();
-            if(posFletxa) LcGotoXY(0,1);
-            LcPutFletxa();
-            LcGotoXY(3,0);
-            LcNewString(editName);
-            state = 31;
+NovaTecla = -1;
+LcClear();
+if(posFletxa){
+   LcGotoXY(0,1);
+   LcPutChar('-');
+   LcPutChar('>');
+}else{
+   LcPutFletxa();
+}
+LcGotoXY(3,0);
+LcNewString(editName);
+state = 31;
+		break;
+		case 33:
+			if (LcLliure()) {
+				LcGotoXY(0,1);
+				SMSon();
+				pos=0;
+				LcCursorOn();
+				state = 35;
+			}
+		break;
+		case 35:
+			if (NovaTecla == 10) {
+				menuDalt = 0;
+				state = 0;
+			}
+			else if (NovaTecla != 10 && NovaTecla > -1) {
+				LcPutChar(novaLletra);
+				NovaTecla = -1;
+				UeditUsername(menuDalt,pos,novaLletra);
+				pos++;
+				novaLletra = -1;
+				state = 35;
+			}
 		break;
 	}
 }

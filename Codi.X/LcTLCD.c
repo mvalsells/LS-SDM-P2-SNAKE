@@ -250,7 +250,8 @@ void LcNewString(char new_s[]){
 }
 
 void LcPutFletxa(){ //no borra tot, compatible amb marquesina
-    LcGotoXY(0,0);
+    LcGotoXY(0,0);  //una alternativa seria cridar LcNewString("->"); 
+                    //però dos caràcters s'ha comprovat que no trenca el cooperativisme, es trenca a >~4
     LcPutChar('-');
     LcPutChar('>');
 }

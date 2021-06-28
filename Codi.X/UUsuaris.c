@@ -103,6 +103,8 @@ void UtrobaUsuari(void){
 
 void UdelUser(char index){
     delUser = index;
+    numUsuaris--;
+    
 }
 void UeditUsername(char menuDalt, char pos, char novaLletra){
     usuaris[menuDalt].username[pos] = novaLletra;
