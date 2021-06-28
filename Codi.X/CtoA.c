@@ -22,8 +22,7 @@ void CToAReset(void){
 
 void CtoA(void) {
 	static char state = 0;
-
-	switch(state) {
+    switch(state){
 		case 0:
 			if (convertir != 250) {
 				stringScore[2]++;
@@ -38,11 +37,6 @@ void CtoA(void) {
 				        convertir--;
 				state = 1;
 			}
-			else if (convertir == 250) {
-				stringScore[0] = '0';
-				stringScore[1] = '0';
-				stringScore[2] = '0';
-			}
 		break;
 		case 1:
 			if (convertir == 0) {
@@ -53,5 +47,5 @@ void CtoA(void) {
 				state = 0;
 			}
 		break;
-	}
+    }
 }

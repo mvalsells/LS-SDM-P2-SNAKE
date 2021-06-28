@@ -2,10 +2,10 @@
 #include "UUsuaris.h"
 #define ZERO 0
 typedef struct{
-    char username[15];
+    char username[11];
     unsigned char highScore;
 }Usuari;
-Usuari usuaris[20];
+Usuari usuaris[1];
 unsigned char numUsuaris = 0;
 __bit createUser = 0;
 unsigned char quin = 0;

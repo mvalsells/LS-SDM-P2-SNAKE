@@ -54,8 +54,8 @@ void SIOMotor(void) {
 				if(rebut > UgetScore(usuariActualSIO)){
 				    UchangeScore(rebut);
 				}
+				CToAReset();
 				CToAConverteix(rebut);
-				LcClear();
 				state = 5;
 			}
 		break;
@@ -68,6 +68,7 @@ void SIOMotor(void) {
 		break;
 		case 5:
 			if (LcLliure() && CToAHaAcabat() == 250) {
+				LcClear();
 				LcGotoXY(7,0);
 				LcNewString(CToAobtenir());
 				state = 6;
@@ -75,16 +76,14 @@ void SIOMotor(void) {
 		break;
 		case 6:
 			if (LcLliure()) {
-                CToAReset();
+				CToAReset();
 				CToAConverteix(UgetScore(usuariActualSIO));
-				state = 7;
+				usuariActualSIO = -1;
+				state = 0;
 			}
 		break;
-		case 7:
-			if (LcLliure() && CToAHaAcabat() == 250) {
-				LcGotoXY(12,1);
-				LcNewString(CToAobtenir());
-				usuariActualSIO = -1;
+		case 8:
+			if (LcLliure()) {
 				state = 0;
 			}
 		break;
