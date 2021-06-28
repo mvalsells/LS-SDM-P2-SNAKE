@@ -11,8 +11,7 @@ unsigned char rebut;
 
 void SIOMotor(void) {
 	static char state = 0;
-
-	switch(state) {
+    switch(state) {
 		case 0:
 			if (usuariActualSIO > -1) {
 				userPtr = UgetUserName(usuariActualSIO);
@@ -21,7 +20,6 @@ void SIOMotor(void) {
 		break;
 		case 1:
 			if (*userPtr == '\0' && TXSTAbits.TRMT) {
-				usuariActualSIO = -1;
 				TXREG = 13;
 				state = 2;
 			}
@@ -78,8 +76,7 @@ void SIOMotor(void) {
 			if (LcLliure()) {
 				CToAReset();
 				CToAConverteix(UgetScore(usuariActualSIO));
-				usuariActualSIO = -1;
-				state = 0;
+				state = 7;
 			}
 		break;
 		case 8:
@@ -87,7 +84,16 @@ void SIOMotor(void) {
 				state = 0;
 			}
 		break;
+		case 7:
+			if (LcLliure() && CToAHaAcabat() == 250) {
+				LcGotoXY(12,1);
+				LcNewString(CToAobtenir());
+				usuariActualSIO = -1;
+				state = 8;
+			}
+		break;
 	}
+
 }
 
 void SIONovaDireccio(char num){
