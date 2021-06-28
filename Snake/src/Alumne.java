@@ -1,7 +1,7 @@
 import com.fazecast.jSerialComm.SerialPort;
 
 public class Alumne {
-    public static final int SNAKE_STEP_DELAY = 500; // Time to wait between snake steps in milliseconds
+    public static final int SNAKE_STEP_DELAY = 1000; // Time to wait between snake steps in milliseconds
     public static final int TIME_WAIT_MS = 100; // Time to wait before calling "getInput()" in milliseconds
     private static boolean  gameStarted = false;
     private static int playingTime;
@@ -39,7 +39,6 @@ public class Alumne {
         byte[] data = new byte[1];
         serialPort.readBytes(data,1);
         byte b = data[0];
-        System.out.println(b);
         if (!gameStarted) {
             if ((char) b != 13){
                 sb.append((char)b);
@@ -51,22 +50,26 @@ public class Alumne {
                 gameStarted = true;
             }
         }
-
+        System.out.print("clicat: " + b + "");
         switch (b){
             case 2:
                 snake.up();
+                System.out.println("up");
                 break;
             case 8:
                 snake.down();
+                System.out.println("down");
                 break;
             case 4:
                 snake.left();
+                System.out.println("left");
                 break;
             case 6:
                 snake.right();
                 break;
             case 12:
                 snake.setTime(++playingTime);//++time per no anar un segon atrassat
+                System.out.println("time++");
         }
     }
 
