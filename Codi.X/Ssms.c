@@ -3,7 +3,7 @@
 #include "Ssms.h"
 #include "TiTTimer.h"
 #include "MMenu.h"
-
+#define neg -1
 
 signed char lletraASCII = -1;
 char lletraInici[9] = "ADGJMPTW";
@@ -27,25 +27,24 @@ void SMotor(void) {
 			}
 			else if (novaTecla == -1 && TiGetTics(timerSMS)>= TSMS && lletraASCII != -1  && setSMSon == 1) {
 				MNovaLletra(lletraASCII);
-				lletraASCII = -1;
-				ultimaTecla = -1;
-				state = 0;
+				lletraASCII = neg;
+				ultimaTecla = neg;
 			}
 		break;
 		case 1:
 			if (novaTecla == ultimaTecla && TiGetTics(timerSMS) < TSMS) {
-				novaTecla = -1;
+				novaTecla = neg;
 				sumaPulsacions++;
 				lletraASCII++;
-				state = 2;
+				state++;
 			}
 			else if (novaTecla != -1 && novaTecla != ultimaTecla) {
 				MNovaLletra(lletraASCII);
 				lletraASCII = lletraInici[novaTecla-2];
 				ultimaTecla = novaTecla;
 				sumaPulsacions = 0;
-				novaTecla = -1;
-				state = 0;
+				novaTecla = neg;
+				state--;
 			}
 		break;
 		case 2:
@@ -58,22 +57,22 @@ void SMotor(void) {
 		break;
 		case 3:
 			if (novaTecla > 1 && novaTecla < 10) {
-				state = 1;
+				state--;
 			}
 			else if (novaTecla <= 1 && lletraASCII == -1) {
 				MNovaLletra(novaTecla+48);
-				novaTecla = -1;
+				novaTecla = neg;
 				state = 0;
 			}
 			else if (novaTecla <= 1 && lletraASCII != -1) {
 				MNovaLletra(lletraASCII);
-				lletraASCII = -1;
-				state = 4;
+				lletraASCII = neg;
+				state++;
 			}
 		break;
 		case 4:
 			MNovaLletra(novaTecla+48);
-			novaTecla = -1;
+			novaTecla = neg;
 			state = 0;
 		break;
 		case 5:
@@ -113,7 +112,7 @@ void SsetNovaTecla(char tecla){
 
 void SMSon(void){
     setSMSon = 1;
-    novaTecla = -1;
+    novaTecla = neg;
 }
 
 void SMSoff (void){
