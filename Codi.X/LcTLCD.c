@@ -1,6 +1,3 @@
-#ifndef LCTLCD_C_
-#define LCTLCD_C_
-
 #include <xc.h>
 #include "TiTTimer.h"
 #include "LcTLCD.h"
@@ -248,12 +245,14 @@ void LcNewString(char new_s[]){
     s_ptr = new_s;
     nou_s = 1;
 }
-
+void LcInsertFletxa(){
+    LcPutChar('-');
+    LcPutChar('>');
+}
 void LcPutFletxa(){ //no borra tot, compatible amb marquesina
     LcGotoXY(0,0);  //una alternativa seria cridar LcNewString("->"); 
                     //però dos caràcters s'ha comprovat que no trenca el cooperativisme, es trenca a >~4
-    LcPutChar('-');
-    LcPutChar('>');
+    LcInsertFletxa();
 }
 
 ////A eliminar quan no hi hagi espai, només debug
@@ -280,4 +279,3 @@ void LcLCD(void){
 __bit LcLliure(void){
     return !nou_s;
 }
-#endif

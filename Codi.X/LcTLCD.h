@@ -1,4 +1,6 @@
 //BY La Salle.
+#ifndef LCD_H
+#define LCD_H
 #include <xc.h>
 
 
@@ -63,3 +65,5 @@ void PutStringCooperatiu();
 void LcPutFletxa();
 void LcLCD();
 __bit LcLliure(void);
+void LcInsertFletxa(void);
+#endif

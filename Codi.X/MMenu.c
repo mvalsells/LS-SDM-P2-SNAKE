@@ -350,8 +350,7 @@ NovaTecla = -1;
 LcClear();
 if(posFletxa){
    LcGotoXY(0,1);
-   LcPutChar('-');
-   LcPutChar('>');
+   LcInsertFletxa();
 }else{
    LcPutFletxa();
 }
