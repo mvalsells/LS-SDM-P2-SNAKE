@@ -104,6 +104,6 @@ void SIOStartGame(char usuari){
     usuariActualSIO = usuari;
 }
 
-char SIOFiJoc(void){
+signed char SIOUsuariActual(void){
     return usuariActualSIO;
 }

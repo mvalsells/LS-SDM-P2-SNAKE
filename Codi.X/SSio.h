@@ -4,6 +4,6 @@
 void SIONovaDireccio(char num);
 void SIOMotor(void);
 void SIOStartGame(char usuari);
-char SIOFiJoc(void);
+signed char SIOUsuariActual(void);
 
 #endif

@@ -8,6 +8,7 @@
 
 signed char usuariActual = -1;
 signed char novaDireccio = 0;
+
 char JUsuari(void){
     return usuariActual;
 }
@@ -26,7 +27,11 @@ void JMotor(void){
 			}
 		break;
 		case 1:
-			if (HNouSegon() && LcLliure()) {
+            if (SIOUsuariActual() == -1) {
+				AlStop();
+				usuariActual = -1;
+				state = 0;
+			} else if (HNouSegon() && LcLliure()) {
 				HClearNouSegon();
 				LcGotoXY(2,1);
 				LcNewString(HTempsJocs());
@@ -38,11 +43,7 @@ void JMotor(void){
 				novaDireccio = -1;
 				state = 1;
 			}
-			else if (SIOFiJoc() == -1) {
-				AlStop();
-				usuariActual = -1;
-				state = 0;
-			}
+			
 		break;
 	}
 }
