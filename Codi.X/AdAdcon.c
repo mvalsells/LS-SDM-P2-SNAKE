@@ -4,7 +4,6 @@
 #include "LcTLCD.h"
 
 char valorADC = 127;
-char lastState = 0;
 __bit borram = 0;
 
 void AdInit(void){

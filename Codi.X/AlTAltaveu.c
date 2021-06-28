@@ -1,6 +1,7 @@
 #include "AlTAltaveu.h"
 #include "TiTTimer.h"
 #include <xc.h>
+#define PLAY 1
 
 static char timer_nota=PAUSA;
 static __bit reproduir=PAUSA;

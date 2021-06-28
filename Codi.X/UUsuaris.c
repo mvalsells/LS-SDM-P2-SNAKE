@@ -1,8 +1,8 @@
 #include <xc.h>
 #include "UUsuaris.h"
-
+#define ZERO 0
 typedef struct{
-    char username[11];
+    char username[15];
     unsigned char highScore;
 }Usuari;
 Usuari usuaris[20];
@@ -18,12 +18,12 @@ void UsersInit(void){
     //NOTA: s'executa un sol cop fora del bucle cooperatiu a la inicialitzacio
     //abans del programa, no afecta a la cooperativitat.
     for(char i = 0; i < 20; i++){
-        usuaris[i].username[0] = '\0';
-        usuaris[i].highScore = 0;
+        usuaris[i].username[ZERO] = '\0';
+        usuaris[i].highScore = ZERO;
     }
 }
 void UCancelaNouUser(){
-    createUser = 0;
+    createUser = ZERO;
    // usuaris[quin].username[0] = '\0';
 }
 
@@ -39,34 +39,34 @@ void UchangeScore(char score){
 }
 
 void UUsuarisNouUsuari(){
-    static char state = 0;
+    static char state = ZERO;
     switch(state) {
 		case 0:
-			if (createUser != 0 && numUsuaris >= 20) {
-				createUser = 0;
+			if (createUser != ZERO && numUsuaris >= 20) {
+				createUser = ZERO;
 			}
 			else if (createUser == 1 && numUsuaris < 20) {
-				state = 1;
+				state++;
 			}
 			else if (delUser > -1) {
-				usuaris[delUser].username[0] = '\0';
-				usuaris[delUser].highScore = 0;
+				usuaris[delUser].username[ZERO] = '\0';
+				usuaris[delUser].highScore = ZERO;
 				state = 2;
 			}
 		break;
 		case 1:
-			if (createUser == 0) {
-				state = 0;
+			if (createUser == ZERO) {
+				state--;
 			}
 		break;
 		case 2:
-			if (usuaris[delUser+1].username[0] != '\0' && delUser < 20) {
+			if (usuaris[delUser+1].username[ZERO] != '\0' && delUser < 20) {
 				usuaris[delUser] = usuaris[delUser+1];
 				delUser++;
 			}
 			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
 				delUser = -1;
-				state = 0;
+				state = ZERO;
 			}
 		break;
 	}
@@ -81,7 +81,7 @@ void UAfegirLletraUsername(char lletra){
         pos++;
     }else{
         usuaris[numUsuaris].username[pos] = '\0';
-        createUser = 0;
+        createUser = ZERO;
         numUsuaris++;
     }
     

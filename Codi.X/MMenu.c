@@ -10,14 +10,16 @@
 
 #define neg -1
 
-char selectUser[] = "1. Select User";
-char newUser[] = "New User";
+const char selectUser[] = "1. Select User";
+const char newUser[] = "New User";
 const char enterName[] = "Enter Name:";
 const char highScore[] = "High score:";
 const char enterNewName[] = "Enter New Name";
 const char currentTime[] = "Current Time";
 const char timeFormat[] = "(HH:mm):";
 const char Score[] = "Score:";
+const char editName[] = "Edit Name";
+const char deleteUser[] = "Delete User";
 
 unsigned char menuDalt = 0;
 signed char NovaTecla = neg;
