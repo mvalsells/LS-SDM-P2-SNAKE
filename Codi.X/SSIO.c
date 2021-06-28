@@ -15,18 +15,19 @@ void SIOMotor(void) {
 		case 0:
 			if (usuariActualSIO > -1) {
 				userPtr = UgetUserName(usuariActualSIO);
-				state = 1;
+				state++;
 			}
 		break;
 		case 1:
-			if (*userPtr == '\0' && TXSTAbits.TRMT) {
+            if(TXSTAbits.TRMT){
+                if (*userPtr == '\0') {
 				TXREG = 13;
-				state = 2;
-			}
-			else if (*userPtr != '\0' && TXSTAbits.TRMT) {
-				TXREG = *userPtr;
+				state++;
+                }else{
+                    TXREG = *userPtr;
 				userPtr++;
-			}
+                }
+            }
 		break;
 		case 2:
 			if (direccio != -1 && TXSTAbits.TRMT) {
@@ -37,25 +38,26 @@ void SIOMotor(void) {
 				LcGotoXY(12,1);
 				rebut = RCREG;
 				LcPutChar(RCREG);
-				state = 3;
+				state++;
 			}
 		break;
 		case 3:
-			if (PIR1bits.RCIF && rebut != 'X') {
-				LcGotoXY(13,1);
-				LcPutChar(RCREG);
-				state = 4;
-			}
-			else if (rebut == 'X' && PIR1bits.RCIF) {
-				rebut = RCREG;
-				//aqui tenim la ultima score en char;
-				if(rebut > UgetScore(usuariActualSIO)){
-				    UchangeScore(rebut);
-				}
-				CToAReset();
-				CToAConverteix(rebut);
-				state = 5;
-			}
+            if(PIR1bits.RCIF){
+                if(rebut != 'X'){
+                    LcGotoXY(13,1);
+                    LcPutChar(RCREG);
+                    state++;
+                }else{
+                    rebut = RCREG;
+                    //aqui tenim la ultima score en char;
+                    if(rebut > UgetScore(usuariActualSIO)){
+                        UchangeScore(rebut);
+                    }
+                    CToAReset();
+                    CToAConverteix(rebut);
+                    state = 5;
+                }
+            }
 		break;
 		case 4:
 			if (PIR1bits.RCIF) {
@@ -69,14 +71,14 @@ void SIOMotor(void) {
 				LcClear();
 				LcGotoXY(7,0);
 				LcNewString(CToAobtenir());
-				state = 6;
+				state++;
 			}
 		break;
 		case 6:
 			if (LcLliure()) {
 				CToAReset();
 				CToAConverteix(UgetScore(usuariActualSIO));
-				state = 7;
+				state++;
 			}
 		break;
 		case 8:
@@ -89,7 +91,7 @@ void SIOMotor(void) {
 				LcGotoXY(12,1);
 				LcNewString(CToAobtenir());
 				usuariActualSIO = -1;
-				state = 8;
+				state++;
 			}
 		break;
 	}
