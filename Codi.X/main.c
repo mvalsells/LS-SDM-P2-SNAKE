@@ -80,20 +80,20 @@ void main(void) {
     Sinit();
     //UsersInit();//no fa res
     while(1){
-        //AlTAltaveu();
-        //GLCDMotor();
-        //UUsuarisNouUsuari();
-        //MTMenu();
-        //JMotor();
-        //SIOMotor();
-        //CtoA();
+        AlTAltaveu();
+        GLCDMotor();
+        UUsuarisNouUsuari();
+        MTMenu();
+        JMotor();
+        SIOMotor();
+        CtoA();
              
-        //HHoraMotor();
+        HHoraMotor();
         AdMotor();
         
-        //TeTeclat();//antapenultim
-        //SMotor(); //penultim
-        //LcLCD();//ultim
+        TeTeclat();//antapenultim
+        SMotor(); //penultim
+        LcLCD();//ultim
     }
     return;
 }

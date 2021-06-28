@@ -53,6 +53,4 @@ void JJuguem(char usuari){
 }
 void JnovaTecla(char direccio){
     novaDireccio = direccio;
-    LcGotoXY(0,0);
-    LcPutChar(direccio+'0');
 }
