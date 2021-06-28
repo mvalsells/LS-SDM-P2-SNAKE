@@ -10,11 +10,11 @@
 
 #define neg -1
 
-const char selectUser[] = "1. Select User";
-const char newUser[] = "New User";
-const char enterName[] = "Enter Name:";
-const char highScore[] = "High score:";
-const char enterNewName[] = "Enter New Name";
+char selectUser[] = "1. Select User";
+char newUser[] = "New User";
+char enterName[] = "Enter Name:";
+char highScore[] = "High score:";
+char enterNewName[] = "Enter New Name";
 const char currentTime[] = "Current Time";
 const char timeFormat[] = "(HH:mm):";
 const char Score[] = "Score:";
@@ -70,7 +70,7 @@ void MTMenu(void){
 				NoFerMenu();
 				state = 2;
 			}
-			else if (NovaTecla == 8 && menuDalt == 3) {
+			else if (NovaTecla == 10 && menuDalt == 3) {
 				LcClear();
 				NoFerMenu();
 				menuDalt = 0;

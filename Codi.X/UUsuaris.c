@@ -1,7 +1,7 @@
 #include <xc.h>
 #include "UUsuaris.h"
 #define ZERO 0
-#define NUMUSERS 1
+#define NUMUSERS 20
 typedef struct{
     char username[11];
     unsigned char highScore;
@@ -43,7 +43,7 @@ void UUsuarisNouUsuari(){
     static char state = ZERO;
     switch(state) {
 		case 0:
-			if (createUser != ZERO && numUsuaris >= 20) {
+			if (createUser != ZERO && numUsuaris > 19) {
 				createUser = ZERO;
 			}
 			else if (createUser == 1 && numUsuaris < 20) {

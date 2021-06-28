@@ -80,7 +80,7 @@ void main(void) {
     Sinit();
     //UsersInit();//no fa res
     while(1){
-        AlTAltaveu();
+        //AlTAltaveu();
         GLCDMotor();
         UUsuarisNouUsuari();
         MTMenu();
@@ -89,7 +89,7 @@ void main(void) {
         CtoA();
              
         HHoraMotor();
-        AdMotor();
+        //AdMotor();
         
         TeTeclat();//antapenultim
         SMotor(); //penultim
