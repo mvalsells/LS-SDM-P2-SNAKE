@@ -313,13 +313,7 @@ void MTMenu(void){
 				state = 0;
 			}
 			else if (NovaTecla == 10) {
-				NovaTecla = -1;
-				LcClear();
-				LcPutFletxa();
-				LcGotoXY(3,0);
-				LcNewString(editName);
-				posFletxa = 0;
-				state = 31;
+				state = 34;
 			}
 		break;
 		case 31:
@@ -331,16 +325,10 @@ void MTMenu(void){
 		break;
 		case 32:
 			if (NovaTecla == 8) {
-				LcGotoXY(0,1);
-				LcPutFletxa();
-				NovaTecla = 1;
 				posFletxa = 1;
 				state = 32;
 			}
 			else if (NovaTecla == 2) {
-				LcGotoXY(0,3);
-				LcPutFletxa();
-				NovaTecla = -1;
 				posFletxa = 0;
 				state = 32;
 			}
@@ -352,11 +340,20 @@ void MTMenu(void){
 				LcClear();
 				LcNewString(enterNewName);
 				NovaTecla = -1;
-				state = 36;
+				state = 33;
 			}
 		break;
-		case 36:
+		case 33:
 
+		break;
+		case 34:
+            NovaTecla = -1;
+            LcClear();
+            if(posFletxa) LcGotoXY(0,1);
+            LcPutFletxa();
+            LcGotoXY(3,0);
+            LcNewString(editName);
+            state = 31;
 		break;
 	}
 }
