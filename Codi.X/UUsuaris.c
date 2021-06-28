@@ -1,11 +1,12 @@
 #include <xc.h>
 #include "UUsuaris.h"
 #define ZERO 0
+#define NUMUSERS 1
 typedef struct{
     char username[11];
     unsigned char highScore;
 }Usuari;
-Usuari usuaris[1];
+Usuari usuaris[NUMUSERS];
 unsigned char numUsuaris = 0;
 __bit createUser = 0;
 unsigned char quin = 0;
@@ -64,7 +65,7 @@ void UUsuarisNouUsuari(){
 				usuaris[delUser] = usuaris[delUser+1];
 				delUser++;
 			}
-			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
+			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0' AKA tots igualment i una var menys*/) {
 				delUser = -1;
 				state = ZERO;
 			}
@@ -81,6 +82,7 @@ void UAfegirLletraUsername(char lletra){
         pos++;
     }else{
         usuaris[numUsuaris].username[pos] = '\0';
+        pos = ZERO;
         createUser = ZERO;
         numUsuaris++;
     }
@@ -101,4 +103,8 @@ void UtrobaUsuari(void){
 
 void UdelUser(char index){
     delUser = index;
+}
+void UeditUsername(char menuDalt, char pos, char novaLletra){
+    usuaris[menuDalt].username[pos] = novaLletra;
+    if(novaLletra = '\0') pos = 0;//si ens falta espai de flash, fer serivr una var nova "pos = pos2" pq sigui local
 }

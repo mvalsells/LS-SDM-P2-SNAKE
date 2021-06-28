@@ -1,6 +1,6 @@
 #include <xc.h>
 #include "TiTTimer.h"
-#define TI_NUMTIMERS 8
+#define TI_NUMTIMERS 7
 #define TI_MAXTICS 61000
 #define TI_FALSE 0
 #define TI_TRUE 1

@@ -27,6 +27,7 @@ signed char novaLletra = neg;
 char horaTmp[5];
 unsigned char pos;
 char username[11];
+__bit posFletxa = 0;
 
 
 void MTMenu(void){
@@ -39,6 +40,7 @@ void MTMenu(void){
 				GLCDMostraMenu(menuDalt);
 				NovaTecla = -1;
 				SMSoff();
+				LcCursorOff();
 				state = 1;
 			}
 		break;
@@ -55,7 +57,7 @@ void MTMenu(void){
 				LcClear();
 				NoFerMenu();
 				LcNewString("Enter new time");
-                NovaTecla = -1;
+				NovaTecla = -1;
 				state = 11;
 			}
 			else if (NovaTecla == 10 && menuDalt == 0) {
@@ -67,6 +69,12 @@ void MTMenu(void){
 				LcClear();
 				NoFerMenu();
 				state = 2;
+			}
+			else if (NovaTecla == 8 && menuDalt == 3) {
+				LcClear();
+				NoFerMenu();
+				menuDalt = 0;
+				state = 30;
 			}
 		break;
 		case 2:
@@ -184,6 +192,7 @@ void MTMenu(void){
 			else if (NovaTecla == 11 || UgetNumUsuaris() >= 20) {
 				LcCursorOff();
 				UCancelaNouUser();
+				menuDalt = 0;
 				state = 0;
 			}
 		break;
@@ -271,6 +280,72 @@ void MTMenu(void){
 		break;
 		case 27:
 			if (LcLliure() && NovaTecla == 10) {
+				menuDalt = 0;
+				state = 0;
+			}
+		break;
+		case 28:
+			if (NovaTecla == 2) {
+				if (menuDalt>0) menuDalt--;
+				state = 30;
+			}
+			else if (NovaTecla == 8) {
+				if (menuDalt<UgetNumUsuaris()-1) menuDalt++;
+				state = 30;
+			}
+			else if (NovaTecla == 10 && LcLliure()) {
+				NovaTecla = -1;
+				LcClear();
+				LcPutFletxa();
+				LcGotoXY(3,0);
+				LcNewString(editName);
+				posFletxa = 0;
+				state = 29;
+			}
+			else if (NovaTecla == 11) {
+				menuDalt = 0;
+				state = 0;
+			}
+		break;
+		case 30:
+
+		break;
+		case 29:
+			if (LcLliure()) {
+				LcGotoXY(3,1);
+				LcNewString(deleteUser);
+				state = 31;
+			}
+		break;
+		case 31:
+			if (LcLliure()) {
+				LcGotoXY(3,1);
+				if(menuDalt+2 <= UgetNumUsuaris()) LcNewString(UgetUserName(menuDalt+1));
+				state = 28;
+			}
+		break;
+		case 32:
+			if (LcLliure()) {
+				LcGotoXY(0,1);
+				LcCursorOn();
+				SMSon();
+				NovaTecla = -1;
+				pos = 0;
+				state = 33;
+			}
+		break;
+		case 33:
+			if (novaLletra > 47 && NovaTecla != 10) {
+				LcPutChar(novaLletra);
+				NovaTecla = -1;
+				UeditUsername(menuDalt, pos, novaLletra);
+				novaLletra = -1;
+				pos++;
+				state = 33;
+			}
+			else if (NovaTecla == 10) {
+				UeditUsername(menuDalt,pos, '\0');
+				menuDalt = 0;
 				state = 0;
 			}
 		break;

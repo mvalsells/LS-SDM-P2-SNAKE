@@ -11,4 +11,6 @@ void UAfegirLletraUsername(char lletra);
 char UgetNumUsuaris(void);
 void UCancelaNouUser(void);
 void UchangeScore(char score);
+
+void UeditUsername(char menuDalt, char pos, char novaLletra);
 #endif
