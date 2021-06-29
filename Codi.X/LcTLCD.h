@@ -18,6 +18,10 @@
 #define RWDown()				(LATDbits.LATD7 = 0)
 #define EnableUp()				(LATCbits.LATC4 = 1)
 #define EnableDown()            (LATCbits.LATC4 = 0)
+
+#define CURSORSHIFT 0x10
+#define MOVELEFT 0x00
+#define DISPLAYMOVE 0x08
 // -------------------------------END--HARDWARE---AREA--------------------
 
 
@@ -30,6 +34,10 @@ void LcInit(char rows, char columns);
 
 void LcEnd(void);
 // The destructor
+
+void LcScroll(void);
+// Pre: Data saved to the ram in order to shift it
+// Post: Shifts all the rows to the left in a ciclic way
 
 void LcClear(void);
 // Post: Clears the display and sets the cursor to its previous state. 

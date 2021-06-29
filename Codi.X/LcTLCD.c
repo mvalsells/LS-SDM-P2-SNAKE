@@ -34,6 +34,10 @@ void CantaData(char Data);
 void WaitForBusy(void);
 void EscriuPrimeraOrdre(char);
 
+void LcScroll(void){
+  CantaIR(CURSORSHIFT | DISPLAYMOVE | MOVELEFT);
+}
+
 void LcInit(char rows, char columns) {
 // Pre: Rows = {1, 2, 4}  Columns = {8, 16, 20, 24, 32, 40 }
 // Pre: It needs 40ms of tranquility between VCC raising until this constructor is called.

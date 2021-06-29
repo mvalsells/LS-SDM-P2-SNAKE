@@ -2,7 +2,7 @@
 #include "TiTTimer.h"
 #include "LcTLCD.h"
 #include "GLCDGestioLCD.h"
-const char menu[7][22] = {
+const char menu[][22] = {
     "1. New game",
     "2. Show top 5 scores ",
     "3. Show users",

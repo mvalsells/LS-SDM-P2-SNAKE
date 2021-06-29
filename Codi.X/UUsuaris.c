@@ -15,6 +15,8 @@ __bit findNextUser = 0;
 signed char usuariTrobat = -1;
 signed char delUser = -1;
 
+unsigned char top5index[] = {-1, -1, -1, -1};
+
 void UsersInit(void){
     //NOTA: s'executa un sol cop fora del bucle cooperatiu a la inicialitzacio
     //abans del programa, no afecta a la cooperativitat.
@@ -26,6 +28,10 @@ void UsersInit(void){
 void UCancelaNouUser(){
     createUser = ZERO;
    // usuaris[quin].username[0] = '\0';
+}
+
+char UgetUserNameChar(char quin, char pos){
+    return usuaris[quin].username[pos];
 }
 
 char* UgetUserName(char quin){
