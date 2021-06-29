@@ -12,5 +12,6 @@ void mostraMenu(char mostra);
 void MTInit();
 void MsetNovaTecla(char tecla);
 void MNovaLletra(char lletra);
+void Minit(void);
 
 #endif
