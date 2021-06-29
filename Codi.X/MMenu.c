@@ -83,10 +83,9 @@ void MTMenu(void){
 				menuDalt = 0;
 				state = 28;
 			}
-			else if (NovaTecla == 10 && menuDalt == 1 && UgetNumUsuaris()>0) {
+			else if (NovaTecla == 10 && menuDalt == 2 && UgetNumUsuaris()>0) {
 				NoFerMenu();
 				menuDalt = 0;
-				LcClear();
 				state = 36;
 			}
 		break;
@@ -386,65 +385,20 @@ void MTMenu(void){
 			}
 		break;
 		case 36:
-			CToAReset();
-			CToAConverteix(UgetScore(menuDalt));
+			LcClear();
 			pos = 0;
 			state = 37;
 		break;
 		case 37:
-			if (CToAHaAcabat() == 250) {
-				score_ptr = CToAobtenir();
-				state = 38;
-			}
+			
 		break;
 		case 38:
-			if(pos < 10){
-				LcGotoXY(pos,0);
-				if(UgetUserName(menuDalt)+pos != '\0'){
-					LcPutChar(UgetUserName(menuDalt)+pos);
-				}	
-			}
-			if(desplacats-1 > 0){
-				LcGotoXY(pos,0);
-				if(UgetUserName(menuDalt+1)+desplacats-1 != '\0'){
-					LcPutChar(UgetUserName(menuDalt+1)+desplacats-1);
-				}
-			}
-			pos++;
-			state = 39;
-		break;
-		case 39:
 			if (pos < 16) {
-				state = 38;
+				state = 37;
 			}
 			else if (pos > 15) {
-				TiResetTics(timerMenu);
-				pos = 0;
 				desplacats++;
-				state = 40;
-			}
-		break;
-		case 40:
-			if (TiGetTics(timerMenu) > 1999) {
-				LcClear();
-				state = 41;
-			}
-			else if (NovaTecla == 11) {
-				menuDalt = 0;
-				state = 0;
-			}
-		break;
-		case 41:
-			if (menuDalt < UgetNumUsuaris() && desplacats < 15) {
-				state = 38;
-			}
-			else if (menuDalt == UgetNumUsuaris()) {
-				menuDalt = 0;
-				state = 0;
-			}
-			else if (desplacats == 15) {
-				desplacats = 0;
-				menuDalt++;
+				if(desplacats == 18) desplacats = 0;
 				state = 36;
 			}
 		break;
