@@ -85,6 +85,7 @@ void MTMenu(void){
 			else if (NovaTecla == 10 && menuDalt == 2 && UgetNumUsuaris()>0) {
 				NoFerMenu();
 				menuDalt = 0;
+				LcClear();
 				state = 36;
 			}
 		break;
@@ -384,21 +385,86 @@ void MTMenu(void){
 			}
 		break;
 		case 36:
-			LcClear();
-			pos = 0;
-			state = 37;
-		break;
-		case 37:
-			
-		break;
-		case 38:
-			if (pos < 16) {
+			if (LcLliure()) {
+                LcGotoXY(0,0);
+				LcNewString(UgetUserName(menuDalt));
+				menuDalt++;
 				state = 37;
 			}
-			else if (pos > 15) {
-				desplacats++;
-				if(desplacats == 18) desplacats = 0;
+		break;
+		case 37:
+			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
+				LcGotoXY(0,1);
+				LcNewString(UgetUserName(menuDalt));
+				menuDalt++;
+				state = 38;
+			}
+			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
+				LcGotoXY(17,0);
+				LcNewString(UgetUserName(menuDalt-1));
+				state = 40;
+			}
+		break;
+		case 38:
+			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
+				LcGotoXY(17,0);
+				LcNewString(UgetUserName(menuDalt));
+				menuDalt++;
+				state = 39;
+			}
+			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
+				LcGotoXY(17,0);
+				LcNewString(UgetUserName(menuDalt-2));
+				state = 43;
+			}
+		break;
+		case 39:
+			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
+				LcGotoXY(17,1);
+				LcNewString(UgetUserName(menuDalt));
+				menuDalt++;
+				state = 40;
+			}
+			else if (menuDalt == UgetNumUsuaris()) {
+				state = 40;
+			}
+		break;
+		case 40:
+			if (LcLliure()) {
+				TiResetTics(timerMenu);
+				pos = 0;
+				state = 41;
+			}
+		break;
+		case 41:
+			if (TiGetTics(timerMenu) > 1000) {
+				state = 42;
+			}
+			else if (NovaTecla == 11) {
+				menuDalt = 0;
+				state = 0;
+			}
+		break;
+		case 42:
+			if (pos < 16) {
+				TiResetTics(timerMenu);
+				LcScroll();
+				pos++;
+				state = 41;
+			}
+			else if (pos>15 && menuDalt < UgetNumUsuaris()) {
+				state = 38;
+			}
+			else if (pos > 15 && menuDalt == UgetNumUsuaris()) {
+				menuDalt = 0;
 				state = 36;
+			}
+		break;
+		case 43:
+			if (LcLliure()) {
+				LcGotoXY(17,1);
+				LcNewString(UgetUserName(menuDalt-1));
+				state = 40;
 			}
 		break;
 	}

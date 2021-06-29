@@ -9,7 +9,7 @@
 
 signed char usuariActual = -1;
 signed char novaDireccio = 0;
-const char stringText[] = "T 00:00 | S 000";
+char stringText[] = "T 00:00 | S 000";
 signed char JUsuari(void){
     return usuariActual;
 }

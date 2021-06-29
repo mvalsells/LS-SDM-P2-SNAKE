@@ -58,27 +58,6 @@ void UMotorUsuaris(){
 			else if (delUser > -1) {
 				usuaris[delUser].username[0] = '\0';
 				usuaris[delUser].highScore = 0;
-				if(top5indexs[0] == delUser){
-                    top5indexs[0] = top5indexs[1];
-                    top5indexs[1] = top5indexs[2];
-					top5indexs[2] = top5indexs[3];
-					top5indexs[3] = top5indexs[4];
-					top5indexs[4] = -1;
-				}else if(top5indexs[1] == delUser){
-					top5indexs[1] = top5indexs[2];
-					top5indexs[2] = top5indexs[3];
-					top5indexs[3] = top5indexs[4];
-					top5indexs[4] = -1;
-				}else if(top5indexs[2] == delUser){
-					top5indexs[2] = top5indexs[3];
-					top5indexs[3] = top5indexs[4];
-					top5indexs[4] = -1;
-				}else if(top5indexs[3] == delUser){
-					top5indexs[3] = top5indexs[4];
-					top5indexs[4] = -1;
-				}else if(top5indexs[4] == delUser){
-					top5indexs[4] = -1;
-				}
 				state = 2;
 			}
 		break;
