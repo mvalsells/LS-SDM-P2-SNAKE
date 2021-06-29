@@ -7,6 +7,7 @@
 #include "UUsuaris.h"
 #include "JJoc.h"
 #include "CtoA.h"
+#include "TiTTimer.h"
 
 #define neg -1
 
@@ -28,11 +29,18 @@ char horaTmp[5];
 unsigned char pos;
 char username[11];
 __bit posFletxa = 0;
+char timerMenu;
+char desplacats;
+char *score_ptr;
+
+void Minit(void){
+    timerMenu = TiGetTimer();
+}
 
 
 void MTMenu(void){
     static char state = 0;
-	switch(state) {
+    switch(state) {
 		case 0:
 			if (LcLliure()) {
 				LcClear();
@@ -74,6 +82,12 @@ void MTMenu(void){
 				NoFerMenu();
 				menuDalt = 0;
 				state = 28;
+			}
+			else if (NovaTecla == 10 && menuDalt == 1 && UgetNumUsuaris()>0) {
+				NoFerMenu();
+				menuDalt = 0;
+				LcClear();
+				state = 36;
 			}
 		break;
 		case 2:
@@ -346,17 +360,7 @@ void MTMenu(void){
 			}
 		break;
 		case 34:
-NovaTecla = -1;
-LcClear();
-if(posFletxa){
-   LcGotoXY(0,1);
-   LcInsertFletxa();
-}else{
-   LcPutFletxa();
-}
-LcGotoXY(3,0);
-LcNewString(editName);
-state = 31;
+
 		break;
 		case 33:
 			if (LcLliure()) {
@@ -379,6 +383,69 @@ state = 31;
 				pos++;
 				novaLletra = -1;
 				state = 35;
+			}
+		break;
+		case 36:
+			CToAReset();
+			CToAConverteix(UgetScore(menuDalt));
+			pos = 0;
+			state = 37;
+		break;
+		case 37:
+			if (CToAHaAcabat() == 250) {
+				score_ptr = CToAobtenir();
+				state = 38;
+			}
+		break;
+		case 38:
+			if(pos < 10){
+				LcGotoXY(pos,0);
+				if(UgetUserName(menuDalt)+pos != '\0'){
+					LcPutChar(UgetUserName(menuDalt)+pos);
+				}	
+			}
+			if(desplacats-1 > 0){
+				LcGotoXY(pos,0);
+				if(UgetUserName(menuDalt+1)+desplacats-1 != '\0'){
+					LcPutChar(UgetUserName(menuDalt+1)+desplacats-1);
+				}
+			}
+			pos++;
+			state = 39;
+		break;
+		case 39:
+			if (pos < 16) {
+				state = 38;
+			}
+			else if (pos > 15) {
+				TiResetTics(timerMenu);
+				pos = 0;
+				desplacats++;
+				state = 40;
+			}
+		break;
+		case 40:
+			if (TiGetTics(timerMenu) > 1999) {
+				LcClear();
+				state = 41;
+			}
+			else if (NovaTecla == 11) {
+				menuDalt = 0;
+				state = 0;
+			}
+		break;
+		case 41:
+			if (menuDalt < UgetNumUsuaris() && desplacats < 15) {
+				state = 38;
+			}
+			else if (menuDalt == UgetNumUsuaris()) {
+				menuDalt = 0;
+				state = 0;
+			}
+			else if (desplacats == 15) {
+				desplacats = 0;
+				menuDalt++;
+				state = 36;
 			}
 		break;
 	}

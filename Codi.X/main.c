@@ -78,6 +78,7 @@ void main(void) {
     GLCDInit();
     HInit();
     Sinit();
+    Minit();
     //UsersInit();//no fa res
     while(1){
         AlTAltaveu();

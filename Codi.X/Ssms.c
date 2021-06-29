@@ -57,7 +57,7 @@ void SMotor(void) {
 		break;
 		case 3:
 			if (novaTecla > 1 && novaTecla < 10) {
-				state--;
+				state = 1;
 			}
 			else if (novaTecla <= 1 && lletraASCII == -1) {
 				MNovaLletra(novaTecla+48);
