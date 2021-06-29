@@ -15,7 +15,7 @@ __bit findNextUser = 0;
 signed char usuariTrobat = -1;
 signed char delUser = -1;
 
-unsigned char top5index[] = {-1, -1, -1, -1};
+unsigned char top5indexs[] = {-1, -1, -1, -1, -1};
 
 void UsersInit(void){
     //NOTA: s'executa un sol cop fora del bucle cooperatiu a la inicialitzacio
@@ -45,35 +45,56 @@ void UchangeScore(char score){
     usuaris[quin].highScore = score;
 }
 
-void UUsuarisNouUsuari(){
+void UMotorUsuaris(){
     static char state = ZERO;
     switch(state) {
 		case 0:
-			if (createUser != ZERO && numUsuaris > 19) {
-				createUser = ZERO;
+			if (createUser != 0 && numUsuaris >19) {
+				createUser = 0;
 			}
 			else if (createUser == 1 && numUsuaris < 20) {
-				state++;
+				state = 1;
 			}
 			else if (delUser > -1) {
-				usuaris[delUser].username[ZERO] = '\0';
-				usuaris[delUser].highScore = ZERO;
+				usuaris[delUser].username[0] = '\0';
+				usuaris[delUser].highScore = 0;
+				if(top5indexs[0] == delUser){
+                    top5indexs[0] = top5indexs[1];
+                    top5indexs[1] = top5indexs[2];
+					top5indexs[2] = top5indexs[3];
+					top5indexs[3] = top5indexs[4];
+					top5indexs[4] = -1;
+				}else if(top5indexs[1] == delUser){
+					top5indexs[1] = top5indexs[2];
+					top5indexs[2] = top5indexs[3];
+					top5indexs[3] = top5indexs[4];
+					top5indexs[4] = -1;
+				}else if(top5indexs[2] == delUser){
+					top5indexs[2] = top5indexs[3];
+					top5indexs[3] = top5indexs[4];
+					top5indexs[4] = -1;
+				}else if(top5indexs[3] == delUser){
+					top5indexs[3] = top5indexs[4];
+					top5indexs[4] = -1;
+				}else if(top5indexs[4] == delUser){
+					top5indexs[4] = -1;
+				}
 				state = 2;
 			}
 		break;
 		case 1:
-			if (createUser == ZERO) {
-				state--;
+			if (createUser == 0) {
+				state = 0;
 			}
 		break;
 		case 2:
-			if (usuaris[delUser+1].username[ZERO] != '\0' && delUser < 20) {
+			if (usuaris[delUser+1].username[0] != '\0' && delUser < 20) {
 				usuaris[delUser] = usuaris[delUser+1];
 				delUser++;
 			}
-			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0' AKA tots igualment i una var menys*/) {
+			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
 				delUser = -1;
-				state = ZERO;
+				state = 0;
 			}
 		break;
 	}

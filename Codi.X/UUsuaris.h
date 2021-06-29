@@ -1,7 +1,7 @@
 #ifndef UUsuaris_
 #define UUsuaris_
 
-void UUsuarisNouUsuari(void);
+void UMotorUsuaris(void);
 char* UgetUserName(char quin);
 char UgetScore(char quin);
 void UdelUser(char quin);

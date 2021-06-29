@@ -83,7 +83,7 @@ void main(void) {
     while(1){
         AlTAltaveu();
         GLCDMotor();
-        UUsuarisNouUsuari();
+        UMotorUsuaris();
         MTMenu();
         JMotor();
         SIOMotor();
