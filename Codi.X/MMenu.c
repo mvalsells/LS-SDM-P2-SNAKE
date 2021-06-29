@@ -9,7 +9,6 @@
 #include "CtoA.h"
 #include "TiTTimer.h"
 
-#define neg -1
 
 char selectUser[] = "1. Select User";
 char newUser[] = "New User";
@@ -23,8 +22,8 @@ const char editName[] = "Edit Name";
 const char deleteUser[] = "Delete User";
 
 unsigned char menuDalt = 0;
-signed char NovaTecla = neg;
-signed char novaLletra = neg;
+signed char NovaTecla = -1;
+signed char novaLletra = -1;
 char horaTmp[5];
 unsigned char pos;
 char username[11];

@@ -32,7 +32,7 @@ void TeTeclat(void) {
 				Col2=0;
 				Col3=0;
 				cols=0;
-				state = 1;
+				state++;
 			}
 			else if (files!=0) {
 				TiResetTics(tiTeclat);
@@ -45,7 +45,7 @@ void TeTeclat(void) {
 				Col2=1;
 				Col3=0;
 				cols=1;
-				state = 2;
+				state++;
 			}
 			else if (files!=0) {
 				TiResetTics(tiTeclat);
@@ -62,12 +62,12 @@ void TeTeclat(void) {
 			}
 			else if (files!=0) {
 				TiResetTics(tiTeclat);
-				state = 3;
+				state++;
 			}
 		break;
 		case 3:
 			if (TiGetTics(tiTeclat)>=TREBOT) {
-				state = 4;
+				state++;
 			}
 		break;
 		case 4:
@@ -75,22 +75,22 @@ void TeTeclat(void) {
 				state = 1;
 			}
 			else if (files!=0) {
-				//ultimaTecla=teclaPremuda[files-1][cols];
+				//ultimaTecla=teclaPremuda[files-1][cols];//comentar aixo, borram?
                 MsetNovaTecla(teclaPremuda[files-1][cols]);
                 SsetNovaTecla(teclaPremuda[files-1][cols]);
                 JnovaTecla(teclaPremuda[files-1][cols]);
-				state = 5;
+				state++;
 			}
 		break;
 		case 5:
 			if (files==0) {
 				TiResetTics(tiTeclat);
-				state = 6;
+				state++;
 			}
 		break;
 		case 6:
 			if (TiGetTics(tiTeclat)>=TREBOT) {
-				state = 7;
+				state++;
 			}
 		break;
 		case 7:

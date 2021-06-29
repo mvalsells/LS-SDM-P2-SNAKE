@@ -53,7 +53,7 @@ void GLCDMotor(void) {
 				state = 5;
 			}
 			else if (length1 >= 17 && ferMenu == 1) {
-				state = 3;
+				state++;
 			}
 		break;
 		case 3:
@@ -72,13 +72,12 @@ void GLCDMotor(void) {
 				j++;
 				k1++;
 				if(menu[menuDalt][k1] == '\0') k1 = 0;
-				state = 3;
 			}
 		break;
 		case 6:
 			if (menuDalt<5) {
 				LcPutFletxa();
-				state = 7;
+				state++;
 			}
 			else if (menuDalt >= 5) {
 				LcPutFletxa();
@@ -108,12 +107,12 @@ void GLCDMotor(void) {
 				k1 = 0;
 				k2 = 0;
 				newString = 0;
-				state = 1;
+				state++;
 			}
 		break;
 		case 1:
 			if (menu[menuDalt][length1] == '\0' && menuDalt>=5) {
-				state = 2;
+				state++;
 			}
 			else if (menu[menuDalt][length1] != '\0') {
 				length1++;
@@ -126,7 +125,7 @@ void GLCDMotor(void) {
 			if (length2 < 17 && ferMenu == 1) {
 				LcGotoXY(0,1);
 				LcNewString(menu[menuDalt+1]);
-				state = 8;
+				state++;
 			}
 			else if (length2 >= 17 && ferMenu == 1) {
 				state = 9;
@@ -139,7 +138,6 @@ void GLCDMotor(void) {
 				j++;
 				k2++;
 				if(menu[menuDalt+1][k2] == '\0') k2 = 0;
-				state = 9;
 			}
 			else if (j>=16) {
 				min2++;
@@ -148,7 +146,7 @@ void GLCDMotor(void) {
 				if (menu[menuDalt+1][min2] == '\0') min2=0;
 				j=0;
 				k2=min2;
-				state = 10;
+				state++;
 			}
 		break;
 		case 11:
@@ -163,7 +161,7 @@ void GLCDMotor(void) {
 		break;
 		case 10:
 			TiResetTics(timerGLCD);
-			state = 11;
+			state++;
 		break;
 		case 8:
 			if (LcLliure()) {

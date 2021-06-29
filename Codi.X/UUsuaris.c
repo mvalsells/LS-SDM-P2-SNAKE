@@ -53,7 +53,7 @@ void UMotorUsuaris(){
 				createUser = 0;
 			}
 			else if (createUser == 1 && numUsuaris < 20) {
-				state = 1;
+				state++;
 			}
 			else if (delUser > -1) {
 				usuaris[delUser].username[0] = '\0';
@@ -84,7 +84,7 @@ void UMotorUsuaris(){
 		break;
 		case 1:
 			if (createUser == 0) {
-				state = 0;
+				state--;
 			}
 		break;
 		case 2:
