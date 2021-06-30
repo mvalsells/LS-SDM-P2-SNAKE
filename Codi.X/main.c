@@ -75,28 +75,28 @@ void main(void) {
     AlInit();
     AdInit();
     LcInit(2,16);
-//    TeInit();
-//    GLCDInit();
-//    HInit();
-//    Sinit();
-//    Minit();
-    ScInit();
+    TeInit();
+    GLCDInit();
+    HInit();
+    Sinit();
+    Minit();
+    //ScInit(); - DEBUGGING
     //UsersInit();//no fa res
     while(1){
-//        AlTAltaveu();
-//        GLCDMotor();
-//        UMotorUsuaris();
-//        MTMenu();
-//        JMotor();
-//        SIOMotor();
-//        CtoA();
-//             
-//        HHoraMotor();
-//        AdMotor();
-//        
-//        TeTeclat();//antapenultim
-//        SMotor(); //penultim
-        ScScroll();
+        AlTAltaveu();
+        GLCDMotor();
+        UMotorUsuaris();
+        MTMenu();
+        JMotor();
+        SIOMotor();
+        CtoA();
+             
+        HHoraMotor();
+        AdMotor();
+        
+        TeTeclat();//antapenultim
+        SMotor(); //penultim
+        //ScScroll(); - DEBUGING
         LcLCD();//ultim
     }
     return;
