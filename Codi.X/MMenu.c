@@ -425,7 +425,7 @@ void MTMenu(void){
 				menuDalt++;
 				state = 40;
 			}
-			else if (menuDalt == UgetNumUsuaris() && LcLiure()) {
+			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
 				state = 40;
 			}
 		break;
