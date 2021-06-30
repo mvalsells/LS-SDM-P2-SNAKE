@@ -40,7 +40,7 @@ void Minit(void){
 
 void MTMenu(void){
     static char state = 0;
-   switch(state) {
+	switch(state) {
 		case 0:
 			if (LcLliure()) {
 				LcClear();
@@ -178,7 +178,7 @@ void MTMenu(void){
 				NovaTecla = -1;
 				state = 20;
 			}
-			else if (NovaTecla == 2) {
+			else if (NovaTecla == 2 && LcLliure()) {
 				NovaTecla = -1;
 				SMSon();
 				LcCursorOn();
@@ -247,6 +247,7 @@ void MTMenu(void){
 				LcGotoXY(0,1);
 				pos = 0;
 				UcreateUser();
+				novaLletra = -1;
 				state = 17;
 			}
 		break;
