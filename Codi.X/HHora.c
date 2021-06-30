@@ -27,11 +27,7 @@ void HInit(void){
     nouMinut = 0;
 }
 
-void HHoraMotor(void) { //comentat (minutsAscii) -> en variables tmp
-                        //sense comentar (string[]) -> directmaent a la string
-    static char state = 0;
-	switch(state) {
-		case 0:
+void HHoraMotor(void) {
 			if (TiGetTics(timerHora) >= 2000) {
 				TiResetTics(timerHora);
 				segons++;
@@ -76,10 +72,8 @@ void HHoraMotor(void) { //comentat (minutsAscii) -> en variables tmp
 					string[1] = ZERO_CHAR;
 					string[0] = ZERO_CHAR;
 				}
-				state = 0;
 			}
-		break;
-	}
+
 }
 
 char* HGetTime(void){    

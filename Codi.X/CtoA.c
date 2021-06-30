@@ -3,6 +3,7 @@
 
 unsigned char convertir = 250;
 char stringScore[] = "000";
+__bit borram = 0;
 
 void CToAConverteix(unsigned char numero){
     convertir = numero;
@@ -21,31 +22,20 @@ void CToAReset(void){
 }
 
 void CtoA(void) {
-	static char state = 0;
-    switch(state){
-		case 0:
-			if (convertir != 250) {
-				stringScore[2]++;
-				        if (stringScore[2] == 58) {
-				            stringScore[2] = '0';
-				            stringScore[1]++;
-				        }
-				        if (stringScore[1] == 58) {
-				            stringScore[1] = '0';
-				            stringScore[0]++;
-				        }
-				        convertir--;
-				state = 1;
-			}
-		break;
-		case 1:
-			if (convertir == 0) {
-				convertir = 250;
-				state = 0;
-			}
-			else if (convertir > 0) {
-				state = 0;
-			}
-		break;
+    if (convertir != 250) {
+				if (convertir != 0){
+					stringScore[2]++;
+					if (stringScore[2] == 58) {
+						stringScore[2] = '0';
+						stringScore[1]++;
+					}
+					if (stringScore[1] == 58) {
+						stringScore[1] = '0';
+						stringScore[0]++;
+					}
+					convertir--;
+				} else {
+					convertir = 250;
+				}
     }
 }

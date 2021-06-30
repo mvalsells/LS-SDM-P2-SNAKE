@@ -54,6 +54,7 @@ void SIOMotor(void) {
                         UchangeScore(rebut);
                     }
                     CToAReset();
+                    //CToAConverteix(0); //DEBUGING
                     CToAConverteix(rebut);
                     state = 5;
                 }
