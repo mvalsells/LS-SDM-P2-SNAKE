@@ -9,7 +9,7 @@ typedef struct{
 Usuari usuaris[NUMUSERS];
 unsigned char numUsuaris = 0;
 __bit createUser = 0;
-unsigned char quin = 0;
+//unsigned char quin = 0;
 char pos = 0;
 __bit findNextUser = 0;
 signed char usuariTrobat = -1;
@@ -41,7 +41,7 @@ char* UgetUserName(char quin){
 char UgetScore(char quin){
     return usuaris[quin].highScore;
 }
-void UchangeScore(char score){
+void UchangeScore(char quin, char score){
     usuaris[quin].highScore = score;
 }
 

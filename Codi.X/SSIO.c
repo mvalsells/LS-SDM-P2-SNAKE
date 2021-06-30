@@ -51,7 +51,7 @@ void SIOMotor(void) {
                     rebut = RCREG;
                     //aqui tenim la ultima score en char;
                     if(rebut > UgetScore(usuariActualSIO)){
-                        UchangeScore(rebut);
+                        UchangeScore(usuariActualSIO, rebut);
                     }
                     CToAReset();
                     //CToAConverteix(0); //DEBUGING
