@@ -114,5 +114,5 @@ void UdelUser(char index){
 }
 void UeditUsername(char menuDalt, char pos, char novaLletra){
     usuaris[menuDalt].username[pos] = novaLletra;
-    if(novaLletra = '\0') pos = 0;//si ens falta espai de flash, fer serivr una var nova "pos = pos2" pq sigui local
+    if(novaLletra == '\0') pos = 0;//si ens falta espai de flash, fer serivr una var nova "pos = pos2" pq sigui local
 }

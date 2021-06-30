@@ -20,6 +20,7 @@ const char timeFormat[] = "(HH:mm):";
 const char Score[] = "Score:";
 const char editName[] = "Edit Name";
 const char deleteUser[] = "Delete User";
+char blanc[] = "                ";
 
 unsigned char menuDalt = 0;
 signed char NovaTecla = -1;
@@ -39,7 +40,7 @@ void Minit(void){
 
 void MTMenu(void){
     static char state = 0;
-    switch(state) {
+   switch(state) {
 		case 0:
 			if (LcLliure()) {
 				LcClear();
@@ -400,27 +401,27 @@ void MTMenu(void){
 				state = 38;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(17,0);
+				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt-1));
 				state = 40;
 			}
 		break;
 		case 38:
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(17,0);
+				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
 				state = 39;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(17,0);
+				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt-2));
 				state = 43;
 			}
 		break;
 		case 39:
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(17,1);
+				LcGotoXY(16,1);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
 				state = 40;
@@ -437,7 +438,7 @@ void MTMenu(void){
 			}
 		break;
 		case 41:
-			if (TiGetTics(timerMenu) > 500) {
+			if (TiGetTics(timerMenu) > 1000) {
 				state = 42;
 			}
 			else if (NovaTecla == 11) {
@@ -452,17 +453,20 @@ void MTMenu(void){
 				pos++;
 				state = 41;
 			}
-			else if (pos>15 && menuDalt < UgetNumUsuaris()) {
-				state = 38;
+			else if (/*pos>15 && LcLliure()*/ 0) {
+				LcGotoXY(0,17);
+				LcNewString(blanc);
+				state = 43;
 			}
-			else if (pos > 15 && menuDalt == UgetNumUsuaris()) {
-				menuDalt = 0;
+			else if (pos>15) {
+				if (menuDalt == UgetNumUsuaris()) menuDalt = 0;
+				LcClear;
 				state = 36;
 			}
 		break;
 		case 43:
 			if (LcLliure()) {
-				LcGotoXY(17,1);
+				LcGotoXY(16,1);
 				LcNewString(UgetUserName(menuDalt-1));
 				state = 40;
 			}

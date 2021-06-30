@@ -13,6 +13,7 @@
 #include "JJoc.h"
 #include "SSio.h"
 #include "CtoA.h"
+#include "ScrollLCD.h"
 
 #pragma config OSC = HSPLL	    //;Oscillador -> High Speed PLL
 #pragma config PBADEN = DIG	    //;PORTB com a Digital (el posem a 0)
@@ -74,26 +75,28 @@ void main(void) {
     AlInit();
     AdInit();
     LcInit(2,16);
-    TeInit();
-    GLCDInit();
-    HInit();
-    Sinit();
-    Minit();
+//    TeInit();
+//    GLCDInit();
+//    HInit();
+//    Sinit();
+//    Minit();
+    ScInit();
     //UsersInit();//no fa res
     while(1){
-        AlTAltaveu();
-        GLCDMotor();
-        UMotorUsuaris();
-        MTMenu();
-        JMotor();
-        SIOMotor();
-        CtoA();
-             
-        HHoraMotor();
-        AdMotor();
-        
-        TeTeclat();//antapenultim
-        SMotor(); //penultim
+//        AlTAltaveu();
+//        GLCDMotor();
+//        UMotorUsuaris();
+//        MTMenu();
+//        JMotor();
+//        SIOMotor();
+//        CtoA();
+//             
+//        HHoraMotor();
+//        AdMotor();
+//        
+//        TeTeclat();//antapenultim
+//        SMotor(); //penultim
+        ScScroll();
         LcLCD();//ultim
     }
     return;

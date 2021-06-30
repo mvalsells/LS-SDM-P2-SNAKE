@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c LcTLCD.c TiTTimer.c AlTAltaveu.c MMenu.c TeTeclat.c GLCDGestioLCD.c HHora.c Ssms.c AdAdcon.c UUsuaris.c JJoc.c SSIO.c CtoA.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c LcTLCD.c TiTTimer.c AlTAltaveu.c MMenu.c TeTeclat.c GLCDGestioLCD.c HHora.c Ssms.c AdAdcon.c UUsuaris.c JJoc.c SSIO.c CtoA.c ScrollLCD.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LcTLCD.p1 ${OBJECTDIR}/TiTTimer.p1 ${OBJECTDIR}/AlTAltaveu.p1 ${OBJECTDIR}/MMenu.p1 ${OBJECTDIR}/TeTeclat.p1 ${OBJECTDIR}/GLCDGestioLCD.p1 ${OBJECTDIR}/HHora.p1 ${OBJECTDIR}/Ssms.p1 ${OBJECTDIR}/AdAdcon.p1 ${OBJECTDIR}/UUsuaris.p1 ${OBJECTDIR}/JJoc.p1 ${OBJECTDIR}/SSIO.p1 ${OBJECTDIR}/CtoA.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LcTLCD.p1.d ${OBJECTDIR}/TiTTimer.p1.d ${OBJECTDIR}/AlTAltaveu.p1.d ${OBJECTDIR}/MMenu.p1.d ${OBJECTDIR}/TeTeclat.p1.d ${OBJECTDIR}/GLCDGestioLCD.p1.d ${OBJECTDIR}/HHora.p1.d ${OBJECTDIR}/Ssms.p1.d ${OBJECTDIR}/AdAdcon.p1.d ${OBJECTDIR}/UUsuaris.p1.d ${OBJECTDIR}/JJoc.p1.d ${OBJECTDIR}/SSIO.p1.d ${OBJECTDIR}/CtoA.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LcTLCD.p1 ${OBJECTDIR}/TiTTimer.p1 ${OBJECTDIR}/AlTAltaveu.p1 ${OBJECTDIR}/MMenu.p1 ${OBJECTDIR}/TeTeclat.p1 ${OBJECTDIR}/GLCDGestioLCD.p1 ${OBJECTDIR}/HHora.p1 ${OBJECTDIR}/Ssms.p1 ${OBJECTDIR}/AdAdcon.p1 ${OBJECTDIR}/UUsuaris.p1 ${OBJECTDIR}/JJoc.p1 ${OBJECTDIR}/SSIO.p1 ${OBJECTDIR}/CtoA.p1 ${OBJECTDIR}/ScrollLCD.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LcTLCD.p1.d ${OBJECTDIR}/TiTTimer.p1.d ${OBJECTDIR}/AlTAltaveu.p1.d ${OBJECTDIR}/MMenu.p1.d ${OBJECTDIR}/TeTeclat.p1.d ${OBJECTDIR}/GLCDGestioLCD.p1.d ${OBJECTDIR}/HHora.p1.d ${OBJECTDIR}/Ssms.p1.d ${OBJECTDIR}/AdAdcon.p1.d ${OBJECTDIR}/UUsuaris.p1.d ${OBJECTDIR}/JJoc.p1.d ${OBJECTDIR}/SSIO.p1.d ${OBJECTDIR}/CtoA.p1.d ${OBJECTDIR}/ScrollLCD.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LcTLCD.p1 ${OBJECTDIR}/TiTTimer.p1 ${OBJECTDIR}/AlTAltaveu.p1 ${OBJECTDIR}/MMenu.p1 ${OBJECTDIR}/TeTeclat.p1 ${OBJECTDIR}/GLCDGestioLCD.p1 ${OBJECTDIR}/HHora.p1 ${OBJECTDIR}/Ssms.p1 ${OBJECTDIR}/AdAdcon.p1 ${OBJECTDIR}/UUsuaris.p1 ${OBJECTDIR}/JJoc.p1 ${OBJECTDIR}/SSIO.p1 ${OBJECTDIR}/CtoA.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/LcTLCD.p1 ${OBJECTDIR}/TiTTimer.p1 ${OBJECTDIR}/AlTAltaveu.p1 ${OBJECTDIR}/MMenu.p1 ${OBJECTDIR}/TeTeclat.p1 ${OBJECTDIR}/GLCDGestioLCD.p1 ${OBJECTDIR}/HHora.p1 ${OBJECTDIR}/Ssms.p1 ${OBJECTDIR}/AdAdcon.p1 ${OBJECTDIR}/UUsuaris.p1 ${OBJECTDIR}/JJoc.p1 ${OBJECTDIR}/SSIO.p1 ${OBJECTDIR}/CtoA.p1 ${OBJECTDIR}/ScrollLCD.p1
 
 # Source Files
-SOURCEFILES=main.c LcTLCD.c TiTTimer.c AlTAltaveu.c MMenu.c TeTeclat.c GLCDGestioLCD.c HHora.c Ssms.c AdAdcon.c UUsuaris.c JJoc.c SSIO.c CtoA.c
+SOURCEFILES=main.c LcTLCD.c TiTTimer.c AlTAltaveu.c MMenu.c TeTeclat.c GLCDGestioLCD.c HHora.c Ssms.c AdAdcon.c UUsuaris.c JJoc.c SSIO.c CtoA.c ScrollLCD.c
 
 
 
@@ -206,6 +206,14 @@ ${OBJECTDIR}/CtoA.p1: CtoA.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/CtoA.d ${OBJECTDIR}/CtoA.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CtoA.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/ScrollLCD.p1: ScrollLCD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ScrollLCD.p1.d 
+	@${RM} ${OBJECTDIR}/ScrollLCD.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/c90" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/c99" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/legacy" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/proc" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/ScrollLCD.p1 ScrollLCD.c 
+	@-${MV} ${OBJECTDIR}/ScrollLCD.d ${OBJECTDIR}/ScrollLCD.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ScrollLCD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -318,6 +326,14 @@ ${OBJECTDIR}/CtoA.p1: CtoA.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/c90" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/c99" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/legacy" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/proc" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/CtoA.p1 CtoA.c 
 	@-${MV} ${OBJECTDIR}/CtoA.d ${OBJECTDIR}/CtoA.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CtoA.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ScrollLCD.p1: ScrollLCD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ScrollLCD.p1.d 
+	@${RM} ${OBJECTDIR}/ScrollLCD.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -Os -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/c90" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/c99" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/legacy" -I"../../../../../../../Program Files/Microchip/xc8/v2.32/pic/include/proc" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/ScrollLCD.p1 ScrollLCD.c 
+	@-${MV} ${OBJECTDIR}/ScrollLCD.d ${OBJECTDIR}/ScrollLCD.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ScrollLCD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
