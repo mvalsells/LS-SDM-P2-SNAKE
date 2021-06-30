@@ -361,17 +361,7 @@ void MTMenu(void){
 			}
 		break;
 		case 34:
-            NovaTecla = -1;
-            LcClear();
-            if(posFletxa){
-               LcGotoXY(0,1);
-               LcInsertFletxa();
-            }else{
-               LcPutFletxa();
-            }
-            LcGotoXY(3,0);
-            LcNewString(editName);
-            state = 31;
+
 		break;
 		case 33:
 			if (LcLliure()) {
@@ -412,27 +402,27 @@ void MTMenu(void){
 				state = 38;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(16,0);
+				LcGotoXY(19,0);
 				LcNewString(UgetUserName(menuDalt-1));
 				state = 40;
 			}
 		break;
 		case 38:
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(16,0);
+				LcGotoXY(19,0);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
 				state = 39;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(16,0);
+				LcGotoXY(19,0);
 				LcNewString(UgetUserName(menuDalt-2));
 				state = 43;
 			}
 		break;
 		case 39:
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(16,1);
+				LcGotoXY(19,1);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
 				state = 40;
@@ -458,26 +448,23 @@ void MTMenu(void){
 			}
 		break;
 		case 42:
-			if (pos < 16) {
+			if (pos < 19) {
 				TiResetTics(timerMenu);
 				LcScroll();
 				pos++;
 				state = 41;
 			}
-			else if (/*pos>15 && LcLliure()*/ 0) {
-				LcGotoXY(0,17);
-				LcNewString(blanc);
-				state = 43;
-			}
-			else if (pos>15) {
-				if (menuDalt == UgetNumUsuaris()) menuDalt = 0;
-				LcClear;
+			else if (pos > 18 && menuDalt == UgetNumUsuaris()) {
+				menuDalt = 0;
 				state = 36;
+			}
+			else if (pos>15 && menuDalt < UgetNumUsuaris()) {
+				state = 38;
 			}
 		break;
 		case 43:
 			if (LcLliure()) {
-				LcGotoXY(16,1);
+				LcGotoXY(19,1);
 				LcNewString(UgetUserName(menuDalt-1));
 				state = 40;
 			}
