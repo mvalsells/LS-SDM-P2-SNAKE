@@ -361,7 +361,17 @@ void MTMenu(void){
 			}
 		break;
 		case 34:
-
+            NovaTecla = -1;
+            LcClear();
+            if(posFletxa){
+               LcGotoXY(0,1);
+               LcInsertFletxa();
+            }else{
+               LcPutFletxa();
+            }
+            LcGotoXY(3,0);
+            LcNewString(editName);
+            state = 31;
 		break;
 		case 33:
 			if (LcLliure()) {
