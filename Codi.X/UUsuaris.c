@@ -9,7 +9,6 @@ typedef struct{
 Usuari usuaris[NUMUSERS];
 unsigned char numUsuaris = 0;
 __bit createUser = 0;
-//unsigned char quin = 0;
 char pos = 0;
 __bit findNextUser = 0;
 signed char usuariTrobat = -1;
@@ -92,7 +91,6 @@ void UAfegirLletraUsername(char lletra){
         createUser = ZERO;
         numUsuaris++;
     }
-    
 }
 
 char UgetNumUsuaris(void){
@@ -110,7 +108,6 @@ void UtrobaUsuari(void){
 void UdelUser(char index){
     delUser = index;
     numUsuaris--;
-    
 }
 void UeditUsername(char menuDalt, char pos, char novaLletra){
     usuaris[menuDalt].username[pos] = novaLletra;
