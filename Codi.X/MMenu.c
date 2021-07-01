@@ -416,7 +416,6 @@ void MTMenu(void){
 				}
 				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt));
-				//menuDalt++;
 				state = 39;
 			}
 		break;
@@ -425,7 +424,6 @@ void MTMenu(void){
 				if (menuDalt+1 < UgetNumUsuaris()){
 				  LcGotoXY(16,1);
 				  LcNewString(UgetUserName(menuDalt+1));
-				  //menuDalt++;
 				}
 				state = 40;
 			}
@@ -438,7 +436,7 @@ void MTMenu(void){
 			}
 		break;
 		case 41:
-			if (TiGetTics(timerMenu) > 1000) {
+			if (TiGetTics(timerMenu) > 1999) {
 				state = 42;
 			}
 			else if (NovaTecla == 11) {
