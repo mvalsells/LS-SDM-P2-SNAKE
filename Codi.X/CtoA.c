@@ -3,11 +3,8 @@
 
 unsigned char convertir = 250;
 char stringScore[] = "000";
-__bit borram = 0;
 
-void CToAConverteix(unsigned char numero){
-    convertir = numero;
-}
+
 char* CToAobtenir(void){
     return stringScore;
 }
@@ -19,6 +16,10 @@ void CToAReset(void){
     stringScore[0] = '0';
     stringScore[1] = '0';
     stringScore[2] = '0';
+}
+void CToAConverteix(unsigned char numero){
+    CToAReset();
+    convertir = numero;
 }
 
 void CtoA(void) {

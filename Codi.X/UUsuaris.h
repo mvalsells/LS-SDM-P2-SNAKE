@@ -13,4 +13,7 @@ void UCancelaNouUser(void);
 void UchangeScore(char quin, char score);
 char UgetUserNameChar(char quin, char pos);
 void UeditUsername(char menuDalt, char pos, char novaLletra);
+void UcalcTop5(void);
+signed char UgetTop5(char quin);
+__bit UHaAcabatCalcTop5(void);
 #endif

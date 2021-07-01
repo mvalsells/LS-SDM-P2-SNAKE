@@ -15,12 +15,15 @@ char newUser[] = "New User";
 char enterName[] = "Enter Name:";
 char highScore[] = "High score:";
 char enterNewName[] = "Enter New Name";
-const char currentTime[] = "Current Time";
-const char timeFormat[] = "(HH:mm):";
+char currentTime[] = "Current Time";
+char timeFormat[] = "(HH:mm):";
 const char Score[] = "Score:";
 const char editName[] = "Edit Name";
 const char deleteUser[] = "Delete User";
-char blanc[] = "                ";
+
+
+char borram = 0;
+
 
 unsigned char menuDalt = 0;
 signed char NovaTecla = -1;
@@ -88,6 +91,13 @@ void MTMenu(void){
 				menuDalt = 0;
 				LcClear();
 				state = 36;
+			}
+			else if (NovaTecla == 10 && menuDalt == 1 && UgetNumUsuaris()>0) {
+				NoFerMenu();
+				//UcalcTop5();
+				LcClear();
+				menuDalt = 0;
+				state = 43;
 			}
 		break;
 		case 2:
@@ -361,17 +371,7 @@ void MTMenu(void){
 			}
 		break;
 		case 34:
-NovaTecla = -1;
-LcClear();
-if(posFletxa){
-   LcGotoXY(0,1);
-   LcInsertFletxa();
-}else{
-   LcPutFletxa();
-}
-LcGotoXY(3,0);
-LcNewString(editName);
-state = 31;
+
 		break;
 		case 33:
 			if (LcLliure()) {
@@ -464,6 +464,83 @@ state = 31;
 			else if (pos > 15) {
 				LcClear();
 				state = 36;
+			}
+		break;
+		case 43:
+			if (UHaAcabatCalcTop5() == 0 && LcLliure()) {
+				LcGotoXY(0,0);
+				LcNewString(UgetUserName(UgetTop5(menuDalt)));
+				CToAConverteix(UgetScore(UgetTop5(menuDalt)));
+				state = 44;
+			}
+		break;
+		case 44:
+			if (LcLliure()) {
+				LcGotoXY(0,1);
+				LcNewString(highScore);
+				state = 45;
+			}
+		break;
+		case 45:
+			if (CToAHaAcabat() == 250 && LcLliure()) {
+				LcGotoXY(12,1);
+				LcNewString(CToAobtenir());
+				menuDalt++;
+				state = 46;
+			}
+		break;
+		case 46:
+			if ((UgetTop5(menuDalt)  != -1 || menuDalt != 5) && LcLliure()) {
+				LcGotoXY(16,0);
+				LcNewString(UgetUserName(UgetTop5(menuDalt)));
+				CToAConverteix(UgetScore(UgetTop5(menuDalt)));
+				state = 47;
+			}
+			else if (UgetTop5(menuDalt) == -1 || menuDalt == 5) {
+				pos = 0;
+				TiResetTics(timerMenu);
+				state = 49;
+			}
+		break;
+		case 47:
+			if (LcLliure()) {
+				LcGotoXY(16,1);
+				LcNewString(highScore);
+				state = 48;
+			}
+		break;
+		case 48:
+			if (CToAHaAcabat() == 250 && LcLliure()) {
+				LcGotoXY(28,1);
+				LcNewString(CToAobtenir());
+				pos = 0;
+				TiResetTics(timerMenu);
+				state = 49;
+			}
+		break;
+		case 49:
+			if (TiGetTics(timerMenu) > 1000) {
+				state = 50;
+			}
+			else if (NovaTecla == 11) {
+				menuDalt = 0;
+				state = 0;
+			}
+		break;
+		case 50:
+			if (pos < 16 && LcLliure()) {
+				TiResetTics(timerMenu);
+				LcScroll();
+				pos++;
+				state = 49;
+			}
+			else if (pos > 15 && UgetTop5(menuDalt+1) != -1 && menuDalt+1 != 5) {
+				LcClear();
+				state = 43;
+			}
+			else if ((UgetTop5(menuDalt+1) == -1 || menuDalt+1 == 5) && pos > 15) {
+				menuDalt = 0;
+				state = 0;
 			}
 		break;
 	}

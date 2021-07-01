@@ -53,8 +53,7 @@ void SIOMotor(void) {
                     if(rebut > UgetScore(usuariActualSIO)){
                         UchangeScore(usuariActualSIO, rebut);
                     }
-                    CToAReset();
-                    //CToAConverteix(0); //DEBUGING
+                    //CToAReset();
                     CToAConverteix(rebut);
                     state = 5;
                 }
@@ -77,7 +76,7 @@ void SIOMotor(void) {
 		break;
 		case 6:
 			if (LcLliure()) {
-				CToAReset();
+				//CToAReset();
 				CToAConverteix(UgetScore(usuariActualSIO));
 				state++;
 			}

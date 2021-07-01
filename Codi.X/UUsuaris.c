@@ -13,56 +13,52 @@ char pos = 0;
 __bit findNextUser = 0;
 signed char usuariTrobat = -1;
 signed char delUser = -1;
+__bit calcTop = 0;
+char j;
+char cops;
 
-unsigned char top5indexs[] = {-1, -1, -1, -1, -1};
+signed char top5indexs[] = {2, -1, -1, -1, -1};
 
-void UsersInit(void){
-    //NOTA: s'executa un sol cop fora del bucle cooperatiu a la inicialitzacio
-    //abans del programa, no afecta a la cooperativitat.
-    for(char i = 0; i < 20; i++){
-        usuaris[i].username[ZERO] = '\0';
-        usuaris[i].highScore = ZERO;
-    }
+char UgetScore(char quin){
+    return usuaris[quin].highScore;
 }
+
 void UCancelaNouUser(){
     createUser = ZERO;
    // usuaris[quin].username[0] = '\0';
-}
-
-char UgetUserNameChar(char quin, char pos){
-    return usuaris[quin].username[pos];
 }
 
 char* UgetUserName(char quin){
     return usuaris[quin].username;
 }
 
-char UgetScore(char quin){
-    return usuaris[quin].highScore;
-}
 void UchangeScore(char quin, char score){
     usuaris[quin].highScore = score;
 }
 
 void UMotorUsuaris(){
     static char state = ZERO;
-    switch(state) {
+    	switch(state) {
 		case 0:
 			if (createUser != 0 && numUsuaris >19) {
 				createUser = 0;
 			}
 			else if (createUser == 1 && numUsuaris < 20) {
-				state++;
+				state = 1;
 			}
 			else if (delUser > -1) {
 				usuaris[delUser].username[0] = '\0';
 				usuaris[delUser].highScore = 0;
 				state = 2;
 			}
+			else if (0) {
+				j = 0;
+				state = 3;
+			}
 		break;
 		case 1:
 			if (createUser == 0) {
-				state--;
+				state = 0;
 			}
 		break;
 		case 2:
@@ -75,7 +71,59 @@ void UMotorUsuaris(){
 				state = 0;
 			}
 		break;
+		case 3:
+			if(UgetScore(j) > UgetScore(top5indexs[0])){
+				top5indexs[0] = j;
+			}
+			j++;
+			state = 4;
+		break;
+		case 4:
+			if (j<numUsuaris) {
+				state = 3;
+			}
+			else if (j == numUsuaris && numUsuaris > 1) {
+				j=0;
+				cops = 1;
+				state = 5;
+			}
+			else if (j == numUsuaris && numUsuaris == 1) {
+				state = 0;
+                calcTop = 0;
+			}
+		break;
+		case 5:
+			if(UgetScore(j) > UgetScore(top5indexs[cops]) && UgetScore(j) <= UgetScore(top5indexs[cops-1]) && j !=top5indexs[cops-1] ){
+				top5indexs[cops] = j;
+			}
+			j++;
+			state = 6;
+		break;
+		case 6:
+			if (j<numUsuaris) {
+				state = 5;
+			}else if ((cops == 5 && j == numUsuaris) || numUsuaris-1 == cops) {
+                calcTop = 0;
+				state = 0;
+			}
+			else if (j == numUsuaris && cops < 5 && cops < numUsuaris) {
+				j=0;
+				cops++;
+				state = 5;
+			}
+			
+		break;
 	}
+}
+
+void UcalcTop5(void){
+    calcTop = 1;
+}
+__bit UHaAcabatCalcTop5(void){
+    return 0;
+}
+signed char UgetTop5(char quin){
+    return top5indexs[quin];
 }
 
 void UcreateUser(void ){
@@ -97,13 +145,13 @@ char UgetNumUsuaris(void){
     return numUsuaris;
 }
 
-signed char UgetUsuariTrobat(void){
-    return usuariTrobat;
-}
+//signed char UgetUsuariTrobat(void){
+//    return usuariTrobat;
+//}
 
-void UtrobaUsuari(void){
-    findNextUser = 1;
-}
+//void UtrobaUsuari(void){
+//    findNextUser = 1;
+//}
 
 void UdelUser(char index){
     delUser = index;
