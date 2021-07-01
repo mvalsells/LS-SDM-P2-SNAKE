@@ -424,10 +424,11 @@ void MTMenu(void){
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
 				LcGotoXY(16,1);
 				LcNewString(UgetUserName(menuDalt));
-				menuDalt++;
+				menuDalt--;
 				state = 40;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
+				menuDalt--;
 				state = 40;
 			}
 		break;
@@ -454,13 +455,14 @@ void MTMenu(void){
 				pos++;
 				state = 41;
 			}
-			else if (pos > 15 /*&& menuDalt == UgetNumUsuaris()*/) {
-				if (menuDalt == UgetNumUsuaris())menuDalt = 0;
-				LcClear();
+			else if (pos > 15) {
+				if (menuDalt+1 > UgetNumUsuaris()){
+                    menuDalt = 0;
+                } else {
+                    menuDalt++;
+                }
+                LcClear();
 				state = 36;
-			}
-			else if (/*pos>15 && menuDalt < UgetNumUsuaris()*/0) {
-				state = 38;
 			}
 		break;
 		case 43:
