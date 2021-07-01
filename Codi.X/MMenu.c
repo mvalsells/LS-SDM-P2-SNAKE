@@ -388,6 +388,9 @@ void MTMenu(void){
 		break;
 		case 36:
 			if (LcLliure()) {
+				if (menuDalt == UgetNumUsuaris()){
+				  menuDalt = 0;
+				}
 				LcGotoXY(0,0);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
@@ -395,40 +398,35 @@ void MTMenu(void){
 			}
 		break;
 		case 37:
-			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(0,1);
-				LcNewString(UgetUserName(menuDalt));
-				menuDalt++;
+			if (LcLliure()) {
+				if (menuDalt < UgetNumUsuaris()){
+				  LcGotoXY(0,1);
+				  LcNewString(UgetUserName(menuDalt));
+				  menuDalt++;
+				} else {
+				  menuDalt = 0;
+				}
 				state = 38;
-			}
-			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(16,0);
-				LcNewString(UgetUserName(menuDalt-1));
-				state = 40;
 			}
 		break;
 		case 38:
-			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
+			if (LcLliure()) {
+				if (menuDalt == UgetNumUsuaris()){
+				  menuDalt = 0;
+				}
 				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt));
-				menuDalt++;
+				//menuDalt++;
 				state = 39;
-			}
-			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(16,0);
-				LcNewString(UgetUserName(menuDalt-2));
-				state = 43;
 			}
 		break;
 		case 39:
-			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(16,1);
-				LcNewString(UgetUserName(menuDalt));
-				menuDalt--;
-				state = 40;
-			}
-			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				menuDalt--;
+			if (LcLliure()) {
+				if (menuDalt+1 < UgetNumUsuaris()){
+				  LcGotoXY(16,1);
+				  LcNewString(UgetUserName(menuDalt+1));
+				  //menuDalt++;
+				}
 				state = 40;
 			}
 		break;
@@ -456,18 +454,8 @@ void MTMenu(void){
 				state = 41;
 			}
 			else if (pos > 15) {
-				if (menuDalt+1 > UgetNumUsuaris()){
-                    menuDalt = 0;
-                }
-                LcClear();
+				LcClear();
 				state = 36;
-			}
-		break;
-		case 43:
-			if (LcLliure()) {
-				LcGotoXY(16,1);
-				LcNewString(UgetUserName(menuDalt-1));
-				state = 40;
 			}
 		break;
 	}
