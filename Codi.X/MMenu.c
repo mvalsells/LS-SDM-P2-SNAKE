@@ -180,7 +180,6 @@ void MTMenu(void){
 			}
 			else if (NovaTecla == 2 && LcLliure()) {
 				NovaTecla = -1;
-				SMSon();
 				LcCursorOn();
 				LcClear();
 				LcNewString("Enter name:");
@@ -248,6 +247,7 @@ void MTMenu(void){
 				pos = 0;
 				UcreateUser();
 				novaLletra = -1;
+				SMSon();
 				state = 17;
 			}
 		break;
@@ -402,27 +402,27 @@ void MTMenu(void){
 				state = 38;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(19,0);
+				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt-1));
 				state = 40;
 			}
 		break;
 		case 38:
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(19,0);
+				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
 				state = 39;
 			}
 			else if (menuDalt == UgetNumUsuaris() && LcLliure()) {
-				LcGotoXY(19,0);
+				LcGotoXY(16,0);
 				LcNewString(UgetUserName(menuDalt-2));
 				state = 43;
 			}
 		break;
 		case 39:
 			if (LcLliure() && menuDalt < UgetNumUsuaris()) {
-				LcGotoXY(19,1);
+				LcGotoXY(16,1);
 				LcNewString(UgetUserName(menuDalt));
 				menuDalt++;
 				state = 40;
@@ -448,23 +448,24 @@ void MTMenu(void){
 			}
 		break;
 		case 42:
-			if (pos < 19) {
+			if (pos < 16) {
 				TiResetTics(timerMenu);
 				LcScroll();
 				pos++;
 				state = 41;
 			}
-			else if (pos > 18 && menuDalt == UgetNumUsuaris()) {
-				menuDalt = 0;
+			else if (pos > 15 /*&& menuDalt == UgetNumUsuaris()*/) {
+				if (menuDalt == UgetNumUsuaris())menuDalt = 0;
+				LcClear();
 				state = 36;
 			}
-			else if (pos>15 && menuDalt < UgetNumUsuaris()) {
+			else if (/*pos>15 && menuDalt < UgetNumUsuaris()*/0) {
 				state = 38;
 			}
 		break;
 		case 43:
 			if (LcLliure()) {
-				LcGotoXY(19,1);
+				LcGotoXY(16,1);
 				LcNewString(UgetUserName(menuDalt-1));
 				state = 40;
 			}

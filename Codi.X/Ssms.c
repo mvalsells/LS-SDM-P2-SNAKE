@@ -117,4 +117,5 @@ void SMSon(void){
 
 void SMSoff (void){
     setSMSon = 0;
+    novaTecla = neg;
 }
