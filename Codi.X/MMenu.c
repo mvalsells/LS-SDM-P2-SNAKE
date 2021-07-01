@@ -458,8 +458,6 @@ void MTMenu(void){
 			else if (pos > 15) {
 				if (menuDalt+1 > UgetNumUsuaris()){
                     menuDalt = 0;
-                } else {
-                    menuDalt++;
                 }
                 LcClear();
 				state = 36;
