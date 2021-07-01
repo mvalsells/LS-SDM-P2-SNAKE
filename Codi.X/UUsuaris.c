@@ -17,7 +17,7 @@ __bit calcTop = 0;
 char j;
 char cops;
 
-signed char top5indexs[] = {2, -1, -1, -1, -1};
+signed char top5indexs[] = {-1,-1,-1,-1,-1};
 
 char UgetScore(char quin){
     return usuaris[quin].highScore;
@@ -111,7 +111,7 @@ void UMotorUsuaris(){
 				cops++;
 				state = 5;
 			}
-			
+
 		break;
 	}
 }

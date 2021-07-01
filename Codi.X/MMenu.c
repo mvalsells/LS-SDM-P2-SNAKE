@@ -519,7 +519,7 @@ void MTMenu(void){
 			}
 		break;
 		case 49:
-			if (TiGetTics(timerMenu) > 1000) {
+			if (TiGetTics(timerMenu) > 1999) {
 				state = 50;
 			}
 			else if (NovaTecla == 11) {
