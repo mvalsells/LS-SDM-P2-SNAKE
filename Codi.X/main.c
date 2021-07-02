@@ -80,7 +80,7 @@ void main(void) {
     Sinit();
     Minit();
     while(1){
-        AlTAltaveu();
+        //AlTAltaveu();
         GLCDMotor();
         UMotorUsuaris();
         MTMenu();
@@ -88,8 +88,8 @@ void main(void) {
         SIOMotor();
         CtoA();
              
-        HHoraMotor();
-        AdMotor();
+        //HHoraMotor();
+        //AdMotor();
         
         TeTeclat();//antapenultim
         SMotor(); //penultim

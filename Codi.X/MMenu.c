@@ -94,7 +94,7 @@ void MTMenu(void){
 			}
 			else if (NovaTecla == 10 && menuDalt == 1 && UgetNumUsuaris()>0) {
 				NoFerMenu();
-				//UcalcTop5();
+				UcalcTop5();
 				LcClear();
 				menuDalt = 0;
 				state = 43;
@@ -519,7 +519,7 @@ void MTMenu(void){
 			}
 		break;
 		case 49:
-			if (TiGetTics(timerMenu) > 1999) {
+			if (TiGetTics(timerMenu) > 1000) {
 				state = 50;
 			}
 			else if (NovaTecla == 11) {

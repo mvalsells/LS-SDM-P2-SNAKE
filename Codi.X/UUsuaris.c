@@ -15,6 +15,7 @@ signed char usuariTrobat = -1;
 signed char delUser = -1;
 __bit calcTop = 0;
 char j;
+char i;
 char cops;
 
 signed char top5indexs[] = {-1,-1,-1,-1,-1};
@@ -38,7 +39,7 @@ void UchangeScore(char quin, char score){
 
 void UMotorUsuaris(){
     static char state = ZERO;
-    	switch(state) {
+    switch(state) {
 		case 0:
 			if (createUser != 0 && numUsuaris >19) {
 				createUser = 0;
@@ -51,7 +52,7 @@ void UMotorUsuaris(){
 				usuaris[delUser].highScore = 0;
 				state = 2;
 			}
-			else if (0) {
+			else if (calcTop) {
 				j = 0;
 				state = 3;
 			}
@@ -88,30 +89,47 @@ void UMotorUsuaris(){
 				state = 5;
 			}
 			else if (j == numUsuaris && numUsuaris == 1) {
+				calcTop = 0;
 				state = 0;
-                calcTop = 0;
 			}
 		break;
 		case 5:
-			if(UgetScore(j) > UgetScore(top5indexs[cops]) && UgetScore(j) <= UgetScore(top5indexs[cops-1]) && j !=top5indexs[cops-1] ){
-				top5indexs[cops] = j;
-			}
-			j++;
-			state = 6;
+			i=0;
+			state = 7;
 		break;
 		case 6:
 			if (j<numUsuaris) {
 				state = 5;
-			}else if ((cops == 5 && j == numUsuaris) || numUsuaris-1 == cops) {
-                calcTop = 0;
-				state = 0;
 			}
 			else if (j == numUsuaris && cops < 5 && cops < numUsuaris) {
 				j=0;
 				cops++;
 				state = 5;
 			}
-
+			else if ((cops == 5 || numUsuaris == cops)  && j == numUsuaris) {
+				calcTop = 0;
+				state = 0;
+			}
+		break;
+		case 7:
+			if (i<cops && j<numUsuaris) {
+				if (j==top5indexs[i]){
+					j++;
+					i=0;
+				} else {
+					i++;
+				}
+			}
+			else if (i==cops && j<numUsuaris) {
+				if(UgetScore(j) > UgetScore(top5indexs[cops])){
+					top5indexs[cops] = j;
+				}
+				j++;
+				state = 6;
+			}
+			else if (i == cops || j == numUsuaris) {
+				state = 6;
+			}
 		break;
 	}
 }
@@ -120,7 +138,7 @@ void UcalcTop5(void){
     calcTop = 1;
 }
 __bit UHaAcabatCalcTop5(void){
-    return 0;
+    return calcTop;
 }
 signed char UgetTop5(char quin){
     return top5indexs[quin];
