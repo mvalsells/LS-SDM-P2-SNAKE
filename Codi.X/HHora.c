@@ -39,6 +39,7 @@ void HHoraMotor(void) {
 					tempsJugant[3]++;
 				}
 				if(segons >= 60){
+                    nouMinut = 1;
 					segons = 0;
 				  //Miunts rellotge;
 					string[4]++;

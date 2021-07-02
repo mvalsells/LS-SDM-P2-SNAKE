@@ -366,12 +366,22 @@ void MTMenu(void){
 				LcClear();
 				LcNewString(enterNewName);
 				NovaTecla = -1;
-				//novaLletra = -1;
+				novaLletra = -1;
 				state = 33;
 			}
 		break;
 		case 34:
-
+            NovaTecla = -1;
+            LcClear();
+            if(posFletxa){
+               LcGotoXY(0,1);
+               LcInsertFletxa();
+            }else{
+               LcPutFletxa();
+            }
+            LcGotoXY(3,0);
+            LcNewString(editName);
+            state = 31;
 		break;
 		case 33:
 			if (LcLliure()) {
@@ -387,13 +397,12 @@ void MTMenu(void){
 				menuDalt = 0;
 				state = 0;
 			}
-			else if (NovaTecla != 10 && NovaTecla > -1) {
+			else if (NovaTecla != 10 && novaLletra > 47) {
 				LcPutChar(novaLletra);
 				NovaTecla = -1;
 				UeditUsername(menuDalt,pos,novaLletra);
 				pos++;
 				novaLletra = -1;
-				state = 35;
 			}
 		break;
 		case 36:
