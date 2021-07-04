@@ -22,8 +22,6 @@ const char editName[] = "Edit Name";
 const char deleteUser[] = "Delete User";
 
 
-char borram = 0;
-
 
 unsigned char menuDalt = 0;
 signed char NovaTecla = -1;
@@ -528,7 +526,7 @@ void MTMenu(void){
 			}
 		break;
 		case 49:
-			if (TiGetTics(timerMenu) > 1000) {
+			if (TiGetTics(timerMenu) > 1999) {
 				state = 50;
 			}
 			else if (NovaTecla == 11) {

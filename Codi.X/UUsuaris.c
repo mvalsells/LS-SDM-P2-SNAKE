@@ -63,11 +63,11 @@ void UMotorUsuaris(){
 			}
 		break;
 		case 2:
-			if (usuaris[delUser+1].username[0] != '\0' && delUser < 20) {
+			if (delUser < 20) {
 				usuaris[delUser] = usuaris[delUser+1];
 				delUser++;
 			}
-			else if (delUser >= 20 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
+			else if (delUser > 19 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
 				delUser = -1;
 				state = 0;
 			}
