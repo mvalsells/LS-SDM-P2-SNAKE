@@ -28,7 +28,7 @@ signed char NovaTecla = -1;
 signed char novaLletra = -1;
 char horaTmp[5];
 unsigned char pos;
-char username[11];
+//char username[11];
 __bit posFletxa = 0;
 char timerMenu;
 char desplacats;

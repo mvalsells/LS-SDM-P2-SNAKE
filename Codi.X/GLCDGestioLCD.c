@@ -12,7 +12,7 @@ const char menu[][22] = {
 };
 
 char timerGLCD=0;
-char menuDalt=0;
+char menuDaltGLCD=0;
 __bit ferMenu = 0;
 __bit newString = 0;
 
@@ -29,7 +29,7 @@ void GLCDInit(void){
 
 void GLCDMostraMenu(unsigned char num){
     newString = 1;
-    menuDalt = num;
+    menuDaltGLCD = num;
     ferMenu = 1;
 }
 
@@ -49,7 +49,7 @@ void GLCDMotor(void) {
 		case 2:
 			if (length1 < 17 && ferMenu == 1) {
 				LcGotoXY(0,0);
-				LcNewString(menu[menuDalt]);
+				LcNewString(menu[menuDaltGLCD]);
 				state = 5;
 			}
 			else if (length1 >= 17 && ferMenu == 1) {
@@ -60,36 +60,36 @@ void GLCDMotor(void) {
 			if (j>=16) {
 				min1++;
 				max1++;
-				if (menu[menuDalt][max1] == '\0') max1=0;
-				if (menu[menuDalt][min1] == '\0') min1=0;
+				if (menu[menuDaltGLCD][max1] == '\0') max1=0;
+				if (menu[menuDaltGLCD][min1] == '\0') min1=0;
 				j=0;
 				k1=min1;
 				state = 6;
 			}
 			else if (j<16) {
 				LcGotoXY(j,0);
-				LcPutChar(menu[menuDalt][k1]);
+				LcPutChar(menu[menuDaltGLCD][k1]);
 				j++;
 				k1++;
-				if(menu[menuDalt][k1] == '\0') k1 = 0;
+				if(menu[menuDaltGLCD][k1] == '\0') k1 = 0;
 			}
 		break;
 		case 6:
-			if (menuDalt<5) {
+			if (menuDaltGLCD<5) {
 				LcPutFletxa();
 				state++;
 			}
-			else if (menuDalt >= 5) {
+			else if (menuDaltGLCD >= 5) {
 				LcPutFletxa();
 				state = 0;
 			}
 		break;
 		case 5:
-			if (LcLliure() && menuDalt<5) {
+			if (LcLliure() && menuDaltGLCD<5) {
 				LcPutFletxa();
 				state = 7;
 			}
-			else if (LcLliure() && menuDalt >= 5) {
+			else if (LcLliure() && menuDaltGLCD >= 5) {
 				LcPutFletxa();
 				state = 0;
 			}
@@ -111,20 +111,20 @@ void GLCDMotor(void) {
 			}
 		break;
 		case 1:
-			if (menu[menuDalt][length1] == '\0' && menuDalt>=5) {
+			if (menu[menuDaltGLCD][length1] == '\0' && menuDaltGLCD>=5) {
 				state++;
 			}
-			else if (menu[menuDalt][length1] != '\0') {
+			else if (menu[menuDaltGLCD][length1] != '\0') {
 				length1++;
 			}
-			else if (menuDalt<5 && menu[menuDalt][length1] == '\0') {
+			else if (menuDaltGLCD<5 && menu[menuDaltGLCD][length1] == '\0') {
 				state = 13;
 			}
 		break;
 		case 7:
 			if (length2 < 17 && ferMenu == 1) {
 				LcGotoXY(0,1);
-				LcNewString(menu[menuDalt+1]);
+				LcNewString(menu[menuDaltGLCD+1]);
 				state++;
 			}
 			else if (length2 >= 17 && ferMenu == 1) {
@@ -134,16 +134,16 @@ void GLCDMotor(void) {
 		case 9:
 			if (j<16) {
 				LcGotoXY(j,1);
-				LcPutChar(menu[menuDalt+1][k2]);
+				LcPutChar(menu[menuDaltGLCD+1][k2]);
 				j++;
 				k2++;
-				if(menu[menuDalt+1][k2] == '\0') k2 = 0;
+				if(menu[menuDaltGLCD+1][k2] == '\0') k2 = 0;
 			}
 			else if (j>=16) {
 				min2++;
 				max2++;
-				if (menu[menuDalt+1][max2] == '\0') max2=0;
-				if (menu[menuDalt+1][min2] == '\0') min2=0;
+				if (menu[menuDaltGLCD+1][max2] == '\0') max2=0;
+				if (menu[menuDaltGLCD+1][min2] == '\0') min2=0;
 				j=0;
 				k2=min2;
 				state++;
@@ -170,10 +170,10 @@ void GLCDMotor(void) {
 			}
 		break;
 		case 13:
-			if (menu[menuDalt+1][length2] != '\0') {
+			if (menu[menuDaltGLCD+1][length2] != '\0') {
 				length2++;
 			}
-			else if (menu[menuDalt+1][length2] == '\0' ) {
+			else if (menu[menuDaltGLCD+1][length2] == '\0' ) {
 				state = 2;
 			}
 		break;
