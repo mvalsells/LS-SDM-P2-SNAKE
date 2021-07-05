@@ -18,7 +18,7 @@ char j;
 char i;
 char cops;
 
-signed char top5indexs[] = {-1,-1,-1,-1,-1};
+signed char top5indexs[5];
 
 char UgetScore(char quin){
     return usuaris[quin].highScore;
@@ -69,6 +69,7 @@ void UMotorUsuaris(){
 			}
 			else if (delUser > 19 /*|| usuaris[delUser+1].username[0] == '\0'*/) {
 				delUser = -1;
+                numUsuaris--;
 				state = 0;
 			}
 		break;
@@ -135,6 +136,11 @@ void UMotorUsuaris(){
 }
 
 void UcalcTop5(void){
+    top5indexs[0]=-1;
+    top5indexs[1]=-1;
+    top5indexs[2]=-1;
+    top5indexs[3]=-1;
+    top5indexs[4]=-1;
     calcTop = 1;
 }
 __bit UHaAcabatCalcTop5(void){
@@ -173,7 +179,6 @@ char UgetNumUsuaris(void){
 
 void UdelUser(char index){
     delUser = index;
-    numUsuaris--;
 }
 void UeditUsername(char menuDalt, char pos, char novaLletra){
     usuaris[menuDalt].username[pos] = novaLletra;
