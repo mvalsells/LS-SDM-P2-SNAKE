@@ -1,5 +1,1227 @@
-[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[p PRO_MODE GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK SPACEOPT EMI_WORD ]
 [d version 1.1 ]
 [d edition pro ]
 [d chip 18F4321 ]
 [d frameptr 4065 ]
+"6 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AdAdcon.c
+[v _AdInit AdInit `(v  1 e 1 0 ]
+"12
+[v _AdMotor AdMotor `(v  1 e 1 0 ]
+"11 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AlTAltaveu.c
+[v _AlInit AlInit `(v  1 e 1 0 ]
+"17
+[v _AlPlay AlPlay `(v  1 e 1 0 ]
+"20
+[v _AlStop AlStop `(v  1 e 1 0 ]
+"24
+[v _AlTAltaveu AlTAltaveu `(v  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"7 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\CtoA.c
+[v _CToAConverteix CToAConverteix `(v  1 e 1 0 ]
+"10
+[v _CToAobtenir CToAobtenir `(*.30uc  1 e 2 0 ]
+"13
+[v _CToAHaAcabat CToAHaAcabat `(uc  1 e 1 0 ]
+"17
+[v _CToAReset CToAReset `(v  1 e 1 0 ]
+"23
+[v _CtoA CtoA `(v  1 e 1 0 ]
+"19 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _SiFerMenu SiFerMenu `(v  1 e 1 0 ]
+"22
+[v _NoFerMenu NoFerMenu `(v  1 e 1 0 ]
+"26
+[v _GLCDInit GLCDInit `(v  1 e 1 0 ]
+"30
+[v _GLCDMostraMenu GLCDMostraMenu `(v  1 e 1 0 ]
+"36
+[v _GLCDMotor GLCDMotor `(v  1 e 1 0 ]
+"16 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\HHora.c
+[v _HNouMinut HNouMinut `(b  1 e 0 0 ]
+"20
+[v _HClearNouMinut HClearNouMinut `(v  1 e 1 0 ]
+"24
+[v _HInit HInit `(v  1 e 1 0 ]
+"30
+[v _HHoraMotor HHoraMotor `(v  1 e 1 0 ]
+"85
+[v _HGetTime HGetTime `(*.30uc  1 e 2 0 ]
+"90
+[v _HTempsJocs HTempsJocs `(*.30uc  1 e 2 0 ]
+"94
+[v _HActualitzarHora HActualitzarHora `(v  1 e 1 0 ]
+"101
+[v _HNouSegon HNouSegon `(b  1 e 0 0 ]
+"105
+[v _HClearNouSegon HClearNouSegon `(v  1 e 1 0 ]
+"109
+[v _HJuguem HJuguem `(v  1 e 1 0 ]
+"117
+[v _HNoJuguem HNoJuguem `(v  1 e 1 0 ]
+"13 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\JJoc.c
+[v _JUsuari JUsuari `(c  1 e 1 0 ]
+"17
+[v _JMotor JMotor `(v  1 e 1 0 ]
+"51
+[v _JJuguem JJuguem `(v  1 e 1 0 ]
+"54
+[v _JnovaTecla JnovaTecla `(v  1 e 1 0 ]
+"37 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\LcTLCD.c
+[v _LcScroll LcScroll `(v  1 e 1 0 ]
+"41
+[v _LcInit LcInit `(v  1 e 1 0 ]
+"87
+[v _LcClear LcClear `(v  1 e 1 0 ]
+"94
+[v _LcCursorOn LcCursorOn `(v  1 e 1 0 ]
+"101
+[v _LcCursorOff LcCursorOff `(v  1 e 1 0 ]
+"108
+[v _LcGotoXY LcGotoXY `(v  1 e 1 0 ]
+"135
+[v _LcPutChar LcPutChar `(v  1 e 1 0 ]
+"168
+[v _Espera Espera `(v  1 e 1 0 ]
+"173
+[v _CantaPartAlta CantaPartAlta `(v  1 e 1 0 ]
+"180
+[v _CantaPartBaixa CantaPartBaixa `(v  1 e 1 0 ]
+"187
+[v _CantaIR CantaIR `(v  1 e 1 0 ]
+"203
+[v _CantaData CantaData `(v  1 e 1 0 ]
+"219
+[v _WaitForBusy WaitForBusy `(v  1 e 1 0 ]
+"237
+[v _EscriuPrimeraOrdre EscriuPrimeraOrdre `(v  1 e 1 0 ]
+"248
+[v _LcNewString LcNewString `(v  1 e 1 0 ]
+"252
+[v _LcInsertFletxa LcInsertFletxa `(v  1 e 1 0 ]
+"256
+[v _LcPutFletxa LcPutFletxa `(v  1 e 1 0 ]
+"272
+[v _LcLCD LcLCD `(v  1 e 1 0 ]
+"283
+[v _LcLliure LcLliure `(b  1 e 0 0 ]
+"22 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\main.c
+[v _high_rsi high_rsi `IIH(v  1 e 1 0 ]
+"26
+[v _init_ports init_ports `(v  1 e 1 0 ]
+"60
+[v _init_eusart init_eusart `(v  1 e 1 0 ]
+"69
+[v _main main `(v  1 e 1 0 ]
+"35 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\MMenu.c
+[v _Minit Minit `(v  1 e 1 0 ]
+"40
+[v _MTMenu MTMenu `(v  1 e 1 0 ]
+"473
+[v _MsetNovaTecla MsetNovaTecla `(v  1 e 1 0 ]
+"477
+[v _MNovaLletra MNovaLletra `(v  1 e 1 0 ]
+"12 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\SSIO.c
+[v _SIOMotor SIOMotor `(v  1 e 1 0 ]
+"101
+[v _SIONovaDireccio SIONovaDireccio `(v  1 e 1 0 ]
+"105
+[v _SIOStartGame SIOStartGame `(v  1 e 1 0 ]
+"109
+[v _SIOUsuariActual SIOUsuariActual `(c  1 e 1 0 ]
+"16 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\Ssms.c
+[v _Sinit Sinit `(v  1 e 1 0 ]
+"20
+[v _SMotor SMotor `(v  1 e 1 0 ]
+"109
+[v _SsetNovaTecla SsetNovaTecla `(v  1 e 1 0 ]
+"113
+[v _SMSon SMSon `(v  1 e 1 0 ]
+"118
+[v _SMSoff SMSoff `(v  1 e 1 0 ]
+"19 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TeTeclat.c
+[v _TeInit TeInit `(v  1 e 1 0 ]
+"23
+[v _TeTeclat TeTeclat `(v  1 e 1 0 ]
+"18 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TiTTimer.c
+[v _TiInitTimer TiInitTimer `(v  1 e 1 0 ]
+"37
+[v __TiRSITimer _TiRSITimer `(v  1 e 1 0 ]
+"55
+[v _TiResetTics TiResetTics `(v  1 e 1 0 ]
+"61
+[v _TiGetTics TiGetTics `(i  1 e 2 0 ]
+"70
+[v _TiGetTimer TiGetTimer `(uc  1 e 1 0 ]
+"28 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\UUsuaris.c
+[v _UCancelaNouUser UCancelaNouUser `(v  1 e 1 0 ]
+"37
+[v _UgetUserName UgetUserName `(*.39uc  1 e 2 0 ]
+"41
+[v _UgetScore UgetScore `(uc  1 e 1 0 ]
+"44
+[v _UchangeScore UchangeScore `(v  1 e 1 0 ]
+"48
+[v _UMotorUsuaris UMotorUsuaris `(v  1 e 1 0 ]
+"82
+[v _UcreateUser UcreateUser `(v  1 e 1 0 ]
+"85
+[v _UAfegirLletraUsername UAfegirLletraUsername `(v  1 e 1 0 ]
+"98
+[v _UgetNumUsuaris UgetNumUsuaris `(uc  1 e 1 0 ]
+"110
+[v _UdelUser UdelUser `(v  1 e 1 0 ]
+"115
+[v _UeditUsername UeditUsername `(v  1 e 1 0 ]
+[s S204 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"509 C:/Program Files/Microchip/xc8/v2.32/pic/include/proc\pic18f4321.h
+[s S398 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 SCK 1 0 :1:3 
+`uc 1 SDI 1 0 :1:4 
+`uc 1 SDO 1 0 :1:5 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S407 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+`uc 1 P1A 1 0 :1:2 
+`uc 1 SCL 1 0 :1:3 
+`uc 1 SDA 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S416 . 1 `uc 1 T1CKI 1 0 :1:0 
+]
+[s S418 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+`uc 1 PA1 1 0 :1:2 
+]
+[u S422 . 1 `S204 1 . 1 0 `S398 1 . 1 0 `S407 1 . 1 0 `S416 1 . 1 0 `S418 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES422  1 e 1 @3970 ]
+[s S244 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"681
+[s S934 . 1 `uc 1 PSP0 1 0 :1:0 
+`uc 1 PSP1 1 0 :1:1 
+`uc 1 PSP2 1 0 :1:2 
+`uc 1 PSP3 1 0 :1:3 
+`uc 1 PSP4 1 0 :1:4 
+`uc 1 PSP5 1 0 :1:5 
+`uc 1 PSP6 1 0 :1:6 
+`uc 1 PSP7 1 0 :1:7 
+]
+[s S943 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 P1B 1 0 :1:5 
+`uc 1 P1C 1 0 :1:6 
+`uc 1 P1D 1 0 :1:7 
+]
+[s S948 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S951 . 1 `S244 1 . 1 0 `S934 1 . 1 0 `S943 1 . 1 0 `S948 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES951  1 e 1 @3971 ]
+[s S30 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"1128
+[s S39 . 1 `uc 1 LB0 1 0 :1:0 
+`uc 1 LB1 1 0 :1:1 
+`uc 1 LB2 1 0 :1:2 
+`uc 1 LB3 1 0 :1:3 
+`uc 1 LB4 1 0 :1:4 
+`uc 1 LB5 1 0 :1:5 
+`uc 1 LB6 1 0 :1:6 
+`uc 1 LB7 1 0 :1:7 
+]
+[u S48 . 1 `S30 1 . 1 0 `S39 1 . 1 0 ]
+[v _LATBbits LATBbits `VES48  1 e 1 @3978 ]
+[s S309 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"1240
+[s S318 . 1 `uc 1 LC0 1 0 :1:0 
+`uc 1 LC1 1 0 :1:1 
+`uc 1 LC2 1 0 :1:2 
+`uc 1 LC3 1 0 :1:3 
+`uc 1 LC4 1 0 :1:4 
+`uc 1 LC5 1 0 :1:5 
+`uc 1 LC6 1 0 :1:6 
+`uc 1 LC7 1 0 :1:7 
+]
+[u S327 . 1 `S309 1 . 1 0 `S318 1 . 1 0 ]
+[v _LATCbits LATCbits `VES327  1 e 1 @3979 ]
+"1325
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+[s S349 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"1352
+[s S358 . 1 `uc 1 LD0 1 0 :1:0 
+`uc 1 LD1 1 0 :1:1 
+`uc 1 LD2 1 0 :1:2 
+`uc 1 LD3 1 0 :1:3 
+`uc 1 LD4 1 0 :1:4 
+`uc 1 LD5 1 0 :1:5 
+`uc 1 LD6 1 0 :1:6 
+`uc 1 LD7 1 0 :1:7 
+]
+[u S367 . 1 `S349 1 . 1 0 `S358 1 . 1 0 ]
+[v _LATDbits LATDbits `VES367  1 e 1 @3980 ]
+"1489
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"1711
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"1933
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+[s S195 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1965
+[u S213 . 1 `S195 1 . 1 0 `S204 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES213  1 e 1 @3988 ]
+"2155
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+[s S235 . 1 `uc 1 TRISD0 1 0 :1:0 
+`uc 1 TRISD1 1 0 :1:1 
+`uc 1 TRISD2 1 0 :1:2 
+`uc 1 TRISD3 1 0 :1:3 
+`uc 1 TRISD4 1 0 :1:4 
+`uc 1 TRISD5 1 0 :1:5 
+`uc 1 TRISD6 1 0 :1:6 
+`uc 1 TRISD7 1 0 :1:7 
+]
+"2187
+[u S253 . 1 `S235 1 . 1 0 `S244 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES253  1 e 1 @3989 ]
+[s S1329 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+"2705
+[s S1338 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S1342 . 1 `S1329 1 . 1 0 `S1338 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES1342  1 e 1 @3998 ]
+"3122
+[v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
+"3332
+[v _TXSTA TXSTA `VEuc  1 e 1 @4012 ]
+[s S1276 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"3371
+[s S1285 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S1294 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S1297 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S1299 . 1 `S1276 1 . 1 0 `S1285 1 . 1 0 `S1294 1 . 1 0 `S1297 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES1299  1 e 1 @4012 ]
+"3588
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"3600
+[v _RCREG RCREG `VEuc  1 e 1 @4014 ]
+"3612
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+"3624
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
+"4153
+[v _BAUDCON BAUDCON `VEuc  1 e 1 @4024 ]
+"4646
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
+"4717
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"4802
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+[s S1124 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_NOT_DONE 1 0 :1:1 
+]
+"4846
+[s S1127 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :4:2 
+]
+[s S1131 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+]
+[s S1138 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[s S1141 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_DONE 1 0 :1:1 
+]
+[s S1144 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 nDONE 1 0 :1:1 
+]
+[s S1147 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO_DONE 1 0 :1:1 
+]
+[s S1150 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GODONE 1 0 :1:1 
+]
+[u S1153 . 1 `S1124 1 . 1 0 `S1127 1 . 1 0 `S1131 1 . 1 0 `S1138 1 . 1 0 `S1141 1 . 1 0 `S1144 1 . 1 0 `S1147 1 . 1 0 `S1150 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES1153  1 e 1 @4034 ]
+"4935
+[v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
+[s S555 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"5725
+[s S557 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S560 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S563 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S566 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S569 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :2:5 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S577 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+]
+[u S585 . 1 `S555 1 . 1 0 `S557 1 . 1 0 `S560 1 . 1 0 `S563 1 . 1 0 `S566 1 . 1 0 `S569 1 . 1 0 `S577 1 . 1 0 ]
+[v _RCONbits RCONbits `VES585  1 e 1 @4048 ]
+"6184
+[v _T0CON T0CON `VEuc  1 e 1 @4053 ]
+[s S676 . 1 `uc 1 T0PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 T08BIT 1 0 :1:6 
+`uc 1 TMR0ON 1 0 :1:7 
+]
+"6206
+[s S683 . 1 `uc 1 T0PS0 1 0 :1:0 
+`uc 1 T0PS1 1 0 :1:1 
+`uc 1 T0PS2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 T016BIT 1 0 :1:6 
+]
+[u S689 . 1 `S676 1 . 1 0 `S683 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES689  1 e 1 @4053 ]
+"6268
+[v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
+"6275
+[v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
+[s S624 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"6734
+[s S633 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S642 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S646 . 1 `S624 1 . 1 0 `S633 1 . 1 0 `S642 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES646  1 e 1 @4082 ]
+"4 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AdAdcon.c
+[v _ultimaTeclaAD ultimaTeclaAD `uc  1 e 1 0 ]
+"6 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AlTAltaveu.c
+[v _timer_nota timer_nota `uc  1 s 1 timer_nota ]
+"7
+[v _reproduir reproduir `b  1 s 0 reproduir ]
+"8
+[v _nota nota `uc  1 s 1 nota ]
+"9
+[v _timer_durada timer_durada `uc  1 s 1 timer_durada ]
+"4 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\CtoA.c
+[v _convertir convertir `uc  1 e 1 0 ]
+"5
+[v _stringScore stringScore `[4]uc  1 e 4 0 ]
+"5 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _menu menu `C[6][22]uc  1 e 132 0 ]
+"14
+[v _timerGLCD timerGLCD `uc  1 e 1 0 ]
+"15
+[v _menuDalt menuDalt `uc  1 e 1 0 ]
+"16
+[v _ferMenu ferMenu `b  1 e 0 0 ]
+"17
+[v _newString newString `b  1 e 0 0 ]
+"7 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\HHora.c
+[v _string string `[6]uc  1 s 6 string ]
+"8
+[v _tempsJugant tempsJugant `[6]uc  1 s 6 tempsJugant ]
+"9
+[v _segons segons `uc  1 s 1 segons ]
+"10
+[v _timerHora timerHora `uc  1 s 1 timerHora ]
+"12
+[v _nouMinut nouMinut `b  1 e 0 0 ]
+"14
+[v _nouSegon nouSegon `b  1 e 0 0 ]
+"10 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\JJoc.c
+[v _usuariActual usuariActual `c  1 e 1 0 ]
+"11
+[v _novaDireccio novaDireccio `c  1 e 1 0 ]
+"12
+[v _stringText stringText `[16]uc  1 e 16 0 ]
+"19 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\LcTLCD.c
+[v _Rows Rows `uc  1 s 1 Rows ]
+[v _Columns Columns `uc  1 s 1 Columns ]
+"20
+[v _RowAct RowAct `uc  1 s 1 RowAct ]
+[v _ColumnAct ColumnAct `uc  1 s 1 ColumnAct ]
+"21
+[v _Timer Timer `uc  1 s 1 Timer ]
+"23
+[v _s_ptr s_ptr `*.35uc  1 e 2 0 ]
+"24
+[v _nou_s nou_s `b  1 e 0 0 ]
+"16 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\MMenu.c
+[v _highScore highScore `[12]uc  1 e 12 0 ]
+"17
+[v _enterNewName enterNewName `[15]uc  1 e 15 0 ]
+"20
+[v _Score Score `C[7]uc  1 e 7 0 ]
+"22
+[v _deleteUser deleteUser `C[12]uc  1 e 12 0 ]
+"25
+[v _NovaTecla NovaTecla `c  1 e 1 0 ]
+"26
+[v _novaLletra novaLletra `c  1 e 1 0 ]
+"27
+[v _horaTmp horaTmp `[5]uc  1 e 5 0 ]
+"30
+[v _posFletxa posFletxa `b  1 e 0 0 ]
+"31
+[v _timerMenu timerMenu `uc  1 e 1 0 ]
+"6 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\SSIO.c
+[v _userPtr userPtr `*.39uc  1 e 2 0 ]
+"7
+[v _usuariActualSIO usuariActualSIO `c  1 e 1 0 ]
+"8
+[v _direccio direccio `c  1 e 1 0 ]
+"9
+[v _rebut rebut `uc  1 e 1 0 ]
+"8 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\Ssms.c
+[v _lletraASCII lletraASCII `c  1 e 1 0 ]
+"9
+[v _lletraInici lletraInici `[9]uc  1 e 9 0 ]
+"10
+[v _sumaPulsacions sumaPulsacions `uc  1 e 1 0 ]
+"11
+[v _novaTecla novaTecla `c  1 e 1 0 ]
+"12
+[v _timerSMS timerSMS `c  1 e 1 0 ]
+"13
+[v _ultimaTecla ultimaTecla `c  1 e 1 0 ]
+"14
+[v _setSMSon setSMSon `b  1 e 0 0 ]
+"9 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TeTeclat.c
+[v _tiTeclat tiTeclat `uc  1 s 1 tiTeclat ]
+"12
+[v _teclaPremuda teclaPremuda `[4][3]uc  1 e 12 0 ]
+[s S552 Timer 3 `ui 1 h_initialTics 2 0 `uc 1 b_busy 1 2 ]
+"12 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TiTTimer.c
+[v _s_Timers s_Timers `[8]S552  1 e 24 0 ]
+"14
+[v _h_Tics h_Tics `ui  1 s 2 h_Tics ]
+"15
+[v _counter counter `uc  1 s 1 counter ]
+[s S1199 . 12 `[11]uc 1 username 11 0 `uc 1 highScore 1 11 ]
+"9 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\UUsuaris.c
+[v _usuaris usuaris `[20]S1199  1 e 240 0 ]
+"10
+[v _numUsuaris numUsuaris `uc  1 e 1 0 ]
+"11
+[v _createUser createUser `b  1 e 0 0 ]
+"13
+[v _pos pos `uc  1 e 1 0 ]
+"16
+[v _delUser delUser `c  1 e 1 0 ]
+"69 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"100
+} 0
+"26
+[v _init_ports init_ports `(v  1 e 1 0 ]
+{
+"59
+} 0
+"60
+[v _init_eusart init_eusart `(v  1 e 1 0 ]
+{
+"66
+} 0
+"48 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\UUsuaris.c
+[v _UMotorUsuaris UMotorUsuaris `(v  1 e 1 0 ]
+{
+"49
+[v UMotorUsuaris@state state `uc  1 s 1 state ]
+"80
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 9 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 5 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 7 ]
+"53
+} 0
+"18 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TiTTimer.c
+[v _TiInitTimer TiInitTimer `(v  1 e 1 0 ]
+{
+"34
+} 0
+"23 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TeTeclat.c
+[v _TeTeclat TeTeclat `(v  1 e 1 0 ]
+{
+"24
+[v TeTeclat@state state `uc  1 s 1 state ]
+"25
+[v TeTeclat@cols cols `uc  1 s 1 cols ]
+"26
+[v TeTeclat@files files `uc  1 s 1 files ]
+"105
+} 0
+"109 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\Ssms.c
+[v _SsetNovaTecla SsetNovaTecla `(v  1 e 1 0 ]
+{
+[v SsetNovaTecla@tecla tecla `uc  1 a 1 wreg ]
+[v SsetNovaTecla@tecla tecla `uc  1 a 1 wreg ]
+[v SsetNovaTecla@tecla tecla `uc  1 a 1 5 ]
+"111
+} 0
+"473 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\MMenu.c
+[v _MsetNovaTecla MsetNovaTecla `(v  1 e 1 0 ]
+{
+[v MsetNovaTecla@tecla tecla `uc  1 a 1 wreg ]
+[v MsetNovaTecla@tecla tecla `uc  1 a 1 wreg ]
+[v MsetNovaTecla@tecla tecla `uc  1 a 1 5 ]
+"475
+} 0
+"19 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TeTeclat.c
+[v _TeInit TeInit `(v  1 e 1 0 ]
+{
+"21
+} 0
+"16 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\Ssms.c
+[v _Sinit Sinit `(v  1 e 1 0 ]
+{
+"18
+} 0
+"20
+[v _SMotor SMotor `(v  1 e 1 0 ]
+{
+"21
+[v SMotor@state state `uc  1 s 1 state ]
+"107
+} 0
+"477 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\MMenu.c
+[v _MNovaLletra MNovaLletra `(v  1 e 1 0 ]
+{
+[v MNovaLletra@lletra lletra `uc  1 a 1 wreg ]
+[v MNovaLletra@lletra lletra `uc  1 a 1 wreg ]
+[v MNovaLletra@lletra lletra `uc  1 a 1 5 ]
+"479
+} 0
+"12 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\SSIO.c
+[v _SIOMotor SIOMotor `(v  1 e 1 0 ]
+{
+"13
+[v SIOMotor@state state `uc  1 s 1 state ]
+"99
+} 0
+"41 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\UUsuaris.c
+[v _UgetScore UgetScore `(uc  1 e 1 0 ]
+{
+[v UgetScore@quin quin `uc  1 a 1 wreg ]
+[v UgetScore@quin quin `uc  1 a 1 wreg ]
+[v UgetScore@quin quin `uc  1 a 1 5 ]
+"43
+} 0
+"44
+[v _UchangeScore UchangeScore `(v  1 e 1 0 ]
+{
+[v UchangeScore@score score `uc  1 a 1 wreg ]
+[v UchangeScore@score score `uc  1 a 1 wreg ]
+[v UchangeScore@score score `uc  1 a 1 5 ]
+"46
+} 0
+"10 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\CtoA.c
+[v _CToAobtenir CToAobtenir `(*.30uc  1 e 2 0 ]
+{
+"12
+} 0
+"17
+[v _CToAReset CToAReset `(v  1 e 1 0 ]
+{
+"21
+} 0
+"13
+[v _CToAHaAcabat CToAHaAcabat `(uc  1 e 1 0 ]
+{
+"15
+} 0
+"7
+[v _CToAConverteix CToAConverteix `(v  1 e 1 0 ]
+{
+[v CToAConverteix@numero numero `uc  1 a 1 wreg ]
+[v CToAConverteix@numero numero `uc  1 a 1 wreg ]
+[v CToAConverteix@numero numero `uc  1 a 1 5 ]
+"9
+} 0
+"35 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\MMenu.c
+[v _Minit Minit `(v  1 e 1 0 ]
+{
+"37
+} 0
+"40
+[v _MTMenu MTMenu `(v  1 e 1 0 ]
+{
+"41
+[v MTMenu@state state `uc  1 s 1 state ]
+"471
+} 0
+"37 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\UUsuaris.c
+[v _UgetUserName UgetUserName `(*.39uc  1 e 2 0 ]
+{
+[v UgetUserName@quin quin `uc  1 a 1 wreg ]
+[v UgetUserName@quin quin `uc  1 a 1 wreg ]
+[v UgetUserName@quin quin `uc  1 a 1 7 ]
+"39
+} 0
+"98
+[v _UgetNumUsuaris UgetNumUsuaris `(uc  1 e 1 0 ]
+{
+"100
+} 0
+"115
+[v _UeditUsername UeditUsername `(v  1 e 1 0 ]
+{
+[v UeditUsername@menuDalt menuDalt `uc  1 a 1 wreg ]
+[v UeditUsername@menuDalt menuDalt `uc  1 a 1 wreg ]
+[v UeditUsername@pos pos `uc  1 p 1 5 ]
+[v UeditUsername@novaLletra novaLletra `uc  1 p 1 6 ]
+[v UeditUsername@menuDalt menuDalt `uc  1 a 1 9 ]
+"118
+} 0
+"110
+[v _UdelUser UdelUser `(v  1 e 1 0 ]
+{
+[v UdelUser@index index `uc  1 a 1 wreg ]
+[v UdelUser@index index `uc  1 a 1 wreg ]
+[v UdelUser@index index `uc  1 a 1 5 ]
+"114
+} 0
+"82
+[v _UcreateUser UcreateUser `(v  1 e 1 0 ]
+{
+"84
+} 0
+"28
+[v _UCancelaNouUser UCancelaNouUser `(v  1 e 1 0 ]
+{
+"31
+} 0
+"85
+[v _UAfegirLletraUsername UAfegirLletraUsername `(v  1 e 1 0 ]
+{
+[v UAfegirLletraUsername@lletra lletra `uc  1 a 1 wreg ]
+[v UAfegirLletraUsername@lletra lletra `uc  1 a 1 wreg ]
+[v UAfegirLletraUsername@lletra lletra `uc  1 a 1 7 ]
+"96
+} 0
+"19 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _SiFerMenu SiFerMenu `(v  1 e 1 0 ]
+{
+"21
+} 0
+"113 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\Ssms.c
+[v _SMSon SMSon `(v  1 e 1 0 ]
+{
+"116
+} 0
+"118
+[v _SMSoff SMSoff `(v  1 e 1 0 ]
+{
+"120
+} 0
+"22 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _NoFerMenu NoFerMenu `(v  1 e 1 0 ]
+{
+"24
+} 0
+"37 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\LcTLCD.c
+[v _LcScroll LcScroll `(v  1 e 1 0 ]
+{
+"39
+} 0
+"94
+[v _LcCursorOn LcCursorOn `(v  1 e 1 0 ]
+{
+"99
+} 0
+"13 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\JJoc.c
+[v _JUsuari JUsuari `(c  1 e 1 0 ]
+{
+"15
+} 0
+"51
+[v _JJuguem JJuguem `(v  1 e 1 0 ]
+{
+[v JJuguem@usuari usuari `uc  1 a 1 wreg ]
+[v JJuguem@usuari usuari `uc  1 a 1 wreg ]
+[v JJuguem@usuari usuari `uc  1 a 1 5 ]
+"53
+} 0
+"16 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\HHora.c
+[v _HNouMinut HNouMinut `(b  1 e 0 0 ]
+{
+"18
+} 0
+"117
+[v _HNoJuguem HNoJuguem `(v  1 e 1 0 ]
+{
+"119
+} 0
+"109
+[v _HJuguem HJuguem `(v  1 e 1 0 ]
+{
+"115
+} 0
+"85
+[v _HGetTime HGetTime `(*.30uc  1 e 2 0 ]
+{
+"87
+} 0
+"20
+[v _HClearNouMinut HClearNouMinut `(v  1 e 1 0 ]
+{
+"22
+} 0
+"94
+[v _HActualitzarHora HActualitzarHora `(v  1 e 1 0 ]
+{
+[v HActualitzarHora@nova nova `*.30uc  1 p 1 5 ]
+"99
+} 0
+"30 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _GLCDMostraMenu GLCDMostraMenu `(v  1 e 1 0 ]
+{
+[v GLCDMostraMenu@num num `uc  1 a 1 wreg ]
+[v GLCDMostraMenu@num num `uc  1 a 1 wreg ]
+[v GLCDMostraMenu@num num `uc  1 a 1 5 ]
+"34
+} 0
+"272 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\LcTLCD.c
+[v _LcLCD LcLCD `(v  1 e 1 0 ]
+{
+"281
+} 0
+"41
+[v _LcInit LcInit `(v  1 e 1 0 ]
+{
+[v LcInit@rows rows `uc  1 a 1 wreg ]
+"47
+[v LcInit@i i `i  1 a 2 18 ]
+"41
+[v LcInit@rows rows `uc  1 a 1 wreg ]
+[v LcInit@columns columns `uc  1 p 1 16 ]
+"48
+[v LcInit@rows rows `uc  1 a 1 17 ]
+"80
+} 0
+"101
+[v _LcCursorOff LcCursorOff `(v  1 e 1 0 ]
+{
+"106
+} 0
+"237
+[v _EscriuPrimeraOrdre EscriuPrimeraOrdre `(v  1 e 1 0 ]
+{
+[v EscriuPrimeraOrdre@ordre ordre `uc  1 a 1 wreg ]
+[v EscriuPrimeraOrdre@ordre ordre `uc  1 a 1 wreg ]
+"239
+[v EscriuPrimeraOrdre@ordre ordre `uc  1 a 1 6 ]
+"246
+} 0
+"17 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\JJoc.c
+[v _JMotor JMotor `(v  1 e 1 0 ]
+{
+"18
+[v JMotor@state state `uc  1 s 1 state ]
+"48
+} 0
+"109 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\SSIO.c
+[v _SIOUsuariActual SIOUsuariActual `(c  1 e 1 0 ]
+{
+"111
+} 0
+"105
+[v _SIOStartGame SIOStartGame `(v  1 e 1 0 ]
+{
+[v SIOStartGame@usuari usuari `uc  1 a 1 wreg ]
+[v SIOStartGame@usuari usuari `uc  1 a 1 wreg ]
+[v SIOStartGame@usuari usuari `uc  1 a 1 5 ]
+"107
+} 0
+"101
+[v _SIONovaDireccio SIONovaDireccio `(v  1 e 1 0 ]
+{
+[v SIONovaDireccio@num num `uc  1 a 1 wreg ]
+[v SIONovaDireccio@num num `uc  1 a 1 wreg ]
+[v SIONovaDireccio@num num `uc  1 a 1 5 ]
+"103
+} 0
+"90 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\HHora.c
+[v _HTempsJocs HTempsJocs `(*.30uc  1 e 2 0 ]
+{
+"92
+} 0
+"101
+[v _HNouSegon HNouSegon `(b  1 e 0 0 ]
+{
+"103
+} 0
+"105
+[v _HClearNouSegon HClearNouSegon `(v  1 e 1 0 ]
+{
+"107
+} 0
+"20 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AlTAltaveu.c
+[v _AlStop AlStop `(v  1 e 1 0 ]
+{
+"22
+} 0
+"17
+[v _AlPlay AlPlay `(v  1 e 1 0 ]
+{
+"19
+} 0
+"24 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\HHora.c
+[v _HInit HInit `(v  1 e 1 0 ]
+{
+"28
+} 0
+"30
+[v _HHoraMotor HHoraMotor `(v  1 e 1 0 ]
+{
+"32
+[v HHoraMotor@state state `uc  1 s 1 state ]
+"83
+} 0
+"36 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _GLCDMotor GLCDMotor `(v  1 e 1 0 ]
+{
+"37
+[v GLCDMotor@state state `uc  1 s 1 state ]
+"38
+[v GLCDMotor@j j `uc  1 s 1 j ]
+"39
+[v GLCDMotor@max1 max1 `uc  1 s 1 max1 ]
+"40
+[v GLCDMotor@min1 min1 `uc  1 s 1 min1 ]
+"41
+[v GLCDMotor@min2 min2 `uc  1 s 1 min2 ]
+"42
+[v GLCDMotor@max2 max2 `uc  1 s 1 max2 ]
+"43
+[v GLCDMotor@k1 k1 `uc  1 s 1 k1 ]
+"44
+[v GLCDMotor@k2 k2 `uc  1 s 1 k2 ]
+"45
+[v GLCDMotor@length1 length1 `uc  1 s 1 length1 ]
+"46
+[v GLCDMotor@length2 length2 `uc  1 s 1 length2 ]
+"181
+} 0
+"256 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\LcTLCD.c
+[v _LcPutFletxa LcPutFletxa `(v  1 e 1 0 ]
+{
+"260
+} 0
+"252
+[v _LcInsertFletxa LcInsertFletxa `(v  1 e 1 0 ]
+{
+"255
+} 0
+"135
+[v _LcPutChar LcPutChar `(v  1 e 1 0 ]
+{
+[v LcPutChar@c c `uc  1 a 1 wreg ]
+[v LcPutChar@c c `uc  1 a 1 wreg ]
+"145
+[v LcPutChar@c c `uc  1 a 1 21 ]
+"166
+} 0
+"108
+[v _LcGotoXY LcGotoXY `(v  1 e 1 0 ]
+{
+[v LcGotoXY@Column Column `uc  1 a 1 wreg ]
+"112
+[v LcGotoXY@Fisics Fisics `i  1 a 2 18 ]
+"108
+[v LcGotoXY@Column Column `uc  1 a 1 wreg ]
+[v LcGotoXY@Row Row `uc  1 p 1 13 ]
+[v LcGotoXY@Column Column `uc  1 a 1 20 ]
+"133
+} 0
+"203
+[v _CantaData CantaData `(v  1 e 1 0 ]
+{
+[v CantaData@Data Data `uc  1 a 1 wreg ]
+[v CantaData@Data Data `uc  1 a 1 wreg ]
+[v CantaData@Data Data `uc  1 a 1 7 ]
+"217
+} 0
+"248
+[v _LcNewString LcNewString `(v  1 e 1 0 ]
+{
+[v LcNewString@new_s new_s `*.35uc  1 p 2 8 ]
+"251
+} 0
+"283
+[v _LcLliure LcLliure `(b  1 e 0 0 ]
+{
+"285
+} 0
+"87
+[v _LcClear LcClear `(v  1 e 1 0 ]
+{
+"92
+} 0
+"219
+[v _WaitForBusy WaitForBusy `(v  1 e 1 0 ]
+{
+[v WaitForBusy@Busy Busy `uc  1 a 1 12 ]
+"235
+} 0
+"168
+[v _Espera Espera `(v  1 e 1 0 ]
+{
+[v Espera@Timer Timer `uc  1 a 1 wreg ]
+[v Espera@Timer Timer `uc  1 a 1 wreg ]
+[v Espera@ms ms `i  1 p 2 12 ]
+[v Espera@Timer Timer `uc  1 a 1 15 ]
+"171
+} 0
+"187
+[v _CantaIR CantaIR `(v  1 e 1 0 ]
+{
+[v CantaIR@IR IR `uc  1 a 1 wreg ]
+[v CantaIR@IR IR `uc  1 a 1 wreg ]
+[v CantaIR@IR IR `uc  1 a 1 7 ]
+"201
+} 0
+"180
+[v _CantaPartBaixa CantaPartBaixa `(v  1 e 1 0 ]
+{
+[v CantaPartBaixa@c c `uc  1 a 1 wreg ]
+[v CantaPartBaixa@c c `uc  1 a 1 wreg ]
+[v CantaPartBaixa@c c `uc  1 a 1 6 ]
+"185
+} 0
+"173
+[v _CantaPartAlta CantaPartAlta `(v  1 e 1 0 ]
+{
+[v CantaPartAlta@c c `uc  1 a 1 wreg ]
+[v CantaPartAlta@c c `uc  1 a 1 wreg ]
+[v CantaPartAlta@c c `uc  1 a 1 6 ]
+"178
+} 0
+"26 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\GLCDGestioLCD.c
+[v _GLCDInit GLCDInit `(v  1 e 1 0 ]
+{
+"28
+} 0
+"23 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\CtoA.c
+[v _CtoA CtoA `(v  1 e 1 0 ]
+{
+"24
+[v CtoA@state state `uc  1 s 1 state ]
+"51
+} 0
+"24 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AlTAltaveu.c
+[v _AlTAltaveu AlTAltaveu `(v  1 e 1 0 ]
+{
+"25
+[v AlTAltaveu@state state `uc  1 s 1 state ]
+"66
+} 0
+"55 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TiTTimer.c
+[v _TiResetTics TiResetTics `(v  1 e 1 0 ]
+{
+[v TiResetTics@Handle Handle `uc  1 a 1 wreg ]
+[v TiResetTics@Handle Handle `uc  1 a 1 wreg ]
+"59
+[v TiResetTics@Handle Handle `uc  1 a 1 5 ]
+"60
+} 0
+"61
+[v _TiGetTics TiGetTics `(i  1 e 2 0 ]
+{
+[v TiGetTics@Handle Handle `uc  1 a 1 wreg ]
+"65
+[v TiGetTics@actual actual `VEui  1 a 2 10 ]
+"61
+[v TiGetTics@Handle Handle `uc  1 a 1 wreg ]
+"66
+[v TiGetTics@Handle Handle `uc  1 a 1 9 ]
+"69
+} 0
+"11 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AlTAltaveu.c
+[v _AlInit AlInit `(v  1 e 1 0 ]
+{
+"15
+} 0
+"70 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TiTTimer.c
+[v _TiGetTimer TiGetTimer `(uc  1 e 1 0 ]
+{
+"81
+} 0
+"12 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AdAdcon.c
+[v _AdMotor AdMotor `(v  1 e 1 0 ]
+{
+"13
+[v AdMotor@state state `uc  1 s 1 state ]
+"52
+} 0
+"54 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\JJoc.c
+[v _JnovaTecla JnovaTecla `(v  1 e 1 0 ]
+{
+[v JnovaTecla@direccio direccio `uc  1 a 1 wreg ]
+[v JnovaTecla@direccio direccio `uc  1 a 1 wreg ]
+[v JnovaTecla@direccio direccio `uc  1 a 1 5 ]
+"56
+} 0
+"6 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\AdAdcon.c
+[v _AdInit AdInit `(v  1 e 1 0 ]
+{
+"11
+} 0
+"22 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\main.c
+[v _high_rsi high_rsi `IIH(v  1 e 1 0 ]
+{
+"24
+} 0
+"37 C:\Users\alber\OneDrive - La Salle\Compus\P2 Fase B\LS-SDM-P2-SNAKE\Codi.X\TiTTimer.c
+[v __TiRSITimer _TiRSITimer `(v  1 e 1 0 ]
+{
+"53
+} 0

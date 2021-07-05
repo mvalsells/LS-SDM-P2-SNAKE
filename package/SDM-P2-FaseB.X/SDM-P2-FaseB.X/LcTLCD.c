@@ -19,7 +19,7 @@
 static unsigned char Rows, Columns;
 static unsigned char RowAct, ColumnAct;
 static char Timer; //Originalment int, canviat a char
-char s[] = "null";
+//char s[] = "null";
 char *s_ptr = 0;
 __bit nou_s = 0;
 //

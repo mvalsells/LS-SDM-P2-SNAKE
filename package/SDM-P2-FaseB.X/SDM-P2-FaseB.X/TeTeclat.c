@@ -7,7 +7,6 @@
 #include "JJoc.h"
 
 static char tiTeclat=0;
-static char ultimaTecla = 0;
 
 char teclaPremuda[4][3] = {
     {1,2,3},
@@ -75,7 +74,6 @@ void TeTeclat(void) {
 				state = 1;
 			}
 			else if (files!=0) {
-				//ultimaTecla=teclaPremuda[files-1][cols];//comentar aixo, borram?
                 MsetNovaTecla(teclaPremuda[files-1][cols]);
                 SsetNovaTecla(teclaPremuda[files-1][cols]);
                 JnovaTecla(teclaPremuda[files-1][cols]);

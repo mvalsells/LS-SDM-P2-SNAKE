@@ -1,6 +1,5 @@
 #include "JJoc.h"
 #include <xc.h>
-#include "AdAdcon.h"
 #include "HHora.h"
 #include "LcTLCD.h"
 #include "AlTAltaveu.h"

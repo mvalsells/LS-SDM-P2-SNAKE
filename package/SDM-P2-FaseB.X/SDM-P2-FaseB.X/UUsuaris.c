@@ -10,8 +10,6 @@ Usuari usuaris[NUMUSERS];
 unsigned char numUsuaris = 0;
 __bit createUser = 0;
 char pos = 0;
-__bit findNextUser = 0;
-signed char usuariTrobat = -1;
 signed char delUser = -1;
 __bit calcTop = 0;
 char j;
@@ -168,14 +166,6 @@ void UAfegirLletraUsername(char lletra){
 char UgetNumUsuaris(void){
     return numUsuaris;
 }
-
-//signed char UgetUsuariTrobat(void){
-//    return usuariTrobat;
-//}
-
-//void UtrobaUsuari(void){
-//    findNextUser = 1;
-//}
 
 void UdelUser(char index){
     delUser = index;
