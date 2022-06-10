@@ -1,4 +1,4 @@
-# LS-SDM-P2-SNAKE/
+# LS-SDM-P2-SNAKE
 Pràctica P2, Fase B - Sistemes Digitals i Microprocessadors, Curs 2020-21
 
 ## Description
